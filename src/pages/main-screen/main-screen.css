@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: #a25353;
+    height: 163px;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 1920px;
+    display: flex;
+}
+  
+.logo {
+    height: 79px;
+    width: 357px;
+    margin-right: auto;
+    padding-left: 44px;
+    padding-top: 43px;
+    padding-bottom: 41px;
+}
+
+.profile {
+    height: 100px;
+    width: 330px;
+    margin-left: auto;
+    padding-right: 40px;
+    padding-top: 30px;
+    padding-bottom: 33px;
+}
