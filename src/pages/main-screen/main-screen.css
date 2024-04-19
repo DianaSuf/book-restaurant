@@ -9,7 +9,8 @@
     left: 0;
     position: fixed;
     top: 0;
-    width: 1920px;
+    /* width: 1920px; */
+    width: 100%;
     display: flex;
 }
   
@@ -17,16 +18,31 @@
     height: 79px;
     width: 357px;
     margin-right: auto;
-    padding-left: 44px;
-    padding-top: 43px;
-    padding-bottom: 41px;
+    margin-left: 44px;
+    margin-top: 43px;
+    margin-bottom: 41px;
 }
 
-.profile {
+.image-button {
+    border: 0; 
+    outline: none; 
+    background-color: transparent;
+    border: none;
+    height: 100px;
+    width: 330px;
+    background-image: url('../../../public/profile.svg');
+    background-size: cover;
+    margin-left: auto;
+    margin-right: 40px;
+    margin-top: 30px;
+    margin-bottom: 33px;
+}
+
+/* button .profile {
     height: 100px;
     width: 330px;
     margin-left: auto;
     padding-right: 40px;
     padding-top: 30px;
     padding-bottom: 33px;
-}
+} */
