@@ -2,8 +2,6 @@
 // import reactLogo from '../../assets/react.svg'
 // import viteLogo from '../../../public/vite.svg'
 import './App.css'
-// import logo from '../../../public/logo.svg'
-// import profile from '../../../public/profile.svg'
 import MainScreen from '../../pages/main-screen/main-screen'
 
 function App() {
