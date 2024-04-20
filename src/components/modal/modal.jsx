@@ -21,7 +21,7 @@ export default function ModalRegister ({ isOpen, onClose }) {
                                 <div className="register__fields">
                                     <div className="register__field">
                                         <label
-                                            className="register__label visually-hidden"
+                                            className="register__label"
                                             htmlFor="user-name"
                                         >
                                                     Имя пользователя
@@ -36,7 +36,7 @@ export default function ModalRegister ({ isOpen, onClose }) {
                                     />
                                     <div className="register__field">
                                         <label
-                                            className="register__label visually-hidden"
+                                            className="register__label"
                                             htmlFor="user-email"
                                         >
                                                     Почта
@@ -51,7 +51,7 @@ export default function ModalRegister ({ isOpen, onClose }) {
                                     />
                                     <div className="register__field">
                                         <label
-                                            className="register__label visually-hidden"
+                                            className="register__label"
                                             htmlFor="user-phone"
                                         >
                                                     Номер телефона
@@ -67,7 +67,7 @@ export default function ModalRegister ({ isOpen, onClose }) {
                                     />
                                     <div className="register__field">
                                         <label
-                                            className="register__label visually-hidden"
+                                            className="register__label"
                                             htmlFor="user-password"
                                         >
                                                     Пароль

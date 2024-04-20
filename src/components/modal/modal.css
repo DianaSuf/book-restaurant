@@ -45,7 +45,7 @@ input {
   border: none;
   background-color: #FFFFFF;
   border-radius: 15px;
-  height: 90px;
+  height: 70px;
   left: 0;
   top: 0;
   width: 640px;
@@ -70,7 +70,7 @@ input {
   border: none;
   height: 80px;
   width: 270px;
-  background-image: url('../../../public/register.svg');
+  background-image: url('/register.svg');
   margin-top: 19px;
   margin-right: auto;
 }
@@ -82,7 +82,7 @@ input {
   border: none;
   height: 80px;
   width: 270px;
-  background-image: url('../../../public/sign-in.svg');
+  background-image: url('/sign-in.svg');
   margin-top: 19px;
   margin-left: auto;
 }

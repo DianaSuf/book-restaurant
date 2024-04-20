@@ -1,14 +1,37 @@
 // import { useState } from 'react'
 // import reactLogo from '../../assets/react.svg'
 // import viteLogo from '../../../public/vite.svg'
-import './App.css'
-import MainScreen from '../../pages/main-screen/main-screen'
+// import './App.css'
+import { BrowserRouter, Routes, Route} from 'react-router-dom'
+import { HelmetProvider } from 'react-helmet-async'
+import MainScreen from '../pages/main-screen/main-screen'
+import PrivateRoute from './private-route'
+import { AuthorizationStatus } from '../const'
 
 function App() {
   // const [count, setCount] = useState(0)
 
   return (
-    <MainScreen />
+    <HelmetProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route
+              path={'/'}
+              element={<MainScreen />}
+          />
+          <Route
+              path={'/res'}
+              element={
+                <PrivateRoute
+                  authorizationStatus={AuthorizationStatus.NoAuth}
+                >
+                  <MainScreen />
+                </PrivateRoute>
+              }
+          />
+        </Routes>
+      </BrowserRouter>
+      </HelmetProvider>
     // <>
     //   {/* <div>
     //     <a href="https://vitejs.dev" target="_blank">

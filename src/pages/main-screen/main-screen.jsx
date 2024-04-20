@@ -1,5 +1,7 @@
-import logo from '../../../public/logo.svg'
-import promo from '../../../public/promo.jpg'
+import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import logo from '/logo.svg'
+import promo from '/promo.jpg'
 import ModalRegister from '../../components/modal/modal';
 import { useState } from 'react'
 import './main-screen.css'
@@ -9,13 +11,22 @@ export default function MainScreen() {
 
   return (
     <>
-      <header className="header">
-          <a className="logo"><img className="logo_link" alt="logo" src={logo}/></a>
+      <Helmet>
+        <title>TableTme</title>
+      </Helmet>
+      <section className="header">
+          <Link className="logo" to="/"><img className="logo_link" alt="logo" src={logo}/></Link>
           <button className="image-button" onClick={() => setModalRegIsOpen(true)}></button>
           <ModalRegister
           isOpen={modalRegIsOpen}
           onClose={() => setModalRegIsOpen(false)}/>
-      </header>
+      </section>
+      <section className="hero">
+        <img className="promo" alt="promo" src={promo}></img>
+      </section>
+      <section className="hero">
+        <img className="promo" alt="promo" src={promo}></img>
+      </section>
       <section className="hero">
         <img className="promo" alt="promo" src={promo}></img>
       </section>

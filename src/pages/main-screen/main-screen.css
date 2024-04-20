@@ -7,10 +7,10 @@
     background-color: #a25353;
     height: 163px;
     left: 0;
-    position: fixed;
+    /* position: fixed; */
     top: 0;
-    /* width: 1920px; */
-    width: 100%;
+    width: 1920px;
+    /* width: 100%; */
     display: flex;
 }
   
@@ -30,7 +30,7 @@
     border: none;
     height: 100px;
     width: 330px;
-    background-image: url('../../../public/profile.svg');
+    background-image: url('/profile.svg');
     background-size: cover;
     margin-left: auto;
     margin-right: 40px;
