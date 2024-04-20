@@ -8,9 +8,9 @@
     height: 163px;
     left: 0;
     /* position: fixed; */
+    /* width: 100%; */
     top: 0;
     width: 1920px;
-    /* width: 100%; */
     display: flex;
 }
   
@@ -38,16 +38,9 @@
     margin-bottom: 33px;
 }
 
-/* button .profile {
-    height: 100px;
-    width: 330px;
-    margin-left: auto;
-    padding-right: 40px;
-    padding-top: 30px;
-    padding-bottom: 33px;
-} */
-
-.hero {
+.promo {
     width: 1920px;
     height: 592px;
+    background-image: url('/promo.jpg');
+    filter: brightness(60%)
 }
