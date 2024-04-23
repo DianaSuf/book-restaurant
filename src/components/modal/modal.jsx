@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './modal.css';
 import PropTypes from 'prop-types';
 
@@ -11,10 +12,12 @@ export default function ModalRegister ({ isOpen, onClose }) {
         if (event.target.classList.contains("modal-wrapper")) onClose();
     };
 
+    const [status, setStatus] = useState('singIn');
+
     return (
         <>
             {isOpen && (
-                <div className="modal">
+                <form action="#" className="modal">
                     <div className="modal-wrapper" onClick={onWrapperClick}>
                         <div className="modal-content">
                             <form action="#" className="register__form">
@@ -30,41 +33,49 @@ export default function ModalRegister ({ isOpen, onClose }) {
                                     <input
                                         className="register__input"
                                         type="text"
-                                        name="user-name"
+                                        name="name"
                                         id="user-name"
                                         required
                                     />
-                                    <div className="register__field">
-                                        <label
-                                            className="register__label"
-                                            htmlFor="user-email"
-                                        >
+                                    {status === 'register' && (    
+                                        <>
+                                            <div className="register__field">
+                                                <label
+                                                    className="register__label"
+                                                    htmlFor="user-email"
+                                                >
                                                     Почта
-                                        </label>
-                                    </div>
-                                    <input
-                                        className="register__input"
-                                        type="email"
-                                        name="user-email"
-                                        id="user-email"
-                                        required
-                                    />
-                                    <div className="register__field">
-                                        <label
-                                            className="register__label"
-                                            htmlFor="user-phone"
-                                        >
+                                                </label>
+                                            </div>
+                                            <input
+                                                className="register__input"
+                                                type="email"
+                                                name="email"
+                                                id="user-email"
+                                                required 
+                                            />
+                                        </>
+                                    )}
+                                    {status === 'register' && (
+                                        <>
+                                            <div className="register__field">
+                                                <label
+                                                    className="register__label"
+                                                    htmlFor="user-phone"
+                                                >
                                                     Номер телефона
-                                        </label>
-                                    </div>
-                                    <input
-                                        className="register__input"
-                                        type="tel"
-                                        name="user-phone"
-                                        id="user-phone"
-                                        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                                        required
-                                    />
+                                                </label>
+                                            </div>
+                                            <input
+                                                className="register__input"
+                                                type="tel"
+                                                id="user-phone"
+                                                name="phone"
+                                                // pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                                                required
+                                            />
+                                        </>
+                                    )}
                                     <div className="register__field">
                                         <label
                                             className="register__label"
@@ -83,13 +94,13 @@ export default function ModalRegister ({ isOpen, onClose }) {
                                     />
                                 </div>
                                 <div className="sign-in__submit">
-                                    <button className="register__btn" type="submit"></button>
-                                    <button className="sign-in__btn" type="submit"></button>
+                                    <button className="sign-in__btn" type="submit" onClick={() => setStatus('singIn')}></button>
+                                    <button className="register__btn" type="submit" onClick={() => setStatus('register')}></button>
                                 </div>
                             </form>
                         </div>
                     </div>
-                </div>
+                </form>
             )}
         </>
     )

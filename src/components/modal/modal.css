@@ -62,18 +62,6 @@ input {
   display: flex;
 }
 
-.register__btn {
-  border: 0; 
-  outline: none; 
-  background-color: transparent;
-  border: none;
-  height: 80px;
-  width: 270px;
-  background-image: url('/register.svg');
-  margin-top: 19px;
-  margin-right: auto;
-}
-
 .sign-in__btn {
   border: 0; 
   outline: none; 
@@ -82,6 +70,18 @@ input {
   height: 80px;
   width: 270px;
   background-image: url('/sign-in.svg');
+  margin-top: 19px;
+  margin-right: auto;
+}
+
+.register__btn {
+  border: 0; 
+  outline: none; 
+  background-color: transparent;
+  border: none;
+  height: 80px;
+  width: 270px;
+  background-image: url('/register.svg');
   margin-top: 19px;
   margin-left: auto;
 }
