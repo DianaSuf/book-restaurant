@@ -17,7 +17,7 @@ export default function ModalRegister ({ isOpen, onClose }) {
     return (
         <>
             {isOpen && (
-                <form action="#" className="modal">
+                <div className="modal">
                     <div className="modal-wrapper" onClick={onWrapperClick}>
                         <div className="modal-content">
                             <form action="#" className="register__form">
@@ -27,7 +27,7 @@ export default function ModalRegister ({ isOpen, onClose }) {
                                             className="register__label"
                                             htmlFor="user-name"
                                         >
-                                                    Имя пользователя
+                                            Имя пользователя
                                         </label>
                                     </div>
                                     <input
@@ -81,7 +81,7 @@ export default function ModalRegister ({ isOpen, onClose }) {
                                             className="register__label"
                                             htmlFor="user-password"
                                         >
-                                                    Пароль
+                                            Пароль
                                         </label>
                                     </div>
                                     <input
@@ -100,7 +100,7 @@ export default function ModalRegister ({ isOpen, onClose }) {
                             </form>
                         </div>
                     </div>
-                </form>
+                </div>
             )}
         </>
     )

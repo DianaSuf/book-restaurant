@@ -1,10 +1,14 @@
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
 import MainScreen from '../pages/main-screen/main-screen'
+import ErrorScreen from '../pages/error-screen/error-screen'
+// import SuperScreen from '../pages/super/super-screen/super-screen'
 import PrivateRoute from './private-route'
-import { AuthorizationStatus } from '../const'
+import { useSelector } from 'react-redux'
 
 function App() {
+  const authorizationStatus = useSelector((state) => state.authorizationStatus);
+
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -17,11 +21,15 @@ function App() {
               path={'/res'}
               element={
                 <PrivateRoute
-                  authorizationStatus={AuthorizationStatus.NoAuth}
+                  authorizationStatus={authorizationStatus}
                 >
                   <MainScreen />
                 </PrivateRoute>
               }
+          />
+          <Route
+              path={'*'}
+              element={<ErrorScreen />}
           />
         </Routes>
       </BrowserRouter>

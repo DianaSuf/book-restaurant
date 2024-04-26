@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.error {
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+}
+
+.error_img {
+  margin-top: 166px;
+}
