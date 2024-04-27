@@ -1,5 +1,5 @@
-import { AuthorizationStatus } from "../const";
-import { requireAuthorization } from "./action";
+import { AuthorizationStatus } from "../const.js";
+import { requireAuthorization } from "./action.js";
 import {createReducer} from '@reduxjs/toolkit';
 
 const initialState = {

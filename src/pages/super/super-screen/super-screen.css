@@ -24,10 +24,11 @@
   transition: opacity 0.3s, transform 0.3s;
 }
 
-h1 {
+.appoint__text {
   text-align: center;
   font-size: 48px;
   margin-bottom: 7px;
+  font-weight: 500;
 }
 
 .appoint__field {

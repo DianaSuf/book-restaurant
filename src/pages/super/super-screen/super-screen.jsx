@@ -12,7 +12,7 @@ export default function SuperScreen() {
       <section className="main">
         <div className="modall">
           <form action="#" className="modal__form">
-            <h1>Новый администратор</h1>
+            <h1 className="appoint__text">Новый администратор</h1>
             <div className="appoint__field">
               <label
                 className="appoint__label"

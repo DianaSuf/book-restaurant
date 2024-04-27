@@ -1,6 +1,7 @@
 export const AuthorizationStatus = {
   User: 'USER',
   Admin: 'ADMIN',
+  SuperAdmin: 'SUPER_ADMIN',
   NoAuth: 'NO_AUTH',
   Unknown: 'UNKNOWN',
 }
@@ -8,6 +9,5 @@ export const AuthorizationStatus = {
 export const APIRoute = {
   Register: '/users',
   Login: '/login',
-  Logout: '/logout',
-  Refresh: '/refresh'
+  Status: '/status'
 }

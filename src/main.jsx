@@ -4,6 +4,9 @@ import App from './components/App.jsx'
 import './index.css'
 import {Provider} from 'react-redux'
 import { store } from './store'
+// import { checkAuthAction } from './store/api-actions.js'
+
+// store.dispatch(checkAuthAction());
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

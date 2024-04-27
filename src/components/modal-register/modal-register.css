@@ -40,6 +40,12 @@
   transition: opacity 0.3s, transform 0.3s;
 }
 
+.name__form {
+  text-align: center;
+  font-size: 48px;
+  font-weight: 500;
+}
+
 .register__input {
   border: none;
   background-color: #FFFFFF;
@@ -60,6 +66,7 @@
 
 .sign-in__submit {
   display: flex;
+  margin-top: 17px;
 }
 
 .sign-in__btn {
@@ -82,6 +89,12 @@
   height: 80px;
   width: 270px;
   background-image: url('/register.svg');
-  margin-top: 19px;
-  margin-left: auto;
+  margin-right: auto;
+}
+
+.text__btn {
+  font-weight: 500;
+  font-size: 32px;
+  text-align: center;
+  width: 358px;
 }
