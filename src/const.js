@@ -7,7 +7,7 @@ export const AuthorizationStatus = {
 }
 
 export const APIRoute = {
-  Register: '/users',
-  Login: '/login',
-  Status: '/status'
+  Register: '/TableTime/users',
+  Login: '/TableTime/login',
+  Status: '/TableTime/status'
 }

@@ -23,6 +23,8 @@ export default function Header() {
           )}
           {authorizationStatus === 'USER' && (
             <div className="user_panel">
+              <button className="logout__btn" ></button>
+              <button className="profile__btn" ></button>
             </div>
           )}
           {authorizationStatus === 'ADMIN' && (
