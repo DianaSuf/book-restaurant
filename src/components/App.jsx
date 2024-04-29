@@ -1,24 +1,26 @@
-import { BrowserRouter, Routes, Route} from 'react-router-dom'
+import { Routes, Route} from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
 import MainScreen from '../pages/main-screen/main-screen'
 import ErrorScreen from '../pages/error-screen/error-screen'
 import SuperScreen from '../pages/super/super-screen/super-screen'
 import PrivateRoute from './private-route'
-import { useSelector } from 'react-redux'
+import { useAppSelector } from '../hook'
+import browserHistory from '../browser-history'
+import HistoryRouter from './history-route'
 
 function App() {
-  const authorizationStatus = useSelector((state) => state.authorizationStatus);
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
 
   return (
     <HelmetProvider>
-      <BrowserRouter>
+      <HistoryRouter history={browserHistory}>
         <Routes>
           <Route
               path={'/'}
               element={<MainScreen />}
           />
           <Route
-              path={'/res'}
+              path={'/superadmin'}
               element={
                 <PrivateRoute
                   authorizationStatus={authorizationStatus}
@@ -32,7 +34,7 @@ function App() {
               element={<ErrorScreen />}
           />
         </Routes>
-      </BrowserRouter>
+      </HistoryRouter>
     </HelmetProvider>
   )
 }

@@ -1,7 +1,7 @@
 import axios from 'axios';
 // import { APIRoute } from '../const';
 
-const BACKEND_URL = '';
+const BACKEND_URL = 'http://localhost:8080/';
 const REQUEST_TIMEOUT = 5000;
 
 export const createAPI = () => {
@@ -25,7 +25,7 @@ export const createAPI = () => {
       async (error) => {
         if (error.response && error.response.status === 401) {
           localStorage.removeItem("token");
-          window.location.reload();
+          // window.location.reload();
         // const originalRequest = {...error.config};
         // originalRequest._isRetry = true; 
         // if (

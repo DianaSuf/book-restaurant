@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import './modal-register.css';
 import PropTypes from 'prop-types';
-// import { registerAction } from '../../store/api-actions';
-// import { useRef } from 'react';
-// import { useAppDispatch } from '../../hook';
+import { registerAction, loginAction } from '../../store/api-actions';
+import { useRef } from 'react';
+import { useAppDispatch } from '../../hook';
 
 ModalRegister.propTypes = {
   isOpen: PropTypes.bool.isRequired,
@@ -11,26 +11,36 @@ ModalRegister.propTypes = {
 };
 
 export default function ModalRegister ({ isOpen, onClose }) {
-    // const usernameRef = useRef<HTMLInputElement | null>(null);
-    // const realnameRef = useRef<HTMLInputElement | null>(null);
-    // const emailRef = useRef<HTMLInputElement | null>(null);
-    // const phoneRef = useRef<HTMLInputElement | null>(null);
-    // const passwordRef = useRef<HTMLInputElement | null>(null);
-    // const dispatch = useAppDispatch();
+    const usernameRef = useRef(null);
+    const realnameRef = useRef(null);
+    const emailRef = useRef(null);
+    const phoneRef = useRef(null);
+    const passwordRef = useRef(null);
+    const dispatch = useAppDispatch();
 
-    // const handleSubmit = (evt) => {
-    //     evt.preventDefault();
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
     
-    //     if (emailRef.current !== null && passwordRef.current !== null) {
-    //       dispatch(registerAction({
-    //         username: usernameRef.current.value,
-    //         realname: realnameRef.current.value,
-    //         email: emailRef.current.value,
-    //         phone: phoneRef.current.value,
-    //         password: passwordRef.current.value
-    //       }));
-    //     }
-    //   };
+        if (usernameRef.current !== null && realnameRef.current !== null && emailRef.current !== null 
+            && phoneRef.current !== null && passwordRef.current !== null && status === 'register') {
+          dispatch(registerAction({
+            username: usernameRef.current.value,
+            realname: realnameRef.current.value,
+            email: emailRef.current.value,
+            phone: phoneRef.current.value,
+            password: passwordRef.current.value
+          }));
+          onClose();
+        }
+
+        if (usernameRef.current !== null && passwordRef.current !== null && status === 'singIn') {
+            dispatch(loginAction({
+              username: usernameRef.current.value,
+              password: passwordRef.current.value
+            }));
+            onClose();
+          }
+      };
 
     const onWrapperClick = (event) => {
         if (event.target.classList.contains("modal-wrapper")) onClose();
@@ -44,7 +54,7 @@ export default function ModalRegister ({ isOpen, onClose }) {
                 <div className="modal">
                     <div className="modal-wrapper" onClick={onWrapperClick}>
                         <div className="modal-content">
-                            <form action="" className="register__form" /*onSubmit={handleSubmit}*/>
+                            <form action="" className="register__form" onSubmit={handleSubmit}>
                                 <h1 className="name__form">{status === 'register' ? 'РЕГИСТРАЦИЯ' : 'ВХОД'}</h1>
                                 <div className="register__fields">
                                     <div className="register__field">
@@ -56,7 +66,7 @@ export default function ModalRegister ({ isOpen, onClose }) {
                                         </label>
                                     </div>
                                     <input
-                                        // ref={usernameRef}
+                                        ref={usernameRef}
                                         className="register__input"
                                         type="text"
                                         name="login"
@@ -74,7 +84,7 @@ export default function ModalRegister ({ isOpen, onClose }) {
                                                 </label>
                                             </div>
                                             <input
-                                                // ref={realnameRef}
+                                                ref={realnameRef}
                                                 className="register__input"
                                                 type="text"
                                                 name="name"
@@ -94,7 +104,7 @@ export default function ModalRegister ({ isOpen, onClose }) {
                                                 </label>
                                             </div>
                                             <input
-                                                // ref={emailRef}
+                                                ref={emailRef}
                                                 className="register__input"
                                                 type="email"
                                                 name="email"
@@ -114,7 +124,7 @@ export default function ModalRegister ({ isOpen, onClose }) {
                                                 </label>
                                             </div>
                                             <input
-                                                // ref={phoneRef}
+                                                ref={phoneRef}
                                                 className="register__input"
                                                 type="tel"
                                                 id="user-phone"
@@ -133,7 +143,7 @@ export default function ModalRegister ({ isOpen, onClose }) {
                                         </label>
                                     </div>
                                     <input
-                                        // ref={passwordRef}
+                                        ref={passwordRef}
                                         className="register__input"
                                         type="password"
                                         // placeholder="Password"
@@ -144,13 +154,13 @@ export default function ModalRegister ({ isOpen, onClose }) {
                                 </div>
                                 {status === 'register' &&
                                     <div className="sign-in__submit">
-                                        <button className="register__btn" type="button" onClick={onClose}></button>
+                                        <button className="register__btn" type="submit"></button>
                                         <h2 className="text__btn" onClick={() => setStatus('singIn')}>Уже есть аккаунт? ВОЙТИ</h2>
                                     </div>
                                 }
                                 {status === 'singIn' &&
                                     <div className="sign-in__submit">
-                                        <button className="sign-in__btn" type="button" onClick={onClose}></button>
+                                        <button className="sign-in__btn" type="submit"></button>
                                         <h2 className="text__btn" onClick={() => setStatus('register')}>Еще нет аккаунта? ЗАРЕГИСТРИРОВАТЬСЯ</h2>
                                     </div>
                                 }

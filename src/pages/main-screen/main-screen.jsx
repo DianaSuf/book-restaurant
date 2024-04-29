@@ -7,7 +7,7 @@ export default function MainScreen() {
   return (
     <>
       <Helmet>
-        <title>TableTme</title>
+        <title>TableTime</title>
       </Helmet>
       <Header/>
       <section className="promo"></section>

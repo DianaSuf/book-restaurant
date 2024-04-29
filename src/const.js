@@ -1,7 +1,7 @@
 export const AuthorizationStatus = {
-  User: 'USER',
-  Admin: 'ADMIN',
-  SuperAdmin: 'SUPER_ADMIN',
+  USER: 'USER',
+  ADMIN_REST: 'ADMIN_REST',
+  ADMIN_APP: 'ADMIN_APP',
   NoAuth: 'NO_AUTH',
   Unknown: 'UNKNOWN',
 }

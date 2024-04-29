@@ -1,12 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { requireAuthorization } from './action.js';
+import { requireAuthorization, redirectToRoute } from './action.js';
 import { AuthorizationStatus, APIRoute } from '../const.js';
 
 export const registerAction = createAsyncThunk(
   'user/register',
   async ({ username, realname, email, phone, password }, { dispatch, extra: api }) => {
     const { data: { token, role } } = await api.post(APIRoute.Register, { username, realname, email, phone, password });
-    localStorage.setItem("token", token/*token.data.accessToken*/);
+    localStorage.setItem("token", token);
     dispatch(requireAuthorization(AuthorizationStatus[role]));
   },
 );
@@ -25,10 +25,14 @@ export const checkAuthAction = createAsyncThunk(
 
 export const loginAction = createAsyncThunk(
   'user/login',
-  async ({ login: email, password }, { dispatch, extra: api }) => {
-    const { data: { token, role } } = await api.post(APIRoute.Login, { email, password });
-    localStorage.setItem("token", token/*token.data.accessToken*/);
+  async ({ username, password }, { dispatch, extra: api }) => {
+    const { data: { token, role } } = await api.post(APIRoute.Login, { username, password });
+    localStorage.setItem("token", token);
     dispatch(requireAuthorization(AuthorizationStatus[role]));
+    if (AuthorizationStatus[role] === 'ADMIN_APP') {
+      
+      dispatch(redirectToRoute('/superadmin'))
+    }
   },
 );
 

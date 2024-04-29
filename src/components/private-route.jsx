@@ -1,8 +1,8 @@
-// import { Navigate } from "react-router-dom";
-import ModalRegister from "./modal-register/modal-register";
-import { useState } from "react";
+// import ModalRegister from "./modal-register/modal-register";
+// import { useState } from "react";
 import { AuthorizationStatus } from "../const.js";
 import PropTypes from 'prop-types';
+import { useNavigate } from "react-router-dom";
 
 PrivateRoute.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
@@ -10,10 +10,12 @@ PrivateRoute.propTypes = {
 };
 
 export default function PrivateRoute({ authorizationStatus, children }) {
-  const [modalRegIsOpen, setModalRegIsOpen] = useState(true);
+  // const [modalRegIsOpen, setModalRegIsOpen] = useState(true);
+  const navigate = useNavigate();
+
   return (
-    authorizationStatus === AuthorizationStatus.SuperAdmin
+    authorizationStatus === AuthorizationStatus.ADMIN_APP
       ? children
-      : /*<Navigate to={"/"} />*/<ModalRegister isOpen={modalRegIsOpen} onClose={() => setModalRegIsOpen(false)}/>
+      : /*(authorizationStatus === AuthorizationStatus.NoAuth) ? <ModalRegister isOpen={modalRegIsOpen} onClose={() => setModalRegIsOpen(false)}/> :*/ navigate('/')
   );
 }
