@@ -9,5 +9,13 @@ export const AuthorizationStatus = {
 export const APIRoute = {
   Register: '/TableTime/users',
   Login: '/TableTime/login',
-  Status: '/TableTime/status'
+  Status: '/TableTime/status',
+  SuperAdmin: '/TableTime/adminApp/createRestaurant',
+}
+
+export const AppRoute = {
+  Root: '/',
+  SuperAdmin: 'superadmin',
+  Admin: 'admin',
+  NotFound: '*',
 }

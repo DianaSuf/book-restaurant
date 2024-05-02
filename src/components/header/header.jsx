@@ -43,13 +43,15 @@ export default function Header() {
         <section className="header">
           <img className="logo" alt="logo" src={logo}/>
           <div className="admin_panel">
+            <button className="logout__btn" onClick={handleClose}></button>
+            <button className="profile__btn" ></button>
           </div>
         </section>
       )}
       {authorizationStatus === 'ADMIN_APP' && (
         <section className="header">
           <img className="logo" alt="logo" src={logo}/>
-          <div className="logout">
+          <div className="super-admin_panel">
             <button className="logout__btn" onClick={handleClose}></button>
           </div>
         </section>

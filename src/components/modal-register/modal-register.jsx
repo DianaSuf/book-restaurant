@@ -39,8 +39,8 @@ export default function ModalRegister ({ isOpen, onClose }) {
               password: passwordRef.current.value
             }));
             onClose();
-          }
-      };
+        }
+    };
 
     const onWrapperClick = (event) => {
         if (event.target.classList.contains("modal-wrapper")) onClose();

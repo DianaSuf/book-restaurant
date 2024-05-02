@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { requireAuthorization, redirectToRoute } from './action.js';
-import { AuthorizationStatus, APIRoute } from '../const.js';
+import { requireAuthorization, redirectToRoute, loadRestaurant, loadRestaurants } from './action.js';
+import { AuthorizationStatus, APIRoute, AppRoute } from '../const.js';
 
 export const registerAction = createAsyncThunk(
   'user/register',
@@ -30,8 +30,10 @@ export const loginAction = createAsyncThunk(
     localStorage.setItem("token", token);
     dispatch(requireAuthorization(AuthorizationStatus[role]));
     if (AuthorizationStatus[role] === 'ADMIN_APP') {
-      
-      dispatch(redirectToRoute('/superadmin'))
+      dispatch(redirectToRoute(AppRoute.SuperAdmin))
+    }
+    if (AuthorizationStatus[role] === 'ADMIN_REST') {
+      dispatch(redirectToRoute(AppRoute.Admin))
     }
   },
 );
@@ -42,4 +44,43 @@ export const logoutAction = createAsyncThunk(
     localStorage.removeItem("token");
     dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
   },
+);
+
+export const AddAdmin = createAsyncThunk(
+  'superAdmin/addAdmin',
+  async ({ username, email }, { extra: api }) => {
+    await api.post(APIRoute.SuperAdmin, { username, email });
+  },
+);
+
+export const fetchRestaurantsAction = createAsyncThunk(
+  'data/fetchRestaurants',
+  async (_arg, {dispatch, extra: api}) => {
+    const {data} = await api.get(APIRoute.Restaurants);
+    dispatch(loadRestaurants(data));
+  }
+);
+
+export const fetchRestaurantAction = createAsyncThunk(
+  'data/fetchRestaurant',
+  async ({id}, {dispatch, extra: api}) => {
+    try {
+      const {data} = await api.get(`${APIRoute.Restaurant}/${id}`);
+      dispatch(loadRestaurant(data));
+    } catch {
+      dispatch(redirectToRoute(AppRoute.NotFound));
+    }
+  }
+);
+
+export const fetchRestaurantAdminAction = createAsyncThunk(
+  'dataAdmin/fetchRestaurant',
+  async (_arg, {dispatch, extra: api}) => {
+    try {
+      const {data} = await api.get(APIRoute.Restaurant);
+      dispatch(loadRestaurant(data));
+    } catch {
+      dispatch(redirectToRoute(AppRoute.NotFound));
+    }
+  }
 );
