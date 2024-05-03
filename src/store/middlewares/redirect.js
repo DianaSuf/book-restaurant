@@ -1,8 +1,8 @@
 import browserHistory from "../../browser-history";
-//push??
+
 const redirect = () => (next) => (action) => {
   if (action.type === 'app/redirectToRoute') {
-    browserHistory.replace(action.payload);
+    browserHistory.push(action.payload);
   }
 
   return next(action);

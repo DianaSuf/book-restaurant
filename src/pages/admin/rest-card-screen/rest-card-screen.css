@@ -5,6 +5,7 @@
 
 .restaurant-card-content{
   display: flex;
+  margin-bottom: 30px;
 }
 
 .restaurant-card {
@@ -56,7 +57,7 @@
   display: block;
 }
 
-.preview-item .active-item::before {
+.preview-item.active a::before {
   background-color: transparent;
 }
 
@@ -89,16 +90,39 @@
 .restaurant-description-wrapper {
   background-color: #ececec;
   border-radius: 20px;
-  position: fixed;
+  position: relative;
 }
 
 .restaurant-description__text {
   font-size: 32px;
-  margin-bottom: 3px;
+  padding-bottom: 3px;
   font-weight: 400;
-  margin-top: 12px;
-  margin-bottom: 12px;
-  margin-left: 14px;
-  margin-right: 14px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 14px;
+  padding-right: 14px;
   color: black;
+}
+
+.menu__btn {
+  border: 0; 
+  outline: none; 
+  background-color: transparent;
+  border: none;
+  height: 70px;
+  width: 170px;
+  background-image: url('/menu.svg');
+  background-size: cover;
+  margin-right: 32px;
+}
+
+.plan__btn {
+  border: 0; 
+  outline: none; 
+  background-color: transparent;
+  border: none;
+  height: 70px;
+  width: 360px;
+  background-image: url('/plan.svg');
+  background-size: cover;
 }

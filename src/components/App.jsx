@@ -10,6 +10,7 @@ import browserHistory from '../browser-history'
 import HistoryRouter from './history-route'
 import { AppRoute } from '../const'
 import { AuthorizationStatus } from '../const'
+import PrivateRouteAdmins from './private-route-admins'
 
 function App() {
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
@@ -20,7 +21,13 @@ function App() {
         <Routes>
           <Route
               path={AppRoute.Root}
-              element={<MainScreen />}
+              element={
+                <PrivateRouteAdmins
+                  authorizationStatus={authorizationStatus}
+                >
+                  <MainScreen />
+                </PrivateRouteAdmins>
+              }
           />
           <Route
               path={AppRoute.SuperAdmin}
