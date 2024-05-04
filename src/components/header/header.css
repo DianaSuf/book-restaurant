@@ -21,6 +21,7 @@
   margin-left: 50px;
   margin-top: 33px;
   margin-bottom: 33px;
+  cursor: pointer;
 }
 
 .login__btn {
@@ -36,6 +37,7 @@
   margin-right: 40px;
   margin-top: 32px;
   margin-bottom: 31px;
+  cursor: pointer;
 }
 
 .logout__btn {
@@ -51,6 +53,7 @@
   margin-right: 40px;
   margin-top: 32px;
   margin-bottom: 31px;
+  cursor: pointer;
 }
 
 .profile__btn {
@@ -66,4 +69,5 @@
   margin-right: 40px;
   margin-top: 32px;
   margin-bottom: 31px;
+  cursor: pointer;
 }

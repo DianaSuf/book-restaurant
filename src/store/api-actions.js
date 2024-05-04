@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { requireAuthorization, redirectToRoute, loadRestaurant, loadRestaurants } from './action.js';
+import { requireAuthorization, redirectToRoute, loadData } from './action.js';
 import { AuthorizationStatus, APIRoute, AppRoute } from '../const.js';
 
 export const registerAction = createAsyncThunk(
@@ -34,13 +34,14 @@ export const loginAction = createAsyncThunk(
     }
     if (AuthorizationStatus[role] === 'ADMIN_REST') {
       dispatch(redirectToRoute(AppRoute.Admin))
+      dispatch(fetchRestaurantAdminAction());
     }
   },
 );
 
 export const logoutAction = createAsyncThunk(
   'user/logout',
-  async (_arg, { dispatch}) => {
+  async (_arg, { dispatch }) => {
     localStorage.removeItem("token");
     dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
   },
@@ -53,34 +54,31 @@ export const AddAdmin = createAsyncThunk(
   },
 );
 
-export const fetchRestaurantsAction = createAsyncThunk(
-  'data/fetchRestaurants',
-  async (_arg, {dispatch, extra: api}) => {
-    const {data} = await api.get(APIRoute.Restaurants);
-    dispatch(loadRestaurants(data));
-  }
-);
+// export const fetchRestaurantsAction = createAsyncThunk(
+//   'data/fetchRestaurants',
+//   async (_arg, {extra: api}) => {
+//     const {data} = await api.get(APIRoute.Restaurants);
+//     return data;
+//   }
+// );
 
-export const fetchRestaurantAction = createAsyncThunk(
-  'data/fetchRestaurant',
-  async ({id}, {dispatch, extra: api}) => {
-    try {
-      const {data} = await api.get(`${APIRoute.Restaurant}/${id}`);
-      dispatch(loadRestaurant(data));
-    } catch {
-      dispatch(redirectToRoute(AppRoute.NotFound));
-    }
-  }
-);
+// export const fetchRestaurantAction = createAsyncThunk(
+//   'data/fetchRestaurant',
+//   async ({id}, {dispatch, extra: api}) => {
+//     try {
+//       const {data} = await api.get(`${APIRoute.Restaurant}/${id}`);
+//       return data;
+//     } catch {
+//       dispatch(redirectToRoute(AppRoute.NotFound));
+//       return undefined;
+//     }
+//   }
+// );
 
 export const fetchRestaurantAdminAction = createAsyncThunk(
   'dataAdmin/fetchRestaurant',
   async (_arg, {dispatch, extra: api}) => {
-    try {
-      const {data} = await api.get(APIRoute.Restaurant);
-      dispatch(loadRestaurant(data));
-    } catch {
-      dispatch(redirectToRoute(AppRoute.NotFound));
-    }
+    const {data} = await api.get(APIRoute.AdminRest);
+    dispatch(loadData(data))
   }
 );

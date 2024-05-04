@@ -4,6 +4,7 @@ import MainScreen from '../pages/main-screen/main-screen'
 import ErrorScreen from '../pages/error-screen/error-screen'
 import SuperScreen from '../pages/super/super-screen/super-screen'
 import RestCardScreen from '../pages/admin/rest-card-screen/rest-card-screen'
+import RestCardEditScreen from '../pages/admin/rest-card-edit-screen/rest-card-edit-screen'
 import PrivateRoute from './private-route'
 import { useAppSelector } from '../hook'
 import browserHistory from '../browser-history'
@@ -50,6 +51,29 @@ function App() {
                   <RestCardScreen />
                 </PrivateRoute>
               }
+          />
+            {/* <Route
+                path={AppRoute.Edit}
+                element={
+                  <PrivateRoute
+                    authorizationStatus={authorizationStatus}
+                    requiredStatus={AuthorizationStatus.ADMIN_REST}
+                  >
+                    <RestCardEditScreen />
+                  </PrivateRoute>
+                }
+            /> 
+          </Route>*/}
+          <Route
+                path={AppRoute.Edit}
+                element={
+                  <PrivateRoute
+                    authorizationStatus={authorizationStatus}
+                    requiredStatus={AuthorizationStatus.ADMIN_REST}
+                  >
+                    <RestCardEditScreen />
+                  </PrivateRoute>
+                }
           />
           <Route
               path={AppRoute.NotFound}

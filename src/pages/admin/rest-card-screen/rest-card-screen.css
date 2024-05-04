@@ -5,7 +5,7 @@
 
 .restaurant-card-content{
   display: flex;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .restaurant-card {
@@ -80,6 +80,10 @@
   margin-bottom: 0;
 }
 
+.gallery__bth {
+  margin-top: 20px;
+}
+
 .restaurant-description {
   font-size: 48px;
   margin-bottom: 3px;
@@ -91,17 +95,20 @@
   background-color: #ececec;
   border-radius: 20px;
   position: relative;
-}
-
-.restaurant-description__text {
-  font-size: 32px;
-  padding-bottom: 3px;
-  font-weight: 400;
   padding-top: 12px;
   padding-bottom: 12px;
   padding-left: 14px;
   padding-right: 14px;
+}
+
+.restaurant-description__text {
+  font-size: 32px;
+  font-weight: 400;
   color: black;
+}
+
+.menu-popun {
+  display: flex;
 }
 
 .menu__btn {
@@ -114,6 +121,7 @@
   background-image: url('/menu.svg');
   background-size: cover;
   margin-right: 32px;
+  cursor: pointer;
 }
 
 .plan__btn {
@@ -125,4 +133,31 @@
   width: 360px;
   background-image: url('/plan.svg');
   background-size: cover;
+  cursor: pointer;
+}
+
+.edit__btn {
+  border: 0; 
+  outline: none; 
+  background-color: transparent;
+  border: none;
+  height: 70px;
+  width: 343px;
+  margin-bottom: 20px;
+  background-image: url('/edit.svg');
+  background-size: cover;
+  cursor: pointer;
+}
+
+.book__btn {
+  border: 0; 
+  outline: none; 
+  background-color: transparent;
+  border: none;
+  height: 100px;
+  width: 330px;
+  margin-left: auto;
+  background-image: url('/book.svg');
+  background-size: cover;
+  cursor: pointer;
 }
