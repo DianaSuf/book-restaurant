@@ -11,13 +11,14 @@ export const APIRoute = {
   Login: '/TableTime/login',
   Status: '/TableTime/status',
   SuperAdmin: '/TableTime/adminApp/createRestaurant',
-  AdminRest: '/TableTime/adminRest/restaurant'
+  AdminRest: '/TableTime/adminRest/restaurant',
+  AdminRestUpdate: '/TableTime/adminRest/updateRestaurant'
 }
 
 export const AppRoute = {
   Root: '/',
-  SuperAdmin: 'superadmin',
-  Admin: 'admin',
+  SuperAdmin: '/superadmin',
+  Admin: '/admin',
   Edit: '/admin/edit',
   NotFound: '*',
 }

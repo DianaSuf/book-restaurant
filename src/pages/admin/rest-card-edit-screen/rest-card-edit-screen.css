@@ -1,0 +1,166 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.main-edit {
+  display: flex; 
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+}
+
+.edit__form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+  align-items: center;
+  position: relative;
+  margin-top: 100px;
+  width: 1712px;
+  border-radius: 20px;
+  background-color: #a25353;
+  padding: 20px 45px 20px 45px;
+  transform: translateY(-50px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.edit__form-info {
+  display: flex;
+  flex-direction: column;
+  margin-right: 50px;
+}
+
+.edit__form-description {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit__label {
+  font-size: 32px;
+}
+
+.edit__input {
+  border: none;
+  background-color: #FFFFFF;
+  border-radius: 15px;
+  height: 70px;
+  left: 0;
+  top: 0;
+  width: 640px;
+  font-size: 32px;
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.edit-container{
+  display: flex;
+}
+
+.edit-container-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-town__input {
+  border: none;
+  background-color: #FFFFFF;
+  border-radius: 15px;
+  height: 70px;
+  left: 0;
+  top: 0;
+  width: 178px;
+  font-size: 32px;
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 30px;
+}
+
+.edit-street__input {
+  border: none;
+  background-color: #FFFFFF;
+  border-radius: 15px;
+  height: 70px;
+  left: 0;
+  top: 0;
+  width: 413px;
+  font-size: 32px;
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.edit-description__input {
+  resize: none;
+  line-height: 40px;
+  font-size: 32px;
+  border: none;
+  background-color: #FFFFFF;
+  border-radius: 15px;
+  height: 242px;
+  left: 0;
+  top: 0;
+  width: 978px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.symbols {
+  margin-left: auto;
+}
+
+.edit-description-info__input {
+  border: none;
+  background-color: #FFFFFF;
+  border-radius: 15px;
+  height: 70px;
+  left: 0;
+  top: 0;
+  width: 290px;
+  font-size: 32px;
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 35px;
+}
+
+.edit-description-info__input-tables {
+  border: none;
+  background-color: #FFFFFF;
+  border-radius: 15px;
+  height: 70px;
+  left: 0;
+  top: 0;
+  width: 290px;
+  font-size: 32px;
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.save__btn {
+  border: 0; 
+  outline: none; 
+  background-color: transparent;
+  border: none;
+  height: 70px;
+  width: 290px;
+  background-image: url('/save.svg');
+  background-size: cover;
+  cursor: pointer;
+}
+
+.back-card {
+  border: 0; 
+  outline: none; 
+  background-color: transparent;
+  border: none;
+  height: 70px;
+  width: 550px;
+  background-image: url('/backCard.svg');
+  background-size: cover;
+  cursor: pointer;
+  margin-bottom: 50px;
+}

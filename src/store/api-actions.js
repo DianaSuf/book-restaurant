@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { requireAuthorization, redirectToRoute, loadData } from './action.js';
+import { requireAuthorization, redirectToRoute, loadDataAdmin } from './action.js';
 import { AuthorizationStatus, APIRoute, AppRoute } from '../const.js';
 
 export const registerAction = createAsyncThunk(
@@ -17,6 +17,9 @@ export const checkAuthAction = createAsyncThunk(
     try {
       const { data: { role } } = await api.get(APIRoute.Status);
       dispatch(requireAuthorization(AuthorizationStatus[role]));
+      if (AuthorizationStatus[role] === 'ADMIN_REST') {
+        dispatch(fetchRestaurantAdminAction());
+      }
     } catch {
       dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
     }
@@ -44,6 +47,7 @@ export const logoutAction = createAsyncThunk(
   async (_arg, { dispatch }) => {
     localStorage.removeItem("token");
     dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
+    window.location.reload();
   },
 );
 
@@ -79,6 +83,21 @@ export const fetchRestaurantAdminAction = createAsyncThunk(
   'dataAdmin/fetchRestaurant',
   async (_arg, {dispatch, extra: api}) => {
     const {data} = await api.get(APIRoute.AdminRest);
-    dispatch(loadData(data))
+    dispatch(loadDataAdmin(data))
   }
+);
+
+// export const fetchRestaurantAdminUpdateAction = createAsyncThunk(
+//   'dataAdmin/fetchRestaurantUpdate',
+//   async ({ name, town, street, phone, description, opening, ending, tables }, { dispatch, extra: api }) => {
+//     const { data } = await api.post(APIRoute.AdminRestUpdate, { name, town, street, phone, description, opening, ending, tables });
+//     dispatch(loadDataAdmin(data))
+//   },
+// );
+
+export const fetchRestaurantAdminUpdateAction = createAsyncThunk(
+  'dataAdmin/fetchRestaurantUpdate',
+  async ({ name, town, address, opening, ending, phone, description, tables }, { extra: api }) => {
+    await api.post(APIRoute.AdminRestUpdate, { name, town, address, opening, ending, phone, description, tables });
+  },
 );

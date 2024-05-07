@@ -3,13 +3,13 @@
   padding: 0;
 }
 
-.main {
+.main-modal {
   display: flex; 
   justify-content: center; 
   align-items: center;
 }
 
-.modall {
+.modal__form {
   display: flex; 
   flex-direction: column;
   position: relative;
@@ -44,7 +44,7 @@
   border: none;
   background-color: #FFFFFF;
   border-radius: 15px;
-  height: 90px;
+  height: 70px;
   left: 0;
   top: 0;
   width: 640px;

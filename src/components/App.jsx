@@ -52,18 +52,6 @@ function App() {
                 </PrivateRoute>
               }
           />
-            {/* <Route
-                path={AppRoute.Edit}
-                element={
-                  <PrivateRoute
-                    authorizationStatus={authorizationStatus}
-                    requiredStatus={AuthorizationStatus.ADMIN_REST}
-                  >
-                    <RestCardEditScreen />
-                  </PrivateRoute>
-                }
-            /> 
-          </Route>*/}
           <Route
                 path={AppRoute.Edit}
                 element={

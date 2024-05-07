@@ -23,7 +23,7 @@ export default function RestCardScreen () {
   return (
     <>
       <Helmet>
-        <title>TableTime</title>
+        <title>{restaurant.name}</title>
       </Helmet>
       <Header/>
       <div className="restaurant-card">
@@ -54,9 +54,12 @@ export default function RestCardScreen () {
           <section className="description">
             <h2 className="restaurant-description">Описание</h2>
             <div className="restaurant-description-wrapper">
-              <p className="restaurant-description__text">{restaurant.description}</p>
-              <p className="restaurant-description__text">Адрес: г. {restaurant.town}, ул. {restaurant.address}</p>
-              <p className="restaurant-description__text">Время работы: {restaurant.opening} - {restaurant.ending}</p>
+              <p className="restaurant-description__text">{restaurant.description}</p> {/* ограничение 350 символов */}
+              <div className="restaurant-description-info">
+                <p className="restaurant-description__text">Адрес: г. {restaurant.town}, ул. {restaurant.address}</p>
+                <p className="restaurant-description__text">Контактные данные: {restaurant.phone}</p>
+                <p className="restaurant-description__text">Время работы: {restaurant.opening} - {restaurant.ending}</p>
+              </div>
             </div>
           </section>
         </div>

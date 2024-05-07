@@ -5,7 +5,7 @@
 
 .restaurant-card-content{
   display: flex;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .restaurant-card {
@@ -18,12 +18,10 @@
   width: 857px;
   margin-left: 0;
   margin-right: 61px;
-  /* margin-bottom: 120px; */
 }
 
 .restaurant-name {
   font-size: 60px;
-  margin-bottom: 3px;
   font-weight: 500;
   color: #a25353;
 }
@@ -85,8 +83,9 @@
 }
 
 .restaurant-description {
+  line-height: 40px;
+  margin-bottom: 10px;
   font-size: 48px;
-  margin-bottom: 3px;
   font-weight: 400;
   color: #a25353;
 }
@@ -95,16 +94,22 @@
   background-color: #ececec;
   border-radius: 20px;
   position: relative;
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   padding-left: 14px;
   padding-right: 14px;
+  width: 842px;
 }
 
 .restaurant-description__text {
+  line-height: 40px;
   font-size: 32px;
   font-weight: 400;
   color: black;
+}
+
+.restaurant-description-info {
+  margin-top: 10px;
 }
 
 .menu-popun {
