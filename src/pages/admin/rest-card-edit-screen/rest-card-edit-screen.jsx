@@ -3,14 +3,21 @@ import Header from '../../../components/header/header';
 import './rest-card-edit-screen.css'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useRef } from 'react';
 import { AppRoute } from '../../../const';
 import { useAppSelector, useAppDispatch } from '../../../hook';
-import { fetchRestaurantAdminUpdateAction } from '../../../store/api-actions';
+import stub from '/stub.jpg'
+import { fetchRestaurantAdminUpdateAction, fetchRestaurantAdminUpdatePhotoAction, fetchRestaurantAdminUpdateMenuAction, fetchRestaurantAdminUpdatePlanAction } from '../../../store/api-actions';
 
 export default function RestCardEditScreen () {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const restaurant = useAppSelector((state) => state.data);
+  const stubImages = [stub, stub, stub];
+  const images = restaurant.photosRest && restaurant.photosRest.length > 0 && restaurant.photosRest[0] !== null ? restaurant.photosRest.map(photo => `data:image/jpeg;base64,${photo}`) : stubImages;
+  const addImagesRef = useRef(null);
+  const addMenuRef = useRef(null);
+  const addPlanRef = useRef(null);
   const [textValues, setTextValues] = useState({
     name: restaurant.name,
     town: restaurant.town,
@@ -27,13 +34,66 @@ export default function RestCardEditScreen () {
       ...textValues,
       [event.target.name]: event.target.value,
     });
-    // console.log(textValues);
   };
 
   const handleSubmitSave = (evt) => {
     evt.preventDefault();
     dispatch(fetchRestaurantAdminUpdateAction(textValues))
   }
+
+  const handleChangeImages = (evt) => {
+    evt.preventDefault();
+    const files = evt.target.files;
+    if (files.length === 3) {
+      const readers = [];
+      const base64Strings = [];
+  
+      const onLoadEnd = (index) => (e) => {
+        base64Strings[index] = e.target.result.replace("data:", "").replace(/^.+,/, "");
+        if (base64Strings.length === 3 && base64Strings.every(Boolean)) {
+          dispatch(fetchRestaurantAdminUpdatePhotoAction({
+            photo1: base64Strings[0],
+            photo2: base64Strings[1],
+            photo3: base64Strings[2],
+          }));
+        }
+      };
+  
+      for (let i = 0; i < files.length; i++) {
+        readers[i] = new FileReader();
+        readers[i].onloadend = onLoadEnd(i);
+        readers[i].readAsDataURL(files[i]);
+      }
+    } else {
+      alert('Пожалуйста, выберите ровно три фотографии.');
+    }
+  };
+
+  const handleChangeMenu = (evt) => {
+    evt.preventDefault();
+    const file = evt.target.files[0];
+    const reader = new FileReader();
+    reader.onloadend = function () {
+      const base64String = reader.result.replace("data:", "").replace(/^.+,/, "");
+      dispatch(fetchRestaurantAdminUpdateMenuAction({ photo: base64String }));
+    };
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleChangePlan = (evt) => {
+    evt.preventDefault();
+    const file = evt.target.files[0];
+    const reader = new FileReader();
+    reader.onloadend = function () {
+      const base64String = reader.result.replace("data:", "").replace(/^.+,/, "");
+      dispatch(fetchRestaurantAdminUpdatePlanAction({ photo: base64String }));
+    };
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  };
 
   return (
     <>
@@ -186,8 +246,32 @@ export default function RestCardEditScreen () {
           </div>
           <button className="save__btn"></button>
         </form>
-        <div className="images"></div>
-        <button className="back-card" onClick={() => navigate(AppRoute.Admin)}></button>
+        <div className="images">
+          <img className="image" src={images[0]}/>
+          <img className="image" src={images[1]}/>
+          <img className="image" src={images[2]}/>
+          <div className="change__btns">
+            <button className="addImages__btn" onClick={() => addImagesRef.current.click()}></button>
+            <input ref={addImagesRef} className="addImages_input" type="file" accept='image/*,.png,.jpg,.gif,.web' multiple onChange={handleChangeImages}/>
+          </div>
+        </div>
+        <div className="images">
+          <img className="image" src={`data:image/jpeg;base64,${restaurant.menu}`}/>
+          <div className="change__btns">
+            <button className="addMenu__btn" onClick={() => addMenuRef.current.click()}></button>
+            <input ref={addMenuRef} className="addMenu_input" type="file" accept='image/*,.png,.jpg,.gif,.web' onChange={handleChangeMenu}/>
+          </div>
+        </div>
+        <div className="images">
+          <img className="image" src={`data:image/jpeg;base64,${restaurant.plan}`}/>
+          <div className="change__btns">
+            <button className="addPlan__btn" onClick={() => addPlanRef.current.click()}></button>
+            <input ref={addPlanRef} className="addPlan_input" type="file" accept='image/*,.png,.jpg,.gif,.web' onChange={handleChangePlan}/>
+          </div>
+        </div>
+        <div className="center-content">
+          <button className="back-card" onClick={() => navigate(AppRoute.Admin)}></button>
+        </div>
       </section>
     </>
   )

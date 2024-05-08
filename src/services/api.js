@@ -2,12 +2,12 @@ import axios from 'axios';
 // import { APIRoute } from '../const';
 
 const BACKEND_URL = 'http://localhost:8080/';
-const REQUEST_TIMEOUT = 5000;
+// const REQUEST_TIMEOUT = 5000;
 
 export const createAPI = () => {
     const api = axios.create({
         baseURL: BACKEND_URL,
-        timeout: REQUEST_TIMEOUT,
+        // timeout: REQUEST_TIMEOUT,
         // withCredentials: true,
     });
 
@@ -24,7 +24,7 @@ export const createAPI = () => {
       },
       async (error) => {
         if (error.response && error.response.status === 401) {
-          localStorage.removeItem("token");
+          // localStorage.removeItem("token");
           // window.location.reload();
         // const originalRequest = {...error.config};
         // originalRequest._isRetry = true; 

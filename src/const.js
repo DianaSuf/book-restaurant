@@ -12,7 +12,10 @@ export const APIRoute = {
   Status: '/TableTime/status',
   SuperAdmin: '/TableTime/adminApp/createRestaurant',
   AdminRest: '/TableTime/adminRest/restaurant',
-  AdminRestUpdate: '/TableTime/adminRest/updateRestaurant'
+  AdminRestUpdate: '/TableTime/adminRest/updateRestaurant',
+  AdminRestUpdatePhoto: '/TableTime/adminRest/updatePhotoRestaurant',
+  AdminRestUpdateMenu: '/TableTime/adminRest/updateMenu',
+  AdminRestUpdatePlan: '/TableTime/adminRest/updatePlan'
 }
 
 export const AppRoute = {

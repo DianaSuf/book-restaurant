@@ -1,23 +1,23 @@
 import { Helmet } from 'react-helmet-async';
 import './rest-card-screen.css'
 import Header from '../../../components/header/header';
-import promo from '/promo.jpg'
-import w from '/w.jpg'
 import { useState } from 'react';
 import ModalPhoto from '../../../components/modal-photo/modal-photo';
 import { AuthorizationStatus } from '../../../const';
 import { useAppSelector } from '../../../hook';
 import { useNavigate } from "react-router-dom";
 import { AppRoute } from '../../../const';
+import stub from '/stub.jpg'
 
 export default function RestCardScreen () {
-  const images = [promo, promo, w,];
-  const [mainImage, setMainImage] = useState(images[0]);
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+  const restaurant = useAppSelector((state) => state.data);
+  const stubImages = [stub, stub, stub];
+  const images = restaurant.photosRest && restaurant.photosRest.length > 0 && restaurant.photosRest[0] !== null ? restaurant.photosRest.map(photo => `data:image/jpeg;base64,${photo}`) : stubImages;
+  const [mainImage, setMainImage] = useState(images[0])
   const [activeImage, setActiveImage] = useState(0);
   const [modalPhotoIsOpen, setModalPhotoIsOpen] = useState(false);
   const [modalPhoto, setModalPhoto] = useState('');
-  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
-  const restaurant = useAppSelector((state) => state.data);
   const navigate = useNavigate();
 
   return (
@@ -43,8 +43,8 @@ export default function RestCardScreen () {
               </ul>
             </div>
             <div className="gallery__bth">
-              <button className="menu__btn" onClick={() => {setModalPhoto(w); setModalPhotoIsOpen(true)}}></button>
-              <button className="plan__btn" onClick={() => {setModalPhoto(promo); setModalPhotoIsOpen(true)}}></button>
+              <button className="menu__btn" onClick={() => {setModalPhoto(restaurant.menu === null ? stub : `data:image/jpeg;base64,${restaurant.menu}`); setModalPhotoIsOpen(true)}}></button>
+              <button className="plan__btn" onClick={() => {setModalPhoto(restaurant.plan === null ? stub :  `data:image/jpeg;base64,${restaurant.plan}`); setModalPhotoIsOpen(true)}}></button>
               <ModalPhoto
               isOpen={modalPhotoIsOpen}
               onClose={() => setModalPhotoIsOpen(false)}

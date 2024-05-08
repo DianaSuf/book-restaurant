@@ -97,7 +97,32 @@ export const fetchRestaurantAdminAction = createAsyncThunk(
 
 export const fetchRestaurantAdminUpdateAction = createAsyncThunk(
   'dataAdmin/fetchRestaurantUpdate',
-  async ({ name, town, address, opening, ending, phone, description, tables }, { extra: api }) => {
+  async ({ name, town, address, opening, ending, phone, description, tables }, {dispatch, extra: api }) => {
     await api.post(APIRoute.AdminRestUpdate, { name, town, address, opening, ending, phone, description, tables });
+    dispatch(fetchRestaurantAdminAction());
+  },
+);
+
+export const fetchRestaurantAdminUpdatePhotoAction = createAsyncThunk(
+  'dataAdmin/fetchRestaurantUpdateMenu',
+  async ({ photo1, photo2, photo3 }, {dispatch, extra: api }) => {
+    await api.post(APIRoute.AdminRestUpdatePhoto, { photo1, photo2, photo3 });
+    dispatch(fetchRestaurantAdminAction());
+  },
+);
+
+export const fetchRestaurantAdminUpdateMenuAction = createAsyncThunk(
+  'dataAdmin/fetchRestaurantUpdateMenu',
+  async ({ photo }, {dispatch, extra: api }) => {
+    await api.post(APIRoute.AdminRestUpdateMenu, { photo });
+    dispatch(fetchRestaurantAdminAction());
+  },
+);
+
+export const fetchRestaurantAdminUpdatePlanAction = createAsyncThunk(
+  'dataAdmin/fetchRestaurantUpdatePlan',
+  async ({ photo }, {dispatch, extra: api }) => {
+    await api.post(APIRoute.AdminRestUpdatePlan, { photo });
+    dispatch(fetchRestaurantAdminAction());
   },
 );

@@ -6,8 +6,8 @@
 .main-edit {
   display: flex; 
   flex-direction: column;
-  justify-content: center; 
-  align-items: center;
+  padding-left: 60px;
+  padding-right: 60px;
 }
 
 .edit__form {
@@ -148,6 +148,80 @@
   height: 70px;
   width: 290px;
   background-image: url('/save.svg');
+  background-size: cover;
+  cursor: pointer;
+}
+
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.images {
+  height: 180px;
+  display: flex;
+  justify-content: row;
+  margin-bottom: 20px;
+}
+
+.image {
+  width: 280px;
+  height: 180px;
+  margin-right: 10px;
+}
+
+.change__btns {
+  margin-left: 200px;
+  width: 360px;
+  margin-top: 55px;
+}
+
+.addImages_input {
+  visibility: hidden;
+}
+
+.addImages__btn {
+  margin-left: auto;
+  border: 0; 
+  outline: none; 
+  background-color: transparent;
+  border: none;
+  height: 70px;
+  width: 360px;
+  background-image: url('/changePhoto.svg');
+  background-size: cover;
+  cursor: pointer;
+}
+
+.addMenu_input {
+  visibility: hidden;
+}
+
+.addMenu__btn {
+  border: 0; 
+  outline: none; 
+  background-color: transparent;
+  border: none;
+  height: 70px;
+  width: 360px;
+  background-image: url('/addMenu.svg');
+  background-size: cover;
+  cursor: pointer;
+}
+
+.addPlan_input {
+  visibility: hidden;
+}
+
+.addPlan__btn {
+  border: 0; 
+  outline: none; 
+  background-color: transparent;
+  border: none;
+  height: 70px;
+  width: 360px;
+  background-image: url('/addPlan.svg');
   background-size: cover;
   cursor: pointer;
 }
