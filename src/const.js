@@ -23,5 +23,7 @@ export const AppRoute = {
   SuperAdmin: '/superadmin',
   Admin: '/admin',
   Edit: '/admin/edit',
+  Reserval: '/reserval',
+  Table: '/reserval/table',
   NotFound: '*',
 }

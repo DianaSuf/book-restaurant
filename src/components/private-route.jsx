@@ -2,24 +2,36 @@ import PropTypes from 'prop-types';
 import { useNavigate } from "react-router-dom";
 import { useEffect } from 'react';
 import { AppRoute } from '../const';
+import { AuthorizationStatus } from '../const';
 
 PrivateRoute.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
-  requiredStatus: PropTypes.string.isRequired,
+  requiredStatuses: PropTypes.arrayOf(PropTypes.string).isRequired,
   children: PropTypes.element.isRequired,
 };
 
-export default function PrivateRoute({ authorizationStatus, requiredStatus, children }) {
+export default function PrivateRoute({ authorizationStatus, requiredStatuses, children }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (authorizationStatus !== requiredStatus) {
-      navigate(AppRoute.Root);
+    if (!requiredStatuses.includes(authorizationStatus)) {
+      if (authorizationStatus === AuthorizationStatus.USER) {
+        navigate(AppRoute.Root);
+      }
+      if (authorizationStatus === AuthorizationStatus.NoAuth) {
+        navigate(AppRoute.Root);
+      }
+      if (authorizationStatus === AuthorizationStatus.ADMIN_APP) {
+        navigate(AppRoute.SuperAdmin);
+      }
+      if (authorizationStatus === AuthorizationStatus.ADMIN_REST) {
+        navigate(AppRoute.Admin);
+      }
     }
-  }, [authorizationStatus, requiredStatus, navigate]);
+  }, [authorizationStatus, requiredStatuses, navigate]);
 
   return (
-    authorizationStatus === requiredStatus
+    requiredStatuses.includes(authorizationStatus)
       ? children
       : null
   );

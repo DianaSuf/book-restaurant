@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { requireAuthorization, redirectToRoute, loadDataAdmin } from './action.js';
+import { requireAuthorization, redirectToRoute, setQuestionsDataLoadingStatus, loadDataAdmin } from './action.js';
 import { AuthorizationStatus, APIRoute, AppRoute } from '../const.js';
 
 export const registerAction = createAsyncThunk(
@@ -82,7 +82,9 @@ export const AddAdmin = createAsyncThunk(
 export const fetchRestaurantAdminAction = createAsyncThunk(
   'dataAdmin/fetchRestaurant',
   async (_arg, {dispatch, extra: api}) => {
+    dispatch(setQuestionsDataLoadingStatus(true));
     const {data} = await api.get(APIRoute.AdminRest);
+    dispatch(setQuestionsDataLoadingStatus(false));
     dispatch(loadDataAdmin(data))
   }
 );

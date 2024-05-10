@@ -92,7 +92,7 @@
   margin-bottom: 20px;
 }
 
-.edit-description__input {
+.edit-description__textarea {
   resize: none;
   line-height: 40px;
   font-size: 32px;
@@ -226,7 +226,7 @@
   cursor: pointer;
 }
 
-.back-card {
+.back-card__btn {
   border: 0; 
   outline: none; 
   background-color: transparent;

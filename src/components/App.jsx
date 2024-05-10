@@ -5,16 +5,25 @@ import ErrorScreen from '../pages/error-screen/error-screen'
 import SuperScreen from '../pages/super/super-screen/super-screen'
 import RestCardScreen from '../pages/admin/rest-card-screen/rest-card-screen'
 import RestCardEditScreen from '../pages/admin/rest-card-edit-screen/rest-card-edit-screen'
+import ReservalScreen from '../pages/admin/reserval-screen/reserval-screen'
+import TableScreen from '../pages/admin/table-screen/table-screen'
 import PrivateRoute from './private-route'
 import { useAppSelector } from '../hook'
 import browserHistory from '../browser-history'
 import HistoryRouter from './history-route'
 import { AppRoute } from '../const'
 import { AuthorizationStatus } from '../const'
-import PrivateRouteAdmins from './private-route-admins'
+import LoadingScreen from '../pages/loading-screen/loading-screen'
 
 function App() {
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+  const isQuestionsDataLoading = useAppSelector((state) => state.isQuestionsDataLoading);
+
+  if (isQuestionsDataLoading) {
+    return (
+      <LoadingScreen />
+    );
+  }
 
   return (
     <HelmetProvider>
@@ -23,11 +32,12 @@ function App() {
           <Route
               path={AppRoute.Root}
               element={
-                <PrivateRouteAdmins
+                <PrivateRoute
                   authorizationStatus={authorizationStatus}
+                  requiredStatuses={[AuthorizationStatus.NoAuth, AuthorizationStatus.USER, AuthorizationStatus.Unknown]}
                 >
                   <MainScreen />
-                </PrivateRouteAdmins>
+                </PrivateRoute>
               }
           />
           <Route
@@ -35,7 +45,7 @@ function App() {
               element={
                 <PrivateRoute
                   authorizationStatus={authorizationStatus}
-                  requiredStatus={AuthorizationStatus.ADMIN_APP}
+                  requiredStatuses={[AuthorizationStatus.ADMIN_APP]}
                 >
                   <SuperScreen />
                 </PrivateRoute>
@@ -46,7 +56,7 @@ function App() {
               element={
                 <PrivateRoute
                   authorizationStatus={authorizationStatus}
-                  requiredStatus={AuthorizationStatus.ADMIN_REST}
+                  requiredStatuses={[AuthorizationStatus.ADMIN_REST]}
                 >
                   <RestCardScreen />
                 </PrivateRoute>
@@ -57,9 +67,31 @@ function App() {
                 element={
                   <PrivateRoute
                     authorizationStatus={authorizationStatus}
-                    requiredStatus={AuthorizationStatus.ADMIN_REST}
+                    requiredStatuses={[AuthorizationStatus.ADMIN_REST]}
                   >
                     <RestCardEditScreen />
+                  </PrivateRoute>
+                }
+          />
+          <Route
+                path={AppRoute.Reserval}
+                element={
+                  <PrivateRoute
+                    authorizationStatus={authorizationStatus}
+                    requiredStatuses={[AuthorizationStatus.ADMIN_REST]}
+                  >
+                    <ReservalScreen />
+                  </PrivateRoute>
+                }
+          />
+          <Route
+                path={AppRoute.Table}
+                element={
+                  <PrivateRoute
+                    authorizationStatus={authorizationStatus}
+                    requiredStatuses={[AuthorizationStatus.ADMIN_REST]}
+                  >
+                    <TableScreen />
                   </PrivateRoute>
                 }
           />

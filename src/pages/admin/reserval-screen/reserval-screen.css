@@ -1,0 +1,78 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.reserval__form {
+  padding-right: 500px;
+  width: 1230px;
+  margin-left: 200px;
+}
+
+.reserval__field {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+}
+
+.reserval__label {
+  line-height: normal;
+  font-size: 48px;
+  color: #a25353;
+  margin-right: 60px;
+  justify-content: flex-start
+}
+
+.reserval__input {
+  border: none;
+  background-color: #ececec;
+  border-radius: 15px;
+  height: 70px;
+  left: 0;
+  top: 0;
+  width: 640px;
+  font-size: 32px;
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.reserval__textarea {
+  resize: none;
+  line-height: 40px;
+  font-size: 32px;
+  border: none;
+  background-color: #ececec;
+  border-radius: 15px;
+  height: 240px;
+  left: 0;
+  top: 0;
+  width: 640px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.cancel__btn {
+  border: 0; 
+  outline: none; 
+  background-color: transparent;
+  border: none;
+  height: 100px;
+  width: 400px;
+  background-image: url('/cancel.svg');
+  background-size: cover;
+  cursor: pointer;
+}
+
+.next__btn {
+  border: 0; 
+  outline: none; 
+  background-color: transparent;
+  border: none;
+  height: 100px;
+  width: 330px;
+  background-image: url('/next.svg');
+  background-size: cover;
+  cursor: pointer;
+  margin: 40px;
+}

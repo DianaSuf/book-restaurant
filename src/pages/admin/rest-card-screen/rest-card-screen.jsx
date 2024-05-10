@@ -53,8 +53,8 @@ export default function RestCardScreen () {
           </section>
           <section className="description">
             <h2 className="restaurant-description">Описание</h2>
-            <div className="restaurant-description-wrapper">
-              <p className="restaurant-description__text">{restaurant.description}</p> {/* ограничение 350 символов */}
+            <div className="restaurant-description-wrapper" /*contentEditable="true"*/>
+              <p className="restaurant-description__text">{restaurant.description}</p>
               <div className="restaurant-description-info">
                 <p className="restaurant-description__text">Адрес: г. {restaurant.town}, ул. {restaurant.address}</p>
                 <p className="restaurant-description__text">Контактные данные: {restaurant.phone}</p>
@@ -65,7 +65,7 @@ export default function RestCardScreen () {
         </div>
         <div className="menu-popun">
             {authorizationStatus === AuthorizationStatus.ADMIN_REST && <button className="edit__btn" onClick={() => navigate(AppRoute.Edit)}></button>}
-            <button className="book__btn"></button>
+            <button className="book__btn" onClick={() => navigate(AppRoute.Reserval)}></button>
         </div>
       </div>
     </>

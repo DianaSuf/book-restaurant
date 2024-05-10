@@ -179,7 +179,7 @@ export default function RestCardEditScreen () {
               Описание
             </label>
             <textarea
-              className="edit-description__input"
+              className="edit-description__textarea"
               type="text"
               name="description"
               id="restarant-description"
@@ -187,8 +187,7 @@ export default function RestCardEditScreen () {
               value={textValues.description}
               onChange={handleTextChange}
               required
-            >
-            </textarea>
+            />
             <p className="symbols">Введено символов: {textValues.description.length} из 350</p>
             <div className="edit-container">
               <div className="edit-container-field">
@@ -270,7 +269,7 @@ export default function RestCardEditScreen () {
           </div>
         </div>
         <div className="center-content">
-          <button className="back-card" onClick={() => navigate(AppRoute.Admin)}></button>
+          <button className="back-card__btn" onClick={() => navigate(AppRoute.Admin)}></button>
         </div>
       </section>
     </>

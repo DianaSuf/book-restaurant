@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.main-table {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  padding: 40px 100px;
+}
+
+.table__field {
+  display: flex;
+  flex-direction: column;
+  margin-left: 100px;
+}
+
+.table__label {
+  line-height: normal;
+  font-size: 48px;
+  color: #a25353;
+  margin-right: 60px;
+  justify-content: flex-start
+}
+
+.table__input {
+  border: none;
+  background-color: #ececec;
+  border-radius: 15px;
+  height: 90px;
+  left: 0;
+  top: 0;
+  width: 570px;
+  font-size: 32px;
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.back__btn {
+  border: 0; 
+  outline: none; 
+  background-color: transparent;
+  border: none;
+  height: 100px;
+  width: 330px;
+  background-image: url('/back.svg');
+  background-size: cover;
+  cursor: pointer;
+  margin-top: 40px;
+}
+
+.reserval__btn {
+  border: 0; 
+  outline: none; 
+  background-color: transparent;
+  border: none;
+  height: 100px;
+  width: 330px;
+  background-image: url('/reserval.svg');
+  background-size: cover;
+  cursor: pointer;
+  margin-top: 40px;
+  margin-left: 40px;
+}
