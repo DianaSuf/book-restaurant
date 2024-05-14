@@ -46,7 +46,7 @@ export default function ReservalScreen () {
             </label>
             <input
               className="reserval__input"
-              type="text"
+              type="date"
               name="date"
               id="reserval-date"
               required
@@ -61,7 +61,7 @@ export default function ReservalScreen () {
             </label>
             <input
               className="reserval__input"
-              type="text"
+              type="time"
               name="time"
               id="reserval-time"
               required
@@ -76,7 +76,7 @@ export default function ReservalScreen () {
             </label>
             <input
               className="reserval__input"
-              type="text"
+              type="number"
               name="guests"
               id="reserval-guests"
               required

@@ -12,7 +12,7 @@ import { fetchRestaurantAdminUpdateAction, fetchRestaurantAdminUpdatePhotoAction
 export default function RestCardEditScreen () {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const restaurant = useAppSelector((state) => state.data);
+  const restaurant = useAppSelector((state) => state.dataRest);
   const stubImages = [stub, stub, stub];
   const images = restaurant.photosRest && restaurant.photosRest.length > 0 && restaurant.photosRest[0] !== null ? restaurant.photosRest.map(photo => `data:image/jpeg;base64,${photo}`) : stubImages;
   const addImagesRef = useRef(null);
@@ -145,10 +145,10 @@ export default function RestCardEditScreen () {
                   Улица
                 </label>
                 <input
-                  className="edit-street__input"
+                  className="edit-address__input"
                   type="text"
-                  name="street"
-                  id="restarant-street"
+                  name="address"
+                  id="restarant-address"
                   value={textValues.address}
                   onChange={handleTextChange}
                   required
@@ -199,7 +199,7 @@ export default function RestCardEditScreen () {
                 </label>
                 <input
                   className="edit-description-info__input"
-                  type="text"
+                  type="time"
                   name="opening"
                   id="restarant-opening"
                   value={textValues.opening}
@@ -216,7 +216,7 @@ export default function RestCardEditScreen () {
                 </label>
                 <input
                   className="edit-description-info__input"
-                  type="text"
+                  type="time"
                   name="ending"
                   id="restarant-ending"
                   value={textValues.ending}
@@ -233,7 +233,7 @@ export default function RestCardEditScreen () {
                 </label>
                 <input
                   className="edit-description-info__input-tables"
-                  type="text"
+                  type="number"
                   name="tables"
                   id="restarant-tables"
                   value={textValues.tables}
@@ -255,21 +255,21 @@ export default function RestCardEditScreen () {
           </div>
         </div>
         <div className="images">
-          <img className="image" src={`data:image/jpeg;base64,${restaurant.menu}`}/>
+          <img className="image" src={restaurant.menu !== null ? `data:image/jpeg;base64,${restaurant.menu}` : stub}/>
           <div className="change__btns">
             <button className="addMenu__btn" onClick={() => addMenuRef.current.click()}></button>
             <input ref={addMenuRef} className="addMenu_input" type="file" accept='image/*,.png,.jpg,.gif,.web' onChange={handleChangeMenu}/>
           </div>
         </div>
         <div className="images">
-          <img className="image" src={`data:image/jpeg;base64,${restaurant.plan}`}/>
+          <img className="image" src={restaurant.plan !== null ? `data:image/jpeg;base64,${restaurant.plan}` : stub}/>
           <div className="change__btns">
             <button className="addPlan__btn" onClick={() => addPlanRef.current.click()}></button>
             <input ref={addPlanRef} className="addPlan_input" type="file" accept='image/*,.png,.jpg,.gif,.web' onChange={handleChangePlan}/>
           </div>
         </div>
         <div className="center-content">
-          <button className="back-card__btn" onClick={() => navigate(AppRoute.Admin)}></button>
+          <button className="back-card__btn" onClick={() => navigate(AppRoute.Restaurant)}></button>
         </div>
       </section>
     </>

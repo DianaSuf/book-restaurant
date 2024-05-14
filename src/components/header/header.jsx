@@ -6,14 +6,18 @@ import ModalRegister from '../modal-register/modal-register';
 import { useState } from 'react'
 import { useAppDispatch } from '../../hook';
 import { logoutAction } from '../../store/api-actions';
+import { useNavigate } from 'react-router-dom';
+import { AppRoute } from '../../const';
 
 export default function Header() {
   const authorizationStatus = useSelector((state) => state.authorizationStatus);
   const [modalRegisterIsOpen, setModalRegisterIsOpen] = useState(false);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const handleClose = (evt) => {
     evt.preventDefault();
+    navigate(AppRoute.Root)
     dispatch(logoutAction())
   }
 

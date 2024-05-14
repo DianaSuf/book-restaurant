@@ -9,3 +9,50 @@
     background-image: url('/promo.jpg');
     filter: brightness(60%)
 }
+
+.catalog__restaurants-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(885px, 1fr));
+    gap: 30px;
+    margin: 0;
+    padding: 50px;
+}
+
+.restaurant-small-card {
+    display: flex;
+    flex-direction: row;
+    width: 885px;
+    height: 396px;
+    background-color: #ffe5e5;
+    border-radius: 20px;
+}
+
+.main-image {
+    width: 424px;
+    height: 396px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.restaurant-small-card-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.restaurant-small-card-name {
+    font-weight: 300;
+    font-size: 48px;
+    color: #1e1e1e;
+    text-decoration: underline;
+    text-decoration-color: black;
+    text-underline-offset: 30px;
+    text-decoration-thickness: 1px;
+    margin-bottom: 40px;
+}
+
+.restaurant-small-card-info {
+    font-weight: 400;
+    font-size: 32px;
+    color: black;
+}

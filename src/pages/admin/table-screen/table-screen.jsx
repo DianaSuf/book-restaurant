@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { AppRoute } from '../../../const';
 
 export default function TableScreen () {
-  const restaurant = useAppSelector((state) => state.data);
+  const restaurant = useAppSelector((state) => state.dataRest);
   const navigate = useNavigate();
 
   return (

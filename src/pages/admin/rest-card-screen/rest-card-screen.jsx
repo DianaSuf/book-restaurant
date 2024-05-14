@@ -4,16 +4,36 @@ import Header from '../../../components/header/header';
 import { useState } from 'react';
 import ModalPhoto from '../../../components/modal-photo/modal-photo';
 import { AuthorizationStatus } from '../../../const';
-import { useAppSelector } from '../../../hook';
+import { useAppSelector, useAppDispatch } from '../../../hook';
 import { useNavigate } from "react-router-dom";
+import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { fetchRestaurantAction } from '../../../store/api-actions';
 import { AppRoute } from '../../../const';
 import stub from '/stub.jpg'
 
 export default function RestCardScreen () {
+  const {id} = useParams();
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (id) {
+      dispatch(fetchRestaurantAction({id: id}));
+    }
+  }, [dispatch, id]);
+
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
-  const restaurant = useAppSelector((state) => state.data);
+  const restaurant = useAppSelector((state) => state.dataRest);
   const stubImages = [stub, stub, stub];
   const images = restaurant.photosRest && restaurant.photosRest.length > 0 && restaurant.photosRest[0] !== null ? restaurant.photosRest.map(photo => `data:image/jpeg;base64,${photo}`) : stubImages;
+  // let images;
+  // if (authorizationStatus === AuthorizationStatus.ADMIN_REST) {
+  //   const stubImages = [stub, stub, stub];
+  //   images = restaurant.photosRest && restaurant.photosRest.length > 0 && restaurant.photosRest[0] !== null ? restaurant.photosRest.map(photo => `data:image/jpeg;base64,${photo}`) : stubImages;
+  // }
+  // else {
+  //   images = restaurant.photosRest ? restaurant.photosRest.map(photo => `data:image/jpeg;base64,${photo}`) : [];
+  // }
   const [mainImage, setMainImage] = useState(images[0])
   const [activeImage, setActiveImage] = useState(0);
   const [modalPhotoIsOpen, setModalPhotoIsOpen] = useState(false);

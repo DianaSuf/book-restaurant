@@ -24,7 +24,7 @@ export const createAPI = () => {
       },
       async (error) => {
         if (error.response && error.response.status === 401) {
-          // localStorage.removeItem("token");
+          localStorage.removeItem("token");
           // window.location.reload();
         // const originalRequest = {...error.config};
         // originalRequest._isRetry = true; 

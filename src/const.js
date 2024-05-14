@@ -15,14 +15,16 @@ export const APIRoute = {
   AdminRestUpdate: '/TableTime/adminRest/updateRestaurant',
   AdminRestUpdatePhoto: '/TableTime/adminRest/updatePhotoRestaurant',
   AdminRestUpdateMenu: '/TableTime/adminRest/updateMenu',
-  AdminRestUpdatePlan: '/TableTime/adminRest/updatePlan'
+  AdminRestUpdatePlan: '/TableTime/adminRest/updatePlan',
+  UserRestaurants: '/TableTime/restaurants',
+  UserRestaurant: '/TableTime/restaurants',
 }
 
 export const AppRoute = {
   Root: '/',
   SuperAdmin: '/superadmin',
-  Admin: '/admin',
-  Edit: '/admin/edit',
+  Restaurant: '/restaurant',
+  Edit: '/restaurant/edit',
   Reserval: '/reserval',
   Table: '/reserval/table',
   NotFound: '*',
