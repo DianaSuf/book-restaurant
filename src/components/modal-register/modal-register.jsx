@@ -3,7 +3,7 @@ import './modal-register.css';
 import PropTypes from 'prop-types';
 import { registerAction, loginAction } from '../../store/api-actions';
 import { useRef } from 'react';
-import { useAppDispatch } from '../../hook';
+import { useAppDispatch } from '../../hooks/hook';
 
 ModalRegister.propTypes = {
   isOpen: PropTypes.bool.isRequired,

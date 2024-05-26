@@ -1,13 +1,33 @@
 import { Helmet } from 'react-helmet-async';
 import './table-screen.css'
 import Header from '../../../components/header/header';
-import { useAppSelector } from '../../../hook';
+import { useAppSelector, useAppDispatch } from '../../../hooks/hook';
 import { useNavigate } from 'react-router-dom';
 import { AppRoute } from '../../../const';
+import { fetchTableAction } from '../../../store/api-actions';
+import { useRef } from 'react';
 
 export default function TableScreen () {
   const restaurant = useAppSelector((state) => state.dataRest);
+  const reserval = useAppSelector((state) => state.dataReseval);
+  const tables = reserval.tables ? reserval.tables : [];
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const tableRef = useRef(null);
+
+  const handleSubmitTable = (evt) => {
+    evt.preventDefault();
+    const tableNumber = parseInt(tableRef.current.value, 10);
+    dispatch(fetchTableAction({
+      id: restaurant.id,
+      date: reserval.date,
+      timeStart: reserval.timeStart,
+      timeEnd: reserval.timeEnd,
+      persons: reserval.persons,
+      message: reserval.message,
+      table: tableNumber
+    }));
+  }
 
   return (
     <>
@@ -24,16 +44,12 @@ export default function TableScreen () {
           >
             ДОСТУПНЫЕ МЕСТА:
           </label>
-          <input
-            className="table__input"
-            type="text"
-            name="client"
-            id="table-client"
-            required
-          />
+          <select ref={tableRef} className="table__select" id="table-client" name="client">
+            {tables.map((table) => (<option key={table} value={table}>{table}</option>))}
+          </select>
         </div>
-        <button className="back__btn" onClick={() => navigate(AppRoute.Reserval)}></button>
-        <button className="reserval__btn"></button>
+        <button className="back__btn" onClick={() => navigate(`${AppRoute.Reserval}/${restaurant.id}`)}></button>
+        <button className="reserval__btn" onClick={handleSubmitTable}></button>
       </section>
     </>
   );

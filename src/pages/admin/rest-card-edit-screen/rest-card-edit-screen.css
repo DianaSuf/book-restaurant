@@ -118,12 +118,31 @@
   height: 70px;
   left: 0;
   top: 0;
-  width: 290px;
+  width: 460px;
   font-size: 32px;
   padding: 10px;
   margin-top: 20px;
   margin-bottom: 20px;
   margin-right: 35px;
+}
+
+.edit-description-info-last__input {
+  border: none;
+  background-color: #FFFFFF;
+  border-radius: 15px;
+  height: 70px;
+  left: 0;
+  top: 0;
+  width: 460px;
+  font-size: 32px;
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.edit__label-tables {
+  font-size: 32px;
+  color: #a25353;
 }
 
 .edit-description-info__input-tables {
@@ -136,8 +155,31 @@
   width: 290px;
   font-size: 32px;
   padding: 10px;
-  margin-top: 20px;
+  margin-top: 10px;
   margin-bottom: 20px;
+  border: 5px solid #a25353;
+}
+
+.save-tables__btn {
+  margin-left: auto;
+  border: 0; 
+  outline: none; 
+  background-color: transparent;
+  border: none;
+  height: 70px;
+  width: 290px;
+  margin-top: 70px;
+  margin-left: 67px;
+  background-image: url('/save.svg');
+  background-size: cover;
+  cursor: pointer;
+}
+
+.save-tables__text {
+  font-size: 32px;
+  color: #a25353;
+  margin-left: 54px;
+  margin-top: 80px;
 }
 
 .save__btn {

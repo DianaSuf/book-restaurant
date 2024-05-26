@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import './super-screen.css'
 import Header from '../../../components/header/header';
 import { useRef } from 'react';
-import { useAppDispatch } from '../../../hook';
+import { useAppDispatch } from '../../../hooks/hook';
 import { AddAdmin } from '../../../store/api-actions';
 
 export default function SuperScreen() {

@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import './main-screen.css'
 import Header from '../../components/header/header';
-import { useAppSelector } from '../../hook';
+import { useAppSelector } from '../../hooks/hook';
 import { useNavigate } from 'react-router-dom';
 import { AppRoute } from '../../const';
 

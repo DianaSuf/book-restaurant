@@ -37,6 +37,35 @@
   margin-bottom: 20px;
 }
 
+.reserval-time-start__input {
+  border: none;
+  background-color: #ececec;
+  border-radius: 15px;
+  height: 70px;
+  left: 0;
+  top: 0;
+  width: 220px;
+  font-size: 32px;
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 30px;
+}
+
+.reserval-time-end__input {
+  border: none;
+  background-color: #ececec;
+  border-radius: 15px;
+  height: 70px;
+  left: 0;
+  top: 0;
+  width: 220px;
+  font-size: 32px;
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .reserval__textarea {
   resize: none;
   line-height: 40px;

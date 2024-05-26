@@ -8,8 +8,7 @@ import RestCardEditScreen from '../pages/admin/rest-card-edit-screen/rest-card-e
 import ReservalScreen from '../pages/admin/reserval-screen/reserval-screen'
 import TableScreen from '../pages/admin/table-screen/table-screen'
 import PrivateRoute from './private-route'
-import PrivateRouteReservations from './private-route-reservations'
-import { useAppSelector } from '../hook'
+import { useAppSelector } from '../hooks/hook'
 import browserHistory from '../browser-history'
 import HistoryRouter from './history-route'
 import { AppRoute } from '../const'
@@ -86,18 +85,18 @@ function App() {
                 }
           />
           <Route
-                path={AppRoute.Reserval}
+                path={`${AppRoute.Reserval}/:id`}
                 element={
-                  <PrivateRouteReservations
+                  <PrivateRoute
                     authorizationStatus={authorizationStatus}
                     requiredStatuses={[AuthorizationStatus.ADMIN_REST, AuthorizationStatus.USER]}
                   >
                     <ReservalScreen />
-                  </PrivateRouteReservations>
+                  </PrivateRoute>
                 }
           />
           <Route
-                path={AppRoute.Table}
+                path={`${AppRoute.Table}/:id`}
                 element={
                   <PrivateRoute
                     authorizationStatus={authorizationStatus}

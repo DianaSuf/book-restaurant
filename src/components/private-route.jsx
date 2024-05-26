@@ -25,7 +25,7 @@ export default function PrivateRoute({ authorizationStatus, requiredStatuses, ch
         navigate(AppRoute.SuperAdmin);
       }
       if (authorizationStatus === AuthorizationStatus.ADMIN_REST) {
-        navigate(AppRoute.Admin);
+        navigate(AppRoute.Restaurant);
       }
     }
   }, [authorizationStatus, requiredStatuses, navigate]);

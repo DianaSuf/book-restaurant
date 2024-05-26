@@ -4,7 +4,7 @@ import './header.css'
 import { useSelector } from 'react-redux';
 import ModalRegister from '../modal-register/modal-register';
 import { useState } from 'react'
-import { useAppDispatch } from '../../hook';
+import { useAppDispatch } from '../../hooks/hook';
 import { logoutAction } from '../../store/api-actions';
 import { useNavigate } from 'react-router-dom';
 import { AppRoute } from '../../const';
@@ -36,7 +36,7 @@ export default function Header() {
       )}
       {authorizationStatus === 'USER' && (
         <section className="header">
-          <img className="logo" alt="logo" src={logo}/>
+          <Link className="logo" to="/"><img className="logo_link" alt="logo" src={logo}/></Link>
           <div className="user_panel">
             <button className="logout__btn" onClick={handleClose}></button>
             <button className="profile__btn" ></button>

@@ -5,9 +5,9 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRef } from 'react';
 import { AppRoute } from '../../../const';
-import { useAppSelector, useAppDispatch } from '../../../hook';
+import { useAppSelector, useAppDispatch } from '../../../hooks/hook';
 import stub from '/stub.jpg'
-import { fetchRestaurantAdminUpdateAction, fetchRestaurantAdminUpdatePhotoAction, fetchRestaurantAdminUpdateMenuAction, fetchRestaurantAdminUpdatePlanAction } from '../../../store/api-actions';
+import { fetchRestaurantAdminUpdateAction, fetchRestaurantAdminUpdateTableAction, fetchRestaurantAdminUpdatePhotoAction, fetchRestaurantAdminUpdateMenuAction, fetchRestaurantAdminUpdatePlanAction } from '../../../store/api-actions';
 
 export default function RestCardEditScreen () {
   const navigate = useNavigate();
@@ -26,7 +26,10 @@ export default function RestCardEditScreen () {
     ending: restaurant.ending,
     phone: restaurant.phone,
     description: restaurant.description,
-    tables: restaurant.tables,
+  });
+
+  const [textTableValues, setTextTableValues] = useState({
+    table: restaurant.tables,
   });
 
   const handleTextChange = (event) => {
@@ -36,9 +39,21 @@ export default function RestCardEditScreen () {
     });
   };
 
+  const handleTextTableChange = (event) => {
+    setTextTableValues({
+      ...textTableValues,
+      [event.target.name]: event.target.value,
+    });
+  };
+
   const handleSubmitSave = (evt) => {
     evt.preventDefault();
     dispatch(fetchRestaurantAdminUpdateAction(textValues))
+  }
+
+  const handleSubmitSaveTables = (evt) => {
+    evt.preventDefault();
+    dispatch(fetchRestaurantAdminUpdateTableAction(textTableValues))
   }
 
   const handleChangeImages = (evt) => {
@@ -215,28 +230,11 @@ export default function RestCardEditScreen () {
                   Конец работы
                 </label>
                 <input
-                  className="edit-description-info__input"
+                  className="edit-description-info-last__input"
                   type="time"
                   name="ending"
                   id="restarant-ending"
                   value={textValues.ending}
-                  onChange={handleTextChange}
-                  required
-                />
-              </div>
-              <div className="edit-container-field">
-                <label
-                  className="edit__label"
-                  htmlFor="restarant-tables"
-                >
-                  Кол-во столов
-                </label>
-                <input
-                  className="edit-description-info__input-tables"
-                  type="number"
-                  name="tables"
-                  id="restarant-tables"
-                  value={textValues.tables}
                   onChange={handleTextChange}
                   required
                 />
@@ -267,6 +265,29 @@ export default function RestCardEditScreen () {
             <button className="addPlan__btn" onClick={() => addPlanRef.current.click()}></button>
             <input ref={addPlanRef} className="addPlan_input" type="file" accept='image/*,.png,.jpg,.gif,.web' onChange={handleChangePlan}/>
           </div>
+        </div>
+        <div className="edit-container">
+          <div className="edit-container-field">
+            <label
+              className="edit__label-tables"
+              htmlFor="restarant-tables"
+            >
+              Кол-во столов
+            </label>
+            <input
+              className="edit-description-info__input-tables"
+              type="number"
+              name="table"
+              id="restarant-tables"
+              value={textTableValues.table}
+              onChange={handleTextTableChange}
+              disabled={restaurant.tables != 0}
+              required
+            />
+          </div>
+          {restaurant.tables == 0 &&
+            <button className="save-tables__btn" disabled={restaurant.tables != 0} onClick={handleSubmitSaveTables}></button>}
+          <p className="save-tables__text">После сохранения это поле станет не редактируемым!</p>
         </div>
         <div className="center-content">
           <button className="back-card__btn" onClick={() => navigate(AppRoute.Restaurant)}></button>
