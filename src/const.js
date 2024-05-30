@@ -25,6 +25,7 @@ export const APIRoute = {
 export const AppRoute = {
   Root: '/',
   SuperAdmin: '/superadmin',
+  Profile: '/profile',
   Restaurant: '/restaurant',
   Edit: '/restaurant/edit',
   Reserval: '/reserval',

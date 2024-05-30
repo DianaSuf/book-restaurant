@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { checkAuthAction } from '../store/api-actions';
+import { useAppDispatch } from '../hooks/hook';
 // import { APIRoute } from '../const';
 
 const BACKEND_URL = 'http://localhost:8080/';
@@ -23,16 +25,18 @@ export const createAPI = () => {
         return config;
       },
       async (error) => {
-        if (error.response && error.response.status === 401) {
-          localStorage.removeItem("token");
+        // if (error.response && error.response.status === 401) {
+          // localStorage.removeItem("token");
           // window.location.reload();
-        // const originalRequest = {...error.config};
-        // originalRequest._isRetry = true; 
-        // if (
-        //   error.response.status === 401 && 
-        //   error.config &&
-        //   !error.config._isRetry
-        // ) {
+        const originalRequest = {...error.config};
+        const dispatch = useAppDispatch();
+        originalRequest._isRetry = true; 
+        if (
+          error.response.status === 401 && 
+          error.config &&
+          !error.config._isRetry
+        ) {
+          dispatch(checkAuthAction());
         //   try {
         //     const response = await api.get(APIRoute.Refresh);
         //     if (response.status === 200) {

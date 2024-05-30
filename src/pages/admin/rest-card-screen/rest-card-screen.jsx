@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import './rest-card-screen.css'
 import Header from '../../../components/header/header';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import ModalPhoto from '../../../components/modal-photo/modal-photo';
 import { AuthorizationStatus } from '../../../const';
 import { useAppSelector } from '../../../hooks/hook';
@@ -9,12 +9,14 @@ import { useNavigate } from "react-router-dom";
 import useRestById from '../../../hooks/rest-by-id';
 import { AppRoute } from '../../../const';
 import ModalRegister from '../../../components/modal-register/modal-register';
+import stub from '/stub.jpg'
 
 export default function RestCardScreen () {
   const [modalRegisterIsOpen, setModalRegisterIsOpen] = useState(false);
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+  const stubImages = [stub, stub, stub];
   const restaurant = useRestById();
-  const images = useMemo(() => { return restaurant.photosRest ? restaurant.photosRest.map(photo => `data:image/jpeg;base64,${photo}`) : [];}, [restaurant.photosRest])
+  const images = restaurant.photosRest && restaurant.photosRest.length > 0 && restaurant.photosRest[0] !== null ? restaurant.photosRest.map(photo => `data:image/jpeg;base64,${photo}`) : stubImages;
   const [mainImage, setMainImage] = useState(images.length > 0 ? images[0] : '');
   const [activeImage, setActiveImage] = useState(0);
   useEffect(() => {

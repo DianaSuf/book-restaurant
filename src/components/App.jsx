@@ -3,6 +3,7 @@ import { HelmetProvider } from 'react-helmet-async'
 import MainScreen from '../pages/main-screen/main-screen'
 import ErrorScreen from '../pages/error-screen/error-screen'
 import SuperScreen from '../pages/super/super-screen/super-screen'
+import ProfileScreen from '../pages/user/profile-screen/profile-screen'
 import RestCardScreen from '../pages/admin/rest-card-screen/rest-card-screen'
 import RestCardEditScreen from '../pages/admin/rest-card-edit-screen/rest-card-edit-screen'
 import ReservalScreen from '../pages/admin/reserval-screen/reserval-screen'
@@ -48,6 +49,17 @@ function App() {
                   requiredStatuses={[AuthorizationStatus.ADMIN_APP]}
                 >
                   <SuperScreen />
+                </PrivateRoute>
+              }
+          />
+          <Route
+              path={AppRoute.Profile}
+              element={
+                <PrivateRoute
+                  authorizationStatus={authorizationStatus}
+                  requiredStatuses={[AuthorizationStatus.USER, AuthorizationStatus.ADMIN_REST]}
+                >
+                  <ProfileScreen />
                 </PrivateRoute>
               }
           />

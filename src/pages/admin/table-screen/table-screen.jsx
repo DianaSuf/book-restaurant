@@ -6,9 +6,10 @@ import { useNavigate } from 'react-router-dom';
 import { AppRoute } from '../../../const';
 import { fetchTableAction } from '../../../store/api-actions';
 import { useRef } from 'react';
+import useRestById from '../../../hooks/rest-by-id';
 
 export default function TableScreen () {
-  const restaurant = useAppSelector((state) => state.dataRest);
+  const restaurant = useRestById();
   const reserval = useAppSelector((state) => state.dataReseval);
   const tables = reserval.tables ? reserval.tables : [];
   const navigate = useNavigate();

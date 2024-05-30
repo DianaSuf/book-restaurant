@@ -4,9 +4,8 @@ import './reserval-screen.css'
 import Header from '../../../components/header/header';
 import { AuthorizationStatus } from '../../../const';
 import { useAppSelector, useAppDispatch } from '../../../hooks/hook';
-import { useNavigate } from 'react-router-dom';
-import { AppRoute } from '../../../const';
 import { fetchReservalAction } from '../../../store/api-actions';
+import useRestById from '../../../hooks/rest-by-id';
 
 function formatDateToServer(data) {
   const [year, month, day] = data.split('-');
@@ -20,10 +19,9 @@ function formatDateToClient(data) {
 
 export default function ReservalScreen () {
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
-  const restaurant = useAppSelector((state) => state.dataRest);
+  const restaurant = useRestById();
   const reserval = useAppSelector((state) => state.dataReseval)
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (reserval.date) {
@@ -57,11 +55,6 @@ export default function ReservalScreen () {
       date: formatDateToServer(valuesReserval.date),
     };
     dispatch(fetchReservalAction(formattedValues))
-  }
-
-  const handleButtonClick = (evt) => {
-    handleSubmitReserval(evt);
-    navigate(`${AppRoute.Table}/${restaurant.id}`);
   }
 
   return (
@@ -115,7 +108,7 @@ export default function ReservalScreen () {
             <div className="reserval__field">
               <label
                 className="reserval__label"
-                htmlFor="reserval-time"
+                htmlFor="reserval-start-time"
               >
                 БРОНЬ С:
               </label>
@@ -123,7 +116,7 @@ export default function ReservalScreen () {
                 className="reserval-time-start__input"
                 type="time"
                 name="timeStart"
-                id="reserval-time"
+                id="reserval-start-time"
                 value={valuesReserval.timeStart}
                 onChange={handleReservalChange}
                 min={restaurant.opening}
@@ -134,7 +127,7 @@ export default function ReservalScreen () {
             <div className="reserval__field">
               <label
                 className="reserval__label"
-                htmlFor="reserval-time"
+                htmlFor="reserval-end-time"
               >
                 ДО:
               </label>
@@ -142,7 +135,7 @@ export default function ReservalScreen () {
                 className="reserval-time-end__input"
                 type="time"
                 name="timeEnd"
-                id="reserval-time"
+                id="reserval-end-time"
                 value={valuesReserval.timeEnd}
                 onChange={handleReservalChange}
                 min={valuesReserval.timeStart}
@@ -188,8 +181,8 @@ export default function ReservalScreen () {
           </div>         
         </form>
         <div className="reserval__field">
-          <button className="cancel__btn"></button>
-          <button className="next__btn" onClick={handleButtonClick}></button>
+          {/* <button className="cancel__btn"></button> */}
+          <button className="next__btn" onClick={handleSubmitReserval}></button>
         </div>
       </section>
     </>

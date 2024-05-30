@@ -39,7 +39,7 @@ export default function Header() {
           <Link className="logo" to="/"><img className="logo_link" alt="logo" src={logo}/></Link>
           <div className="user_panel">
             <button className="logout__btn" onClick={handleClose}></button>
-            <button className="profile__btn" ></button>
+            <button className="profile__btn" onClick={() => navigate(AppRoute.Profile)}></button>
           </div>
         </section>
       )}
@@ -48,7 +48,7 @@ export default function Header() {
           <img className="logo" alt="logo" src={logo}/>
           <div className="admin_panel">
             <button className="logout__btn" onClick={handleClose}></button>
-            <button className="profile__btn" ></button>
+            <button className="profile__btn" onClick={() => navigate(AppRoute.Profile)}></button>
           </div>
         </section>
       )}
