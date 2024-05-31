@@ -3,7 +3,7 @@ import { checkAuthAction } from '../store/api-actions';
 import { useAppDispatch } from '../hooks/hook';
 // import { APIRoute } from '../const';
 
-const BACKEND_URL = 'http://localhost:8080/';
+const BACKEND_URL = 'http://tabletime.up.railiway.app/';
 // const REQUEST_TIMEOUT = 5000;
 
 export const createAPI = () => {
