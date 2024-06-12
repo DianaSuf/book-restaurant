@@ -17,8 +17,12 @@ export const checkAuthAction = createAsyncThunk(
     try {
       const { data: { role } } = await api.get(APIRoute.Status);
       dispatch(requireAuthorization(AuthorizationStatus[role]));
-      if (AuthorizationStatus[role] === 'ADMIN_REST') {
+      if (AuthorizationStatus[role] === AuthorizationStatus.ADMIN_REST) {
         dispatch(fetchRestaurantAdminAction());
+        dispatch(redirectToRoute(AppRoute.Restaurant))
+      }
+      if (AuthorizationStatus[role] === AuthorizationStatus.ADMIN_APP) {
+        dispatch(redirectToRoute(AppRoute.SuperAdmin))
       }
     } catch {
       dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
@@ -152,11 +156,80 @@ export const fetchTableAction = createAsyncThunk(
   'dataAdmin/fetchRestaurantUpdate',
   async ({ id, date, timeStart, timeEnd, persons, message, table }, {dispatch, extra: api }) => {
     try {
-    await api.post(`${APIRoute.TableRestaurant}/${id}`, { date, timeStart, timeEnd, persons, message, table });
-    dispatch(redirectToRoute(`${AppRoute.Restaurant}/${id}`));
+      await api.post(`${APIRoute.TableRestaurant}/${id}`, { date, timeStart, timeEnd, persons, message, table });
+      dispatch(redirectToRoute(`${AppRoute.Restaurant}/${id}`));
     }
     catch {
       return undefined;
     }
+  },
+);
+
+export const fetchReservalAdminAction = createAsyncThunk(
+  'dataAdmin/fetchRestaurantUpdate',
+  async ({ name, phone, date, timeStart, timeEnd, persons, message }, {dispatch, extra: api }) => {
+    try {
+      const { data } = await api.post(APIRoute.AdminResevalRestaurant, { name, phone, date, timeStart, timeEnd, persons, message});
+      dispatch(loadReserval(data))
+      dispatch(redirectToRoute(AppRoute.Table));
+    }
+    catch {
+      return undefined;
+    }
+  },
+);
+
+export const fetchTableAdminAction = createAsyncThunk(
+  'dataAdmin/fetchRestaurantUpdate',
+  async ({ name, phone, date, timeStart, timeEnd, persons, message, table }, {dispatch, extra: api }) => {
+    try {
+      await api.post(APIRoute.AdminTableRestaurant, {  name, phone, date, timeStart, timeEnd, persons, message, table });
+      dispatch(redirectToRoute(AppRoute.Restaurant));
+    }
+    catch {
+      return undefined;
+    }
+  },
+);
+
+export const fetchUserProfileAction = createAsyncThunk(
+  'dataAdmin/fetchRestaurantUpdate',
+  async (_arg, {extra: api}) => {
+    try {
+      const {data} = await api.get(APIRoute.ProfileUser);
+      return data;
+    }
+    catch {
+      return undefined;
+    }
+  },
+);
+
+export const fetchUserProfileUpdateAction = createAsyncThunk(
+  'dataAdmin/fetchRestaurantUpdatePlan',
+  async ({ username, realname, email, phone }, { dispatch, extra: api }) => {
+    await api.post(APIRoute.ProfileUserUpdate, { username, realname, email, phone });
+    dispatch(fetchUserProfileAction());
+  },
+);
+
+export const fetchAdminProfileAction = createAsyncThunk(
+  'dataAdmin/fetchRestaurantUpdate',
+  async ({ date }, { extra: api }) => {
+    try {
+      const { data } = await api.post(APIRoute.ProfileAdmin, { date });
+      return data;
+    }
+    catch {
+      return undefined;
+    }
+  },
+);
+
+export const fetchAdminProfileUpdateAction = createAsyncThunk(
+  'dataAdmin/fetchRestaurantUpdatePlan',
+  async ({ username, email, phone }, { dispatch, extra: api }) => {
+    await api.post(APIRoute.ProfileAdminUpdate, { username, email, phone });
+    dispatch(fetchAdminProfileAction());
   },
 );

@@ -97,11 +97,33 @@ function App() {
                 }
           />
           <Route
+                path={AppRoute.Reserval}
+                element={
+                  <PrivateRoute
+                    authorizationStatus={authorizationStatus}
+                    requiredStatuses={[AuthorizationStatus.ADMIN_REST]}
+                  >
+                    <ReservalScreen />
+                  </PrivateRoute>
+                }
+          />
+          <Route
+                path={AppRoute.Table}
+                element={
+                  <PrivateRoute
+                    authorizationStatus={authorizationStatus}
+                    requiredStatuses={[AuthorizationStatus.ADMIN_REST]}
+                  >
+                    <TableScreen />
+                  </PrivateRoute>
+                }
+          />
+          <Route
                 path={`${AppRoute.Reserval}/:id`}
                 element={
                   <PrivateRoute
                     authorizationStatus={authorizationStatus}
-                    requiredStatuses={[AuthorizationStatus.ADMIN_REST, AuthorizationStatus.USER]}
+                    requiredStatuses={[AuthorizationStatus.USER]}
                   >
                     <ReservalScreen />
                   </PrivateRoute>
@@ -112,7 +134,7 @@ function App() {
                 element={
                   <PrivateRoute
                     authorizationStatus={authorizationStatus}
-                    requiredStatuses={[AuthorizationStatus.ADMIN_REST, AuthorizationStatus.USER]}
+                    requiredStatuses={[AuthorizationStatus.USER]}
                   >
                     <TableScreen />
                   </PrivateRoute>

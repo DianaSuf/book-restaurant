@@ -4,10 +4,15 @@ import Header from '../../components/header/header';
 import { useAppSelector } from '../../hooks/hook';
 import { useNavigate } from 'react-router-dom';
 import { AppRoute } from '../../const';
+import { useState } from 'react';
 
 export default function MainScreen() {
   const restaurants = useAppSelector((state) => state.dataAllRest);
   const navigate = useNavigate();
+  const [value, setValue] = useState('');
+  const filteredRestaurants = restaurants.filter(restaurant => {
+    return restaurant.name.toLowerCase().includes(value.toLowerCase())
+  })
 
   return (
     <>
@@ -15,10 +20,19 @@ export default function MainScreen() {
         <title>TableTime</title>
       </Helmet>
       <Header/>
-      <section className="promo"></section>
+      <section className="promo">
+        <form className="search__form">
+          <input
+            className="search__input"
+            type="text"
+            placeholder="Поиск"
+            onChange={(evt)=>setValue(evt.target.value)}
+          />
+        </form>
+      </section>
       <section className="catalog__restaurants-list">
         {
-          restaurants.map((restaurant) => (
+          filteredRestaurants.map((restaurant) => (
             <div className="restaurant-small-card" 
               key={restaurant.id} 
               onClick={() => navigate(`${AppRoute.Restaurant}/${restaurant.id}`)

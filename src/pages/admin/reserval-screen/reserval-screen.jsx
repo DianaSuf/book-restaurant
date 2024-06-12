@@ -4,18 +4,9 @@ import './reserval-screen.css'
 import Header from '../../../components/header/header';
 import { AuthorizationStatus } from '../../../const';
 import { useAppSelector, useAppDispatch } from '../../../hooks/hook';
-import { fetchReservalAction } from '../../../store/api-actions';
+import { fetchReservalAction, fetchReservalAdminAction } from '../../../store/api-actions';
 import useRestById from '../../../hooks/rest-by-id';
-
-function formatDateToServer(data) {
-  const [year, month, day] = data.split('-');
-  return `${day}.${month}.${year}`;
-}
-
-function formatDateToClient(data) {
-  const [day, month, year] = data.split('.');
-  return `${year}-${month}-${day}`;
-}
+import { formatDateToClient, formatDateToServer } from '../../../utils';
 
 export default function ReservalScreen () {
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
@@ -34,7 +25,9 @@ export default function ReservalScreen () {
 
   const [valuesReserval, setValuesReserval] = useState({
     id: restaurant.id,
-    date: '',
+    name: reserval.name || '',
+    phone: reserval.phone || '',
+    date: new Date().toISOString().split('T')[0],
     timeStart: reserval.timeStart || restaurant.opening,
     timeEnd: reserval.timeEnd || restaurant.ending,
     persons: reserval.persons || 1,
@@ -50,11 +43,26 @@ export default function ReservalScreen () {
 
   const handleSubmitReserval = (evt) => {
     evt.preventDefault();
-    const formattedValues = {
-      ...valuesReserval,
+    let formattedValues;
+    authorizationStatus === AuthorizationStatus.ADMIN_REST ? formattedValues = {
+      name: valuesReserval.name,
+      phone: valuesReserval.phone,
       date: formatDateToServer(valuesReserval.date),
+      timeStart: valuesReserval.timeStart,
+      timeEnd: valuesReserval.timeEnd,
+      persons: valuesReserval.persons,
+      message: valuesReserval.message,
+    } : formattedValues = {
+      id: valuesReserval.id,
+      date: formatDateToServer(valuesReserval.date),
+      timeStart: valuesReserval.timeStart,
+      timeEnd: valuesReserval.timeEnd,
+      persons: valuesReserval.persons,
+      message: valuesReserval.message,
     };
-    dispatch(fetchReservalAction(formattedValues))
+    authorizationStatus === AuthorizationStatus.ADMIN_REST 
+    ? dispatch(fetchReservalAdminAction(formattedValues)) 
+    : dispatch(fetchReservalAction(formattedValues));
   }
 
   return (
@@ -77,10 +85,27 @@ export default function ReservalScreen () {
                 <input
                   className="reserval__input"
                   type="text"
-                  name="client"
+                  name="name"
                   id="reserval-client"
-                  // value={valuesReserval.name}
-                  // onChange={handleReservalChange}
+                  value={valuesReserval.name}
+                  onChange={handleReservalChange}
+                  required
+                />
+              </div>
+              <div className="reserval__field">
+                <label
+                  className="reserval__label"
+                  htmlFor="reserval-client"
+                >
+                  НОМЕР ПОСЕТИТЕЛЯ:
+                </label>
+                <input
+                  className="reserval__input"
+                  type="tel"
+                  name="phone"
+                  id="reserval-phone"
+                  value={valuesReserval.phone}
+                  onChange={handleReservalChange}
                   required
                 />
               </div>

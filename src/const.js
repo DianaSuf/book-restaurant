@@ -10,6 +10,10 @@ export const APIRoute = {
   Register: '/TableTime/users',
   Login: '/TableTime/login',
   Status: '/TableTime/status',
+  ProfileUser: '/TableTime/user',
+  ProfileUserUpdate: '/TableTime/userUpdate',
+  ProfileAdmin: '/TableTime/adminRest/getReservals',
+  ProfileAdminUpdate: '/TableTime/adminRest/userUpdate',
   SuperAdmin: '/TableTime/adminApp/createRestaurant',
   AdminRest: '/TableTime/adminRest/restaurant',
   AdminRestUpdate: '/TableTime/adminRest/updateRestaurant',
@@ -20,6 +24,8 @@ export const APIRoute = {
   UserRestaurants: '/TableTime/restaurants',
   ResevalRestaurant: '/TableTime/freeTable',
   TableRestaurant: '/TableTime/reserval',
+  AdminResevalRestaurant: '/TableTime/adminRest/freeTable',
+  AdminTableRestaurant: '/TableTime/adminRest/reserval',
 }
 
 export const AppRoute = {

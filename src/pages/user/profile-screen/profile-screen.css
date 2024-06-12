@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.profile {
+  display: flex; 
+  padding: 40px 75px 40px 75px;
+}
+
+.data-user {
+  display: flex; 
+  flex-direction: column;
+  width: 420px;
+  margin-right: 73px;
+}
+
+.book-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.data-user__name {
+  font-size: 48px;
+  color: #a25353;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+.filter__input {
+  border: none;
+  background-color: #a25353;
+  border-radius: 15px;
+  height: 50px;
+  left: 0;
+  top: 0;
+  width: 410px;
+  font-size: 32px;
+  padding: 10px;
+  color: white;
+}
+
+.filter__input::-webkit-calendar-picker-indicator {
+  filter: invert(1); /* Инвертирование цвета для иконки календаря */
+}
+
+.book {
+  width: 1280px;
+  height: 180px;
+  background-color: #ececec;
+  border-radius: 20px;
+}
+
+.data-user__form {
+  display: flex; 
+  flex-direction: column;
+  position: relative;
+  width: 366px;
+  border-radius: 20px;
+  background-color: #a25353;
+  padding: 20px 27px 10px 27px;
+}
+
+.data-user__label {
+  font-size: 32px;
+}
+
+.data-user__input {
+  border: none;
+  background-color: #FFFFFF;
+  border-radius: 15px;
+  height: 40px;
+  left: 0;
+  top: 0;
+  width: 340px;
+  font-size: 32px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.save-edit__btn {
+  border: 0; 
+  outline: none; 
+  background-color: transparent;
+  border: none;
+  height: 70px;
+  width: 290px;
+  background-image: url('/save.svg');
+  background-size: cover;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+};

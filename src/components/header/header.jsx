@@ -45,7 +45,7 @@ export default function Header() {
       )}
       {authorizationStatus === 'ADMIN_REST' && (
         <section className="header">
-          <img className="logo" alt="logo" src={logo}/>
+          <Link className="logo" to="/restaurant"><img className="logo_link" alt="logo" src={logo}/></Link>
           <div className="admin_panel">
             <button className="logout__btn" onClick={handleClose}></button>
             <button className="profile__btn" onClick={() => navigate(AppRoute.Profile)}></button>

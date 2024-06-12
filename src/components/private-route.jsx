@@ -21,6 +21,9 @@ export default function PrivateRoute({ authorizationStatus, requiredStatuses, ch
       if (authorizationStatus === AuthorizationStatus.NoAuth) {
         navigate(AppRoute.Root);
       }
+      if (authorizationStatus === AuthorizationStatus.Unknown) {
+        navigate(AppRoute.Root);
+      }
       if (authorizationStatus === AuthorizationStatus.ADMIN_APP) {
         navigate(AppRoute.SuperAdmin);
       }

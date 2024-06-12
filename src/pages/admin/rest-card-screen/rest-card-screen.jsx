@@ -20,7 +20,6 @@ export default function RestCardScreen () {
   const [mainImage, setMainImage] = useState(images[0]);
   const [activeImage, setActiveImage] = useState(0);
   useEffect(() => {
-     
     if (mainImage === stub) {
         setMainImage(images[0]);
     }
@@ -75,7 +74,9 @@ export default function RestCardScreen () {
         <div className="menu-popun">
             {authorizationStatus === AuthorizationStatus.ADMIN_REST && <button className="edit__btn" onClick={() => navigate(AppRoute.Edit)}></button>}
             {authorizationStatus !== AuthorizationStatus.NoAuth 
-            ? <button className="book__btn" onClick={() => navigate(`${AppRoute.Reserval}/${restaurant.id}`)}></button> 
+            ? authorizationStatus === AuthorizationStatus.ADMIN_REST 
+            ? <button className="book__btn" onClick={() => navigate(AppRoute.Reserval)}></button> 
+            : <button className="book__btn" onClick={() => navigate(`${AppRoute.Reserval}/${restaurant.id}`)}></button> 
             : <button className="book__btn" onClick={() => setModalRegisterIsOpen(true)}></button>
             }
             <ModalRegister

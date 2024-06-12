@@ -3,11 +3,60 @@
     padding: 0;
 }
 
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: white;
+}
+
 .promo {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 1920px;
     height: 592px;
+}
+    
+.promo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-image: url('/promo.jpg');
-    filter: brightness(60%)
+    filter: brightness(60%);
+    z-index: -1;
+}
+    
+.search__form {
+    position: relative; /* Для позиционирования псевдоэлемента относительно формы */
+}
+    
+.search__input {
+    border: none;
+    background-color: #a25353;
+    border-radius: 15px;
+    height: 50px;
+    width: 1460px;
+    font-size: 32px;
+    color: white;
+    padding: 20px;
+    position: relative; /* Для позиционирования псевдоэлемента относительно поля ввода */
+    z-index: 0;
+}
+    
+.search__input::after {
+    content: ''; /* Замените на путь к вашему изображению */
+    background-image: url('/loupe.svg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 20px; /* Расстояние от правого края поля ввода */
+    top: 50%; /* Центрирование по вертикали */
+    transform: translateY(-50%); /* Центрирование по вертикали */
+    pointer-events: none; /* Чтобы клики по изображению не блокировали ввод текста */
+    z-index: 1;
 }
 
 .catalog__restaurants-list {

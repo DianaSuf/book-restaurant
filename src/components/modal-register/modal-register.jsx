@@ -80,7 +80,7 @@ export default function ModalRegister ({ isOpen, onClose }) {
                                                     className="register__label"
                                                     htmlFor="user-name"
                                                 >
-                                                    ФИО пользователя
+                                                    ФИО
                                                 </label>
                                             </div>
                                             <input

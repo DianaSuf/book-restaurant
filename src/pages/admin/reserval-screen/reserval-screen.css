@@ -4,9 +4,9 @@
 }
 
 .reserval__form {
-  padding-right: 500px;
+  margin-right: 400px;
   width: 1230px;
-  margin-left: 200px;
+  margin-left: auto;
 }
 
 .reserval__field {
