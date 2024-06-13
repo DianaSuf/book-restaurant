@@ -15,6 +15,7 @@ export const APIRoute = {
   ProfileAdmin: '/TableTime/adminRest/getReservals',
   ProfileAdminUpdate: '/TableTime/adminRest/userUpdate',
   CancelReserval: '/TableTime/cancelReserval',
+  AdminCancelReserval: '/TableTime/adminRest/cancelReserval',
   SuperAdmin: '/TableTime/adminApp/createRestaurant',
   AdminRest: '/TableTime/adminRest/restaurant',
   AdminRestUpdate: '/TableTime/adminRest/updateRestaurant',

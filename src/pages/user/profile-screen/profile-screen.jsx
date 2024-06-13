@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import './profile-screen.css'
 import Header from '../../../components/header/header';
 import { useAppDispatch, useAppSelector } from '../../../hooks/hook';
-import { fetchUserProfileAction, fetchUserProfileUpdateAction, fetchAdminProfileAction, fetchAdminProfileUpdateAction, cancelReservalAction } from '../../../store/api-actions';
+import { fetchUserProfileAction, fetchUserProfileUpdateAction, fetchAdminProfileAction, fetchAdminProfileUpdateAction, cancelReservalAction, cancelReservalAdminAction } from '../../../store/api-actions';
 import { useState, useEffect } from 'react';
 import { AuthorizationStatus } from '../../../const';
 import { formatDateToServer } from '../../../utils';
@@ -33,8 +33,8 @@ export default function ProfileScreen() {
       setUserData(result.payload);
       // Добавляем свойство isOpen для каждого элемента reserval
       const reservalsWithState = result.payload.reservals.map((reserval) => ({
-      ...reserval,
-      isOpen: false
+        ...reserval,
+        isOpen: false
       }));
       setReservals(reservalsWithState);
     }
@@ -43,10 +43,10 @@ export default function ProfileScreen() {
     fetchData();
   }, [dispatch, date, authorizationStatus]);
   
-  const toggleCard = (index) => {
+  const toggleCard = (id) => {
     // Переключаем состояние isOpen для конкретной карточки
-    const updatedReservals = reservals.map((reserval, i) => {
-      if (i === index) {
+    const updatedReservals = reservals.map((reserval) => {
+      if (reserval.id === id) {
         return { ...reserval, isOpen: !reserval.isOpen };
       }
       return reserval;
@@ -101,12 +101,16 @@ export default function ProfileScreen() {
     : dispatch(fetchUserProfileUpdateAction(roleValues))
   }
 
-  const handleCancelReserval = async (index) => {
+  const handleCancelReserval = async (id) => {
     // Вызов метода для отмены брони с передачей index
-    await dispatch(cancelReservalAction(index));
+    if (authorizationStatus === AuthorizationStatus.USER) {
+      await dispatch(cancelReservalAction({id}));
+    } else if (authorizationStatus === AuthorizationStatus.ADMIN_REST) {
+      await dispatch(cancelReservalAdminAction({id}));
+    }
     // Обновление состояния для удаления карточки из списка
-  const updatedReservals = reservals.filter((_, i) => i !== index);
-    setReservals(updatedReservals);
+    const updatedReservals = reservals.filter((reserval) => reserval.id !== id);
+      setReservals(updatedReservals);
   };
 
   return (
@@ -204,10 +208,10 @@ export default function ProfileScreen() {
               )}
             </div>
             {
-              reservals.map((reserval, index) => (
-                <div className="reserval-small-card"  key={index}>
+              reservals.map((reserval) => (
+                <div className="reserval-small-card"  key={reserval.id}>
                   <div className="reserval-small-card-container">
-                    <h2 className="reserval-small-card-name">{reserval.restName}</h2>
+                    <h2 className="reserval-small-card-name">{reserval.name}</h2>
                     <p className="reserval-small-card-info">{reserval.date}, {reserval.time}</p>
                     {reserval.isOpen && (
                       <>
@@ -215,12 +219,12 @@ export default function ProfileScreen() {
                         <p className="reserval-small-card-info"><p className="reserval-small-card-text">Связаться:</p> {reserval.phone}</p>
                         <p className="reserval-small-card-info"><p className="reserval-small-card-text">Пожелания:</p> {reserval.message}</p>
                         {reserval.state && (
-                          <button className="cancel__bth" onClick={() => handleCancelReserval(index)}></button>
+                          <button className="cancel__bth" onClick={() => handleCancelReserval(reserval.id)}></button>
                         )}
                       </>
                     )}
                   </div>
-                  <button className="switch__bth" onClick={() => toggleCard(index)}></button>
+                  <button className="switch__bth" onClick={() => toggleCard(reserval.id)}></button>
                 </div>
               ))
             }

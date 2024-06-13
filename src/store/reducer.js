@@ -24,6 +24,7 @@ export const reducer = createReducer(initialState,  (builder) => {
     .addCase(loadData, (state, action) => {
       // state.isDataLoading = true;
       state.dataRest = action.payload;
+      // state.isDataLoading = false;
     })
     .addCase(loadDataAllRest, (state, action) => {
       if (state.authorizationStatus !== AuthorizationStatus.ADMIN_REST 

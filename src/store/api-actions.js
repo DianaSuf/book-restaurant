@@ -115,7 +115,7 @@ export const fetchRestaurantAdminUpdateTableAction = createAsyncThunk(
 );
 
 export const fetchRestaurantAdminUpdatePhotoAction = createAsyncThunk(
-  'dataAdmin/fetchRestaurantUpdateMenu',
+  'dataAdmin/fetchRestaurantUpdatePhotos',
   async ({ photo1, photo2, photo3 }, {dispatch, extra: api }) => {
     await api.post(APIRoute.AdminRestUpdatePhoto, { photo1, photo2, photo3 });
     dispatch(fetchRestaurantAdminAction());
@@ -139,7 +139,7 @@ export const fetchRestaurantAdminUpdatePlanAction = createAsyncThunk(
 );
 
 export const fetchReservalAction = createAsyncThunk(
-  'dataAdmin/fetchRestaurantUpdate',
+  'reserval/fetchReserval',
   async ({ id, date, timeStart, timeEnd, persons, message }, {dispatch, extra: api }) => {
     try {
       const { data } = await api.post(`${APIRoute.ResevalRestaurant}/${id}`, { date, timeStart, timeEnd, persons, message});
@@ -153,7 +153,7 @@ export const fetchReservalAction = createAsyncThunk(
 );
 
 export const fetchTableAction = createAsyncThunk(
-  'dataAdmin/fetchRestaurantUpdate',
+  'reserval/fetchTable',
   async ({ id, date, timeStart, timeEnd, persons, message, table }, {dispatch, extra: api }) => {
     try {
       await api.post(`${APIRoute.TableRestaurant}/${id}`, { date, timeStart, timeEnd, persons, message, table });
@@ -166,7 +166,7 @@ export const fetchTableAction = createAsyncThunk(
 );
 
 export const fetchReservalAdminAction = createAsyncThunk(
-  'dataAdmin/fetchRestaurantUpdate',
+  'reserval/fetchReservalAdmin',
   async ({ name, phone, date, timeStart, timeEnd, persons, message }, {dispatch, extra: api }) => {
     try {
       const { data } = await api.post(APIRoute.AdminResevalRestaurant, { name, phone, date, timeStart, timeEnd, persons, message});
@@ -180,7 +180,7 @@ export const fetchReservalAdminAction = createAsyncThunk(
 );
 
 export const fetchTableAdminAction = createAsyncThunk(
-  'dataAdmin/fetchRestaurantUpdate',
+  'reserval/fetchTableAdmin',
   async ({ name, phone, date, timeStart, timeEnd, persons, message, table }, {dispatch, extra: api }) => {
     try {
       await api.post(APIRoute.AdminTableRestaurant, {  name, phone, date, timeStart, timeEnd, persons, message, table });
@@ -193,7 +193,7 @@ export const fetchTableAdminAction = createAsyncThunk(
 );
 
 export const fetchUserProfileAction = createAsyncThunk(
-  'dataAdmin/fetchRestaurantUpdate',
+  'dataProfile/fetchUserProfile',
   async (_arg, {extra: api}) => {
     try {
       const {data} = await api.get(APIRoute.ProfileUser);
@@ -206,7 +206,7 @@ export const fetchUserProfileAction = createAsyncThunk(
 );
 
 export const fetchUserProfileUpdateAction = createAsyncThunk(
-  'dataAdmin/fetchRestaurantUpdatePlan',
+  'dataProfile/fetchUserProfileUpdate',
   async ({ username, realname, email, phone }, { dispatch, extra: api }) => {
     await api.post(APIRoute.ProfileUserUpdate, { username, realname, email, phone });
     dispatch(fetchUserProfileAction());
@@ -214,7 +214,7 @@ export const fetchUserProfileUpdateAction = createAsyncThunk(
 );
 
 export const fetchAdminProfileAction = createAsyncThunk(
-  'dataAdmin/fetchRestaurantUpdate',
+  'dataAdminProfile/fetchAdminProfile',
   async ({ date }, { extra: api }) => {
     try {
       const { data } = await api.post(APIRoute.ProfileAdmin, { date });
@@ -227,7 +227,7 @@ export const fetchAdminProfileAction = createAsyncThunk(
 );
 
 export const fetchAdminProfileUpdateAction = createAsyncThunk(
-  'dataAdmin/fetchRestaurantUpdatePlan',
+  'dataAdminProfile/fetchAdminProfileUpdate',
   async ({ username, email, phone }, { dispatch, extra: api }) => {
     await api.post(APIRoute.ProfileAdminUpdate, { username, email, phone });
     dispatch(fetchAdminProfileAction());
@@ -235,9 +235,17 @@ export const fetchAdminProfileUpdateAction = createAsyncThunk(
 );
 
 export const cancelReservalAction = createAsyncThunk(
-  'dataAdmin/fetchRestaurantUpdatePlan',
+  'delete/cancelReserval',
   async ({ id }, { extra: api }) => {
-    await api.post(APIRoute.CancelReserval, { id });
+    await api.delete(`${APIRoute.CancelReserval}/${id}`);
+    // dispatch(fetchAdminProfileAction());
+  },
+);
+
+export const cancelReservalAdminAction = createAsyncThunk(
+  'delete/cancelReserval',
+  async ({ id }, { extra: api }) => {
+    await api.delete(`${APIRoute.AdminCancelReserval}/${id}`);
     // dispatch(fetchAdminProfileAction());
   },
 );
