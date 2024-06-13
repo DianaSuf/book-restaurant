@@ -233,3 +233,11 @@ export const fetchAdminProfileUpdateAction = createAsyncThunk(
     dispatch(fetchAdminProfileAction());
   },
 );
+
+export const cancelReservalAction = createAsyncThunk(
+  'dataAdmin/fetchRestaurantUpdatePlan',
+  async ({ id }, { extra: api }) => {
+    await api.post(APIRoute.CancelReserval, { id });
+    // dispatch(fetchAdminProfileAction());
+  },
+);

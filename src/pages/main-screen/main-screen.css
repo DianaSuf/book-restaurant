@@ -41,22 +41,13 @@
     font-size: 32px;
     color: white;
     padding: 20px;
-    position: relative; /* Для позиционирования псевдоэлемента относительно поля ввода */
-    z-index: 0;
-}
-    
-.search__input::after {
-    content: ''; /* Замените на путь к вашему изображению */
+    padding-right: 60px;
     background-image: url('/loupe.svg');
-    background-position: center;
-    background-size: contain;
+    background-position: right 20px center;
+    background-size: 50px;
     background-repeat: no-repeat;
-    position: absolute;
-    right: 20px; /* Расстояние от правого края поля ввода */
-    top: 50%; /* Центрирование по вертикали */
-    transform: translateY(-50%); /* Центрирование по вертикали */
-    pointer-events: none; /* Чтобы клики по изображению не блокировали ввод текста */
-    z-index: 1;
+    position: relative;
+    z-index: 0;
 }
 
 .catalog__restaurants-list {

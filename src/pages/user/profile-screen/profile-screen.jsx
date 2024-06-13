@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import './profile-screen.css'
 import Header from '../../../components/header/header';
 import { useAppDispatch, useAppSelector } from '../../../hooks/hook';
-import { fetchUserProfileAction, fetchUserProfileUpdateAction, fetchAdminProfileAction, fetchAdminProfileUpdateAction } from '../../../store/api-actions';
+import { fetchUserProfileAction, fetchUserProfileUpdateAction, fetchAdminProfileAction, fetchAdminProfileUpdateAction, cancelReservalAction } from '../../../store/api-actions';
 import { useState, useEffect } from 'react';
 import { AuthorizationStatus } from '../../../const';
 import { formatDateToServer } from '../../../utils';
@@ -12,6 +12,7 @@ export default function ProfileScreen() {
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
   const [userData, setUserData] = useState(null); 
   const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
+  const [reservals, setReservals] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,14 +24,36 @@ export default function ProfileScreen() {
       result = await dispatch(fetchAdminProfileAction({date: formattedDate} ));
     }
     
+    // if (result?.payload) {
+    //   setUserData(result.payload);
+    // }
+    // };
+
     if (result?.payload) {
       setUserData(result.payload);
+      // Добавляем свойство isOpen для каждого элемента reserval
+      const reservalsWithState = result.payload.reservals.map((reserval) => ({
+      ...reserval,
+      isOpen: false
+      }));
+      setReservals(reservalsWithState);
     }
     };
     
     fetchData();
   }, [dispatch, date, authorizationStatus]);
   
+  const toggleCard = (index) => {
+    // Переключаем состояние isOpen для конкретной карточки
+    const updatedReservals = reservals.map((reserval, i) => {
+      if (i === index) {
+        return { ...reserval, isOpen: !reserval.isOpen };
+      }
+      return reserval;
+    });
+    setReservals(updatedReservals);
+  };
+
   const [dataValues, setDataValues] = useState({
     realname: '',
     username: '',
@@ -77,6 +100,14 @@ export default function ProfileScreen() {
     ? dispatch(fetchAdminProfileUpdateAction(roleValues)) 
     : dispatch(fetchUserProfileUpdateAction(roleValues))
   }
+
+  const handleCancelReserval = async (index) => {
+    // Вызов метода для отмены брони с передачей index
+    await dispatch(cancelReservalAction(index));
+    // Обновление состояния для удаления карточки из списка
+  const updatedReservals = reservals.filter((_, i) => i !== index);
+    setReservals(updatedReservals);
+  };
 
   return (
     <>
@@ -172,7 +203,28 @@ export default function ProfileScreen() {
                 />
               )}
             </div>
-            <div className="book"></div>
+            {
+              reservals.map((reserval, index) => (
+                <div className="reserval-small-card"  key={index}>
+                  <div className="reserval-small-card-container">
+                    <h2 className="reserval-small-card-name">{reserval.restName}</h2>
+                    <p className="reserval-small-card-info">{reserval.date}, {reserval.time}</p>
+                    {reserval.isOpen && (
+                      <>
+                        <p className="reserval-small-card-info">{reserval.table} столик, {reserval.persons} гостей</p>
+                        <p className="reserval-small-card-info"><p className="reserval-small-card-text">Связаться:</p> {reserval.phone}</p>
+                        <p className="reserval-small-card-info"><p className="reserval-small-card-text">Пожелания:</p> {reserval.message}</p>
+                        {reserval.state && (
+                          <button className="cancel__bth" onClick={() => handleCancelReserval(index)}></button>
+                        )}
+                      </>
+                    )}
+                  </div>
+                  <button className="switch__bth" onClick={() => toggleCard(index)}></button>
+                </div>
+              ))
+            }
+            {/* <div className="book"></div> */}
           </div>
         </section>
       )}
