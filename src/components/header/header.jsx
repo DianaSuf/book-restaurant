@@ -30,7 +30,7 @@ export default function Header() {
     <>
       {(authorizationStatus === 'UNKNOWN' || authorizationStatus === 'NO_AUTH') && (
         <section className="header">
-          <Link className="logo" to="/"><img className="logo_link" alt="logo" src={logo}/></Link>
+          <Link className="logo" to="/" onClick={handleLogoClick}><img className="logo_link" alt="logo" src={logo}/></Link>
           <div className="login">
             <button className="login__btn" onClick={() => setModalRegisterIsOpen(true)}></button>
             <ModalRegister
