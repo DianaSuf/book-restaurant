@@ -8,6 +8,7 @@ import { useAppDispatch } from '../../hooks/hook';
 import { logoutAction } from '../../store/api-actions';
 import { useNavigate } from 'react-router-dom';
 import { AppRoute } from '../../const';
+import { clearDataRest } from '../../store/action';
 
 export default function Header() {
   const authorizationStatus = useSelector((state) => state.authorizationStatus);
@@ -19,6 +20,10 @@ export default function Header() {
     evt.preventDefault();
     navigate(AppRoute.Root)
     dispatch(logoutAction())
+  }
+
+  const handleLogoClick = () => {
+    dispatch(clearDataRest())
   }
 
   return (
@@ -36,7 +41,7 @@ export default function Header() {
       )}
       {authorizationStatus === 'USER' && (
         <section className="header">
-          <Link className="logo" to="/"><img className="logo_link" alt="logo" src={logo}/></Link>
+          <Link className="logo" to="/" onClick={handleLogoClick}><img className="logo_link" alt="logo" src={logo}/></Link>
           <div className="user_panel">
             <button className="logout__btn" onClick={handleClose}></button>
             <button className="profile__btn" onClick={() => navigate(AppRoute.Profile)}></button>
