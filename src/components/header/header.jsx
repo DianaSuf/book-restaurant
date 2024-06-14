@@ -20,6 +20,7 @@ export default function Header() {
     evt.preventDefault();
     navigate(AppRoute.Root)
     dispatch(logoutAction())
+    dispatch(clearDataRest())
   }
 
   const handleLogoClick = () => {

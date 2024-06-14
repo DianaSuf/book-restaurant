@@ -19,14 +19,15 @@ export default function RestCardScreen () {
   const images = restaurant.photosRest && restaurant.photosRest.length > 0 && restaurant.photosRest[0] !== null ? restaurant.photosRest.map(photo => `data:image/jpeg;base64,${photo}`) : stubImages;
   const [mainImage, setMainImage] = useState(images[0]);
   const [activeImage, setActiveImage] = useState(0);
+  const [modalPhotoIsOpen, setModalPhotoIsOpen] = useState(false);
+  const [modalPhoto, setModalPhoto] = useState('');
+  const navigate = useNavigate();
+  
   useEffect(() => {
     if (mainImage === stub) {
         setMainImage(images[0]);
     }
   }, [images, mainImage]);
-  const [modalPhotoIsOpen, setModalPhotoIsOpen] = useState(false);
-  const [modalPhoto, setModalPhoto] = useState('');
-  const navigate = useNavigate();
 
   return (
     <>

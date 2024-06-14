@@ -23,11 +23,6 @@ export default function ProfileScreen() {
       const formattedDate = formatDateToServer(date);
       result = await dispatch(fetchAdminProfileAction({date: formattedDate} ));
     }
-    
-    // if (result?.payload) {
-    //   setUserData(result.payload);
-    // }
-    // };
 
     if (result?.payload) {
       setUserData(result.payload);
@@ -70,7 +65,7 @@ export default function ProfileScreen() {
         phone: userData.phone || '',
       });
     }
-  }, [userData]); // This effect runs when userData changes
+  }, [userData]);
 
   const handleTextChange = (event) => {
     setDataValues({
@@ -102,7 +97,6 @@ export default function ProfileScreen() {
   }
 
   const handleCancelReserval = async (id) => {
-    // Вызов метода для отмены брони с передачей index
     if (authorizationStatus === AuthorizationStatus.USER) {
       await dispatch(cancelReservalAction({id}));
     } else if (authorizationStatus === AuthorizationStatus.ADMIN_REST) {
@@ -228,7 +222,6 @@ export default function ProfileScreen() {
                 </div>
               ))
             }
-            {/* <div className="book"></div> */}
           </div>
         </section>
       )}
