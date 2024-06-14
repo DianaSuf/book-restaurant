@@ -20,10 +20,9 @@ export default function RestCardScreen () {
   const [mainImage, setMainImage] = useState(images[0]);
   const [activeImage, setActiveImage] = useState(0);
   useEffect(() => {
-    // if (mainImage === stub) {
-    //     setMainImage(images[0]);
-    // }
-    setMainImage(images[0]);
+    if (mainImage === stub) {
+        setMainImage(images[0]);
+    }
   }, [images, mainImage]);
   const [modalPhotoIsOpen, setModalPhotoIsOpen] = useState(false);
   const [modalPhoto, setModalPhoto] = useState('');
