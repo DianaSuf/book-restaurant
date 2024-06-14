@@ -1,5 +1,5 @@
 import { AuthorizationStatus } from "../const.js";
-import { requireAuthorization, setDataLoadingStatus, loadData, loadDataAllRest, loadReserval, clearDataRest } from "./action.js";
+import { requireAuthorization, setDataLoadingStatus, loadData, loadDataAllRest, loadReserval, clearDataRest, clearDataReserval } from "./action.js";
 import {createReducer} from '@reduxjs/toolkit';
 
 const initialState = {
@@ -41,5 +41,8 @@ export const reducer = createReducer(initialState,  (builder) => {
         || state.authorizationStatus !== AuthorizationStatus.ADMIN_APP) {
         state.dataReseval = action.payload;
       }
+    })
+    .addCase(clearDataReserval, (state) => {
+      state.dataReseval = [];
     });
 })

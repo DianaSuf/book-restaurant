@@ -7,3 +7,4 @@ export const loadDataAllRest = createAction('data/restaurants');
 export const loadData = createAction('data/restaurant');
 export const loadReserval = createAction('data/reserval');
 export const clearDataRest = createAction('data/clearDataRest');
+export const clearDataReserval = createAction('data/clearDataReserval');

@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { requireAuthorization, redirectToRoute, setDataLoadingStatus, loadData, loadDataAllRest, loadReserval } from './action.js';
+import { requireAuthorization, redirectToRoute, setDataLoadingStatus, loadData, loadDataAllRest, loadReserval, clearDataReserval } from './action.js';
 import { AuthorizationStatus, APIRoute, AppRoute } from '../const.js';
 
 export const registerAction = createAsyncThunk(
@@ -158,6 +158,7 @@ export const fetchTableAction = createAsyncThunk(
     try {
       await api.post(`${APIRoute.TableRestaurant}/${id}`, { date, timeStart, timeEnd, persons, message, table });
       dispatch(redirectToRoute(`${AppRoute.Restaurant}/${id}`));
+      dispatch(clearDataReserval())
     }
     catch {
       return undefined;
@@ -185,6 +186,7 @@ export const fetchTableAdminAction = createAsyncThunk(
     try {
       await api.post(APIRoute.AdminTableRestaurant, {  name, phone, date, timeStart, timeEnd, persons, message, table });
       dispatch(redirectToRoute(AppRoute.Restaurant));
+      dispatch(clearDataReserval())
     }
     catch {
       return undefined;
