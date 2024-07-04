@@ -8,7 +8,9 @@
   height: 163px;
   left: 0;
   top: 0;
-  width: 1920px;
+  max-width: 1920px;
+  /* width: 100%; */
+  width: 100vw;
   display: flex;
 }
 

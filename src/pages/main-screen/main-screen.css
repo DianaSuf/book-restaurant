@@ -12,7 +12,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 1920px;
+    /* width: 1920px; */
     height: 592px;
 }
     
@@ -23,13 +23,21 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('/promo.jpg');
+    background-image: url('/promo2.jpg');
     filter: brightness(60%);
     z-index: -1;
+}
+
+.search {
+    width: 100%;
+    margin-right: 80px;
 }
     
 .search__form {
     position: relative; /* Для позиционирования псевдоэлемента относительно формы */
+    width: 80%;
+    max-width: 100%;
+    margin: 0 auto;
 }
     
 .search__input {
@@ -37,11 +45,12 @@
     background-color: #a25353;
     border-radius: 15px;
     height: 50px;
-    width: 1460px;
+    /* width: 1460px; */
+    width: 100%;
     font-size: 32px;
     color: white;
     padding: 20px;
-    padding-right: 60px;
+    padding-right: 80px;
     background-image: url('/loupe.svg');
     background-position: right 20px center;
     background-size: 50px;
@@ -78,17 +87,20 @@
     display: flex;
     flex-direction: column;
     padding: 20px;
+    width: 100%;
 }
 
 .restaurant-small-card-name {
     font-weight: 300;
     font-size: 48px;
     color: #1e1e1e;
-    text-decoration: underline;
-    text-decoration-color: black;
-    text-underline-offset: 30px;
-    text-decoration-thickness: 1px;
-    margin-bottom: 40px;
+}
+
+.restaurant-small-card-container-star {
+    display: flex;
+    border-bottom: 1px solid #000;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .restaurant-small-card-info {

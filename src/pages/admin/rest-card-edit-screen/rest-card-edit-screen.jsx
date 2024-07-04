@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import Header from '../../../components/header/header';
+import Footer from '../../../components/footer/footer';
 import './rest-card-edit-screen.css'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -118,126 +119,128 @@ export default function RestCardEditScreen () {
       <Header/>
       <section className="main-edit">
         <form action="#" className="edit__form" onSubmit={handleSubmitSave}>
-          <div className="edit__form-info">
-            <label
-              className="edit__label"
-              htmlFor="restarant-name"
-            >
-              Название ресторана
-            </label>
-            <input
-              className="edit__input"
-              type="text"
-              name="name"
-              id="restarant-name"
-              value={textValues.name}
-              onChange={handleTextChange}
-              required
-            />
-            <div className="edit-container">
-              <div className="edit-container-field">
-                <label
-                  className="edit__label"
-                  htmlFor="restarant-town"
-                >
-                  Город
-                </label>
-                <input
-                  className="edit-town__input"
-                  type="text"
-                  name="town"
-                  id="restarant-town"
-                  value={textValues.town}
-                  onChange={handleTextChange}
-                  required
-                />
+          <div className="edit__form-container">
+            <div className="edit__form-info">
+              <label
+                className="edit__label"
+                htmlFor="restarant-name"
+              >
+                Название ресторана
+              </label>
+              <input
+                className="edit__input"
+                type="text"
+                name="name"
+                id="restarant-name"
+                value={textValues.name}
+                onChange={handleTextChange}
+                required
+              />
+              <div className="edit-container">
+                <div className="edit-container-field">
+                  <label
+                    className="edit__label"
+                    htmlFor="restarant-town"
+                  >
+                    Город
+                  </label>
+                  <input
+                    className="edit-town__input"
+                    type="text"
+                    name="town"
+                    id="restarant-town"
+                    value={textValues.town}
+                    onChange={handleTextChange}
+                    required
+                  />
+                </div>
+                <div className="edit-container-field">
+                  <label
+                    className="edit__label"
+                    htmlFor="restarant-street"
+                  >
+                    Улица
+                  </label>
+                  <input
+                    className="edit-address__input"
+                    type="text"
+                    name="address"
+                    id="restarant-address"
+                    value={textValues.address}
+                    onChange={handleTextChange}
+                    required
+                  />
+                </div>
               </div>
-              <div className="edit-container-field">
-                <label
-                  className="edit__label"
-                  htmlFor="restarant-street"
-                >
-                  Улица
-                </label>
-                <input
-                  className="edit-address__input"
-                  type="text"
-                  name="address"
-                  id="restarant-address"
-                  value={textValues.address}
-                  onChange={handleTextChange}
-                  required
-                />
-              </div>
+              <label
+                className="edit__label"
+                htmlFor="restarant-phone"
+              >
+                Контактные данные
+              </label>
+              <input
+                className="edit__input"
+                type="tel"
+                name="phone"
+                id="restarant-phone"
+                value={textValues.phone}
+                onChange={handleTextChange}
+                required
+              />
             </div>
-            <label
-              className="edit__label"
-              htmlFor="restarant-phone"
-            >
-              Контактные данные
-            </label>
-            <input
-              className="edit__input"
-              type="tel"
-              name="phone"
-              id="restarant-phone"
-              value={textValues.phone}
-              onChange={handleTextChange}
-              required
-            />
-          </div>
-          <div className="edit__form-description">
-            <label
-              className="edit__label"
-              htmlFor="restarant-description"
-            >
-              Описание
-            </label>
-            <textarea
-              className="edit-description__textarea"
-              type="text"
-              name="description"
-              id="restarant-description"
-              maxLength={350}
-              value={textValues.description}
-              onChange={handleTextChange}
-              required
-            />
-            <p className="symbols">Введено символов: {textValues.description.length} из 350</p>
-            <div className="edit-container">
-              <div className="edit-container-field">
-                <label
-                  className="edit__label"
-                  htmlFor="restarant-opening"
-                >
-                  Начало работы
-                </label>
-                <input
-                  className="edit-description-info__input"
-                  type="time"
-                  name="opening"
-                  id="restarant-opening"
-                  value={textValues.opening}
-                  onChange={handleTextChange}
-                  required
-                />
-              </div>
-              <div className="edit-container-field">
-                <label
-                  className="edit__label"
-                  htmlFor="restarant-ending"
-                >
-                  Конец работы
-                </label>
-                <input
-                  className="edit-description-info-last__input"
-                  type="time"
-                  name="ending"
-                  id="restarant-ending"
-                  value={textValues.ending}
-                  onChange={handleTextChange}
-                  required
-                />
+            <div className="edit__form-description">
+              <label
+                className="edit__label"
+                htmlFor="restarant-description"
+              >
+                Описание
+              </label>
+              <textarea
+                className="edit-description__textarea"
+                type="text"
+                name="description"
+                id="restarant-description"
+                maxLength={350}
+                value={textValues.description}
+                onChange={handleTextChange}
+                required
+              />
+              <p className="symbols">Введено символов: {textValues.description.length} из 350</p>
+              <div className="edit-container">
+                <div className="edit-container-field">
+                  <label
+                    className="edit__label"
+                    htmlFor="restarant-opening"
+                  >
+                    Начало работы
+                  </label>
+                  <input
+                    className="edit-description-info__input"
+                    type="time"
+                    name="opening"
+                    id="restarant-opening"
+                    value={textValues.opening}
+                    onChange={handleTextChange}
+                    required
+                  />
+                </div>
+                <div className="edit-container-field">
+                  <label
+                    className="edit__label"
+                    htmlFor="restarant-ending"
+                  >
+                    Конец работы
+                  </label>
+                  <input
+                    className="edit-description-info-last__input"
+                    type="time"
+                    name="ending"
+                    id="restarant-ending"
+                    value={textValues.ending}
+                    onChange={handleTextChange}
+                    required
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -293,6 +296,7 @@ export default function RestCardEditScreen () {
           <button className="back-card__btn" onClick={() => navigate(AppRoute.Restaurant)}></button>
         </div>
       </section>
+      <Footer/>
     </>
   )
 }

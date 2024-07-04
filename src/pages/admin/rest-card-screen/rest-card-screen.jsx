@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import './rest-card-screen.css'
 import Header from '../../../components/header/header';
+import Footer from '../../../components/footer/footer';
 import { useState, useEffect } from 'react';
 import ModalPhoto from '../../../components/modal-photo/modal-photo';
 import { AuthorizationStatus } from '../../../const';
@@ -85,6 +86,7 @@ export default function RestCardScreen () {
             onClose={() => setModalRegisterIsOpen(false)}/>
         </div>
       </div>
+      <Footer/>
     </>
   )
 }

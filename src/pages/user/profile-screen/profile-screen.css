@@ -5,7 +5,8 @@
 
 .profile {
   display: flex; 
-  padding: 40px 75px 40px 75px;
+  flex-direction: row;
+  padding: 40px 75px;
 }
 
 .data-user {
@@ -15,10 +16,14 @@
   margin-right: 73px;
 }
 
+.reservations {
+  width: 100%;
+}
+
 .book-header {
   display: flex;
   justify-content: space-between;
-  width: 1280px;
+  /* width: 1280px; */
 }
 
 .data-user__name {
@@ -48,7 +53,7 @@
 .reserval-small-card {
   display: flex;
   justify-content: space-between;
-  width: 1280px;
+  /* width: 1280px; */
   /* height: 180px; */
   background-color: #ececec;
   border-radius: 20px;
@@ -69,11 +74,16 @@
   cursor: pointer;
 }
 
+.reserval-small-card-name-container {
+  display: flex;
+}
+
 .reserval-small-card-name {
   font-weight: 500;
   font-size: 32px;
   color: black;
   margin-bottom: 30px;
+  margin-right: 20px;
 }
 
 .reserval-small-card-info {
@@ -96,7 +106,20 @@
   border: none;
   height: 70px;
   width: 300px;
-  background-image: url('/cancel2.svg');
+  background-image: url('/cancel.svg');
+  background-size: cover;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.grade__bth {
+  border: 0; 
+  outline: none; 
+  background-color: transparent;
+  border: none;
+  height: 70px;
+  width: 170px;
+  background-image: url('/grade.svg');
   background-size: cover;
   margin-top: 20px;
   cursor: pointer;

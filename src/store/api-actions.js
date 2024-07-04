@@ -236,6 +236,14 @@ export const fetchAdminProfileUpdateAction = createAsyncThunk(
   },
 );
 
+export const reviewAction = createAsyncThunk(
+  'review/reviewReserval',
+  async ({ idReserval, text, grade }, { dispatch, extra: api }) => {
+    await api.post(APIRoute.Review, { idReserval, text, grade });
+    dispatch(fetchUserProfileAction());
+  },
+);
+
 export const cancelReservalAction = createAsyncThunk(
   'delete/cancelReserval',
   async ({ id }, { extra: api }) => {

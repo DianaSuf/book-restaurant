@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import './table-screen.css'
 import Header from '../../../components/header/header';
+import Footer from '../../../components/footer/footer';
 import { useAppSelector, useAppDispatch } from '../../../hooks/hook';
 import { useNavigate } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../../const';
@@ -66,6 +67,7 @@ export default function TableScreen () {
         : <button className="back__btn" onClick={() => navigate(`${AppRoute.Reserval}/${restaurant.id}`)}></button>}
         <button className="reserval__btn" onClick={handleSubmitTable}></button>
       </section>
+      <Footer/>
     </>
   );
 }

@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import './super-screen.css'
 import Header from '../../../components/header/header';
+import Footer from '../../../components/footer/footer';
 import { useRef } from 'react';
 import { useAppDispatch } from '../../../hooks/hook';
 import { AddAdmin } from '../../../store/api-actions';
@@ -99,6 +100,7 @@ export default function SuperScreen() {
           <div className="appoint"><button className="delete__btn" type="submit"></button></div>
         </form>
       </section>
+      <Footer/>
     </>
   )
 }

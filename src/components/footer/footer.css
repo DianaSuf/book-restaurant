@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.footer {
+  background-color: #664242;
+  height: 100px;
+  left: 0;
+  top: 0;
+  /* width: 1920px; */
+  /* width: 100%; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-content: center;
+  padding: 0px 65px;
+}
+
+.footer-text {
+  font-size: 32px;
+  color: #ffffff;
+}

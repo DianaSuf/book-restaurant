@@ -12,17 +12,23 @@
 
 .edit__form {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center; 
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+  /* justify-content: center;  */
   align-items: center;
   position: relative;
   margin-top: 100px;
-  width: 1712px;
+  /* width: 1712px; */
   border-radius: 20px;
   background-color: #a25353;
   padding: 20px 45px 20px 45px;
   transform: translateY(-50px);
   transition: opacity 0.3s, transform 0.3s;
+}
+
+.edit__form-container {
+  display: flex;
+  flex-direction: row;
 }
 
 .edit__form-info {
@@ -203,7 +209,6 @@
 .images {
   height: 180px;
   display: flex;
-  justify-content: row;
   margin-bottom: 20px;
 }
 

@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { useState, useEffect } from 'react';
 import './reserval-screen.css'
 import Header from '../../../components/header/header';
+import Footer from '../../../components/footer/footer';
 import { AuthorizationStatus } from '../../../const';
 import { useAppSelector, useAppDispatch } from '../../../hooks/hook';
 import { fetchReservalAction, fetchReservalAdminAction } from '../../../store/api-actions';
@@ -206,10 +207,10 @@ export default function ReservalScreen () {
           </div>         
         </form>
         <div className="reserval__field">
-          {/* <button className="cancel__btn"></button> */}
           <button className="next__btn" onClick={handleSubmitReserval}></button>
         </div>
       </section>
+      <Footer/>
     </>
   )
 }
