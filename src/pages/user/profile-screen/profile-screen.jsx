@@ -3,7 +3,7 @@ import './profile-screen.css'
 import Header from '../../../components/header/header';
 import Footer from '../../../components/footer/footer';
 import ModalReview from '../../../components/modal-review/modal-review';
-import { FaStar } from 'react-icons/fa';
+import { renderStars } from '../../../components/modal-review/star';
 import { useAppDispatch, useAppSelector } from '../../../hooks/hook';
 import { fetchUserProfileAction, fetchUserProfileUpdateAction, fetchAdminProfileAction, fetchAdminProfileUpdateAction, cancelReservalAction, cancelReservalAdminAction } from '../../../store/api-actions';
 import { useState, useEffect } from 'react';
@@ -17,22 +17,6 @@ export default function ProfileScreen() {
   const [userData, setUserData] = useState(null); 
   const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
   const [reservals, setReservals] = useState([]);
-
-  const renderStars = (grade) => {
-    const totalStars = 3;
-    const filledColor = "#A25353";
-    const emptyColor = "#B3B3B3";
-  
-    const stars = [];
-    for (let i = 0; i < totalStars; i++) {
-      const color = i < grade ? filledColor : emptyColor;
-      stars.push(
-        <FaStar key={i} size={35} style={{ color }} />
-      );
-    }
-  
-    return stars;
-  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -227,8 +211,8 @@ export default function ProfileScreen() {
                   <div className="reserval-small-card-container">
                     <div className="reserval-small-card-name-container">
                       <h2 className="reserval-small-card-name">{reserval.name}</h2>
-                      {reserval.state === "FALSE" && renderStars(reserval.grade) }
-                      {reserval.state === "RATED" && renderStars(reserval.grade) }
+                      {reserval.state === "FALSE" && authorizationStatus === AuthorizationStatus.USER && renderStars(reserval.grade, 50) }
+                      {reserval.state === "RATED" && authorizationStatus === AuthorizationStatus.USER && renderStars(reserval.grade, 50) }
                     </div>
                     <p className="reserval-small-card-info">{reserval.date}, {reserval.time}</p>
                     {reserval.isOpen && (
@@ -236,13 +220,13 @@ export default function ProfileScreen() {
                         <p className="reserval-small-card-info">{reserval.table} столик, {reserval.persons} гостей</p>
                         <p className="reserval-small-card-info"><p className="reserval-small-card-text">Связаться:</p> {reserval.phone}</p>
                         <p className="reserval-small-card-info"><p className="reserval-small-card-text">Пожелания:</p> {reserval.message}</p>
-                        {reserval.state === "RATED" && (
+                        {reserval.state === "RATED" && authorizationStatus === AuthorizationStatus.USER && (
                           <p className="reserval-small-card-info"><p className="reserval-small-card-text">Ваш отзыв:</p> {reserval.review}</p>
                         )}
                         {reserval.state === "TRUE" && (
                           <button className="cancel__bth" onClick={() => handleCancelReserval(reserval.id)}></button>
                         )}
-                        {reserval.state === "FALSE" && (
+                        {reserval.state === "FALSE" && authorizationStatus === AuthorizationStatus.USER && (
                           <>
                             <button className="grade__bth" onClick={() => setModalReviewIsOpen(true)}></button>
                             <ModalReview

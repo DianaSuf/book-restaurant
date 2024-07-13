@@ -6,7 +6,8 @@
 .profile {
   display: flex; 
   flex-direction: row;
-  padding: 40px 75px;
+  padding: 20px 66px;
+  min-height: 609px;
 }
 
 .data-user {
@@ -17,6 +18,7 @@
 }
 
 .reservations {
+  max-width: 1295px;
   width: 100%;
 }
 
@@ -37,7 +39,7 @@
   border: none;
   background-color: #a25353;
   border-radius: 15px;
-  height: 50px;
+  height: 45px;
   left: 0;
   top: 0;
   width: 410px;
@@ -59,6 +61,10 @@
   border-radius: 20px;
   margin-bottom: 20px;
   padding: 20px 23px 20px 23px;
+}
+
+.reserval-small-card-container {
+  max-width: 1200px;
 }
 
 .switch__bth {

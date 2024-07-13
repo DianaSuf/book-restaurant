@@ -50,22 +50,26 @@ export default function TableScreen () {
       </Helmet>
       <Header/>
       <section className="main-table">
-        <img className="plan__img" src={`data:image/jpeg;base64,${restaurant.plan}`} alt="открытое фото галереи" width="1024" height="635"/>
-        <div className="table__field"> 
-          <label
-            className="table__label"
-            htmlFor="table-client"
-          >
-            ДОСТУПНЫЕ МЕСТА:
-          </label>
-          <select ref={tableRef} className="table__select" id="table-client" name="client">
-            {tables.map((table) => (<option key={table} value={table}>{table}</option>))}
-          </select>
+        <div className="table">
+          <img className="plan__img" src={`data:image/jpeg;base64,${restaurant.plan}`} alt="открытое фото галереи"/>
+          <div className="table__field"> 
+            <label
+              className="table__label"
+              htmlFor="table-client"
+            >
+              ДОСТУПНЫЕ МЕСТА:
+            </label>
+            <select ref={tableRef} className="table__select" id="table-client" name="client">
+              {tables.map((table) => (<option key={table} value={table}>{table}</option>))}
+            </select>
+          </div>
         </div>
-        {authorizationStatus === AuthorizationStatus.ADMIN_REST 
-        ? <button className="back__btn" onClick={() => navigate(AppRoute.Reserval)}></button> 
-        : <button className="back__btn" onClick={() => navigate(`${AppRoute.Reserval}/${restaurant.id}`)}></button>}
-        <button className="reserval__btn" onClick={handleSubmitTable}></button>
+        <div className="table-control">
+          {authorizationStatus === AuthorizationStatus.ADMIN_REST 
+          ? <button className="back__btn" onClick={() => navigate(AppRoute.Reserval)}></button> 
+          : <button className="back__btn" onClick={() => navigate(`${AppRoute.Reserval}/${restaurant.id}`)}></button>}
+          <button className="reserval__btn" onClick={handleSubmitTable}></button>
+        </div>
       </section>
       <Footer/>
     </>

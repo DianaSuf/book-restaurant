@@ -119,8 +119,8 @@ export default function RestCardEditScreen () {
       <Header/>
       <section className="main-edit">
         <form action="#" className="edit__form" onSubmit={handleSubmitSave}>
-          <div className="edit__form-container">
-            <div className="edit__form-info">
+          <div className="edit__form-content">
+            <div className="edit__form-container">
               <label
                 className="edit__label"
                 htmlFor="restarant-name"
@@ -188,7 +188,7 @@ export default function RestCardEditScreen () {
                 required
               />
             </div>
-            <div className="edit__form-description">
+            <div className="edit__form-container">
               <label
                 className="edit__label"
                 htmlFor="restarant-description"

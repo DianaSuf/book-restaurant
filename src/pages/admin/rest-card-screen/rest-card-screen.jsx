@@ -4,6 +4,7 @@ import Header from '../../../components/header/header';
 import Footer from '../../../components/footer/footer';
 import { useState, useEffect } from 'react';
 import ModalPhoto from '../../../components/modal-photo/modal-photo';
+import { renderStars } from '../../../components/modal-review/star';
 import { AuthorizationStatus } from '../../../const';
 import { useAppSelector } from '../../../hooks/hook';
 import { useNavigate } from "react-router-dom";
@@ -36,44 +37,77 @@ export default function RestCardScreen () {
         <title>{restaurant.name}</title>
       </Helmet>
       <Header/>
-      <div className="restaurant-card">
-        <h1 className="restaurant-name">{restaurant.name}</h1>
+      <section className="restaurant-card">
+        <h1 className="restaurant-name">{restaurant.name} {renderStars(restaurant.avgRating, 50)}</h1>
         <div className="restaurant-card-content">
-          <section className="gallery">
-            <div className="gallery-wrapper">
-              <img className="active-img" src={mainImage} alt="открытое фото галереи" width="616" height="380"/>
-              <ul className="gallery-preview">
-                {images.map((image, index) => (
-                  <li className={`preview-item ${index === activeImage ? 'active' : ''}`} key={index}>
-                    <a href="#" onClick={(e) => { e.preventDefault(); setMainImage(image); setActiveImage(index);}}>
-                      <img src={image} width="180" height="120" alt={`Thumbnail ${index + 1}`} />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="gallery__bth">
-              <button className="menu__btn" onClick={() => {setModalPhoto(`data:image/jpeg;base64,${restaurant.menu}`); setModalPhotoIsOpen(true)}}></button>
-              <button className="plan__btn" onClick={() => {setModalPhoto(`data:image/jpeg;base64,${restaurant.plan}`); setModalPhotoIsOpen(true)}}></button>
-              <ModalPhoto
-              isOpen={modalPhotoIsOpen}
-              onClose={() => setModalPhotoIsOpen(false)}
-              photo={modalPhoto}/>
-            </div>
-          </section>
           <section className="description">
-            <h2 className="restaurant-description">Описание</h2>
-            <div className="restaurant-description-wrapper" /*contentEditable="true"*/>
-              <p className="restaurant-description__text">{restaurant.description}</p>
-              <div className="restaurant-description-info">
-                <p className="restaurant-description__text">Адрес: г. {restaurant.town}, ул. {restaurant.address}</p>
-                <p className="restaurant-description__text">Контактные данные: {restaurant.phone}</p>
-                <p className="restaurant-description__text">Время работы: {restaurant.opening} - {restaurant.ending}</p>
+            <div className="gallery">
+              <div className="gallery-wrapper">
+                <img className="active-img" src={mainImage} alt="открытое фото галереи" width="616" height="380"/>
+                <ul className="gallery-preview">
+                  {images.map((image, index) => (
+                    <li className={`preview-item ${index === activeImage ? 'active' : ''}`} key={index}>
+                      <a href="#" onClick={(e) => { e.preventDefault(); setMainImage(image); setActiveImage(index);}}>
+                        <img src={image} width="180" height="120" alt={`Thumbnail ${index + 1}`} />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="gallery__bth">
+                <button className="menu__btn" onClick={() => {setModalPhoto(`data:image/jpeg;base64,${restaurant.menu}`); setModalPhotoIsOpen(true)}}></button>
+                <button className="plan__btn" onClick={() => {setModalPhoto(`data:image/jpeg;base64,${restaurant.plan}`); setModalPhotoIsOpen(true)}}></button>
+                <ModalPhoto
+                isOpen={modalPhotoIsOpen}
+                onClose={() => setModalPhotoIsOpen(false)}
+                photo={modalPhoto}/>
               </div>
             </div>
+            {restaurant.length !== 0 && restaurant.reviewData.length !== 0 &&
+              <div className="restaurant-description">
+                {restaurant.length !== 0 && restaurant.reviewData.length === 0 && <h2 className="restaurant-review">Описание</h2>}
+                <div className="restaurant-description-wrapper" /*contentEditable="true"*/>
+                  <p className="restaurant__text">{restaurant.description}</p>
+                  <div className="restaurant-description-info">
+                    <p className="restaurant__text">Адрес: г. {restaurant.town}, ул. {restaurant.address}</p>
+                    <p className="restaurant__text">Контактные данные: {restaurant.phone}</p>
+                    <p className="restaurant__text">Время работы: {restaurant.opening} - {restaurant.ending}</p>
+                  </div>
+                </div>
+              </div>
+            }
           </section>
+          {restaurant.length !== 0 && restaurant.reviewData.length !== 0 &&
+            <section className="review">
+              <h2 className="restaurant-review">Отзывы посетителей</h2>
+              {restaurant.reviewData.map((review) => (
+                <div className="review-card"  key={review.id}>
+                  <div className="restaurant-description-wrapper">
+                    <div className="restaurant-card-container">
+                      <h3 className="review-card-name">{review.login}</h3>
+                      <div className="review-star">{renderStars(review.grade, 30)}</div>
+                    </div>
+                    <p className="restaurant__text">{review.text}</p>
+                  </div>
+                </div>
+              ))}
+            </section>
+          }
+          {restaurant.length !== 0 && restaurant.reviewData.length === 0 &&
+            <section className="restaurant-description">
+              {restaurant.length !== 0 && restaurant.reviewData.length === 0 && <h2 className="restaurant-review">Описание</h2>}
+              <div className="restaurant-description-wrapper" /*contentEditable="true"*/>
+                <p className="restaurant__text">{restaurant.description}</p>
+                <div className="restaurant-description-info">
+                  <p className="restaurant__text">Адрес: г. {restaurant.town}, ул. {restaurant.address}</p>
+                  <p className="restaurant__text">Контактные данные: {restaurant.phone}</p>
+                  <p className="restaurant__text">Время работы: {restaurant.opening} - {restaurant.ending}</p>
+                </div>
+              </div>
+            </section>
+          }
         </div>
-        <div className="menu-popun">
+        <div className="restaurant-card-container">
             {authorizationStatus === AuthorizationStatus.ADMIN_REST && <button className="edit__btn" onClick={() => navigate(AppRoute.Edit)}></button>}
             {authorizationStatus !== AuthorizationStatus.NoAuth 
             ? authorizationStatus === AuthorizationStatus.ADMIN_REST 
@@ -85,7 +119,7 @@ export default function RestCardScreen () {
             isOpen={modalRegisterIsOpen}
             onClose={() => setModalRegisterIsOpen(false)}/>
         </div>
-      </div>
+      </section>
       <Footer/>
     </>
   )

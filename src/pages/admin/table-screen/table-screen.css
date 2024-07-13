@@ -4,17 +4,25 @@
 }
 
 .main-table {
+  padding: 20px 66px;
+}
+
+.table {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
-  padding: 40px 100px;
-  width: 1720px;
+  gap: 100px;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.plan__img {
+  width: 1024px;
+  height: 635px;
 }
 
 .table__field {
   display: flex;
   flex-direction: column;
-  margin-left: 100px;
 }
 
 .table__label {
@@ -37,6 +45,12 @@
   padding: 10px;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+.table-control {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .back__btn {

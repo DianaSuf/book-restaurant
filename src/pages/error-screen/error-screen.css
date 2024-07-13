@@ -4,11 +4,8 @@
 }
 
 .error {
+  min-height: 649px;
   display: flex; 
   justify-content: center; 
   align-items: center;
-}
-
-.error_img {
-  margin-top: 166px;
 }

@@ -30,12 +30,11 @@
 .modal-content {
   position: relative;
   margin-top: 136px;
-  /* width: 100%;
-  max-width: 640px; */
-  width: 640px;
+  width: 100%;
+  max-width: 640px;
   border-radius: 20px;
   background-color: #a25353;
-  padding: 10px 45px 49px 45px;
+  padding: 10px 45px 30px 45px;
   transform: translateY(-50px);
   transition: opacity 0.3s, transform 0.3s;
 }
@@ -50,23 +49,25 @@
   border: none;
   background-color: #FFFFFF;
   border-radius: 15px;
-  height: 70px;
+  height: 50px;
   left: 0;
   top: 0;
-  width: 640px;
+  max-width: 620px;
+  width: 100%;
   font-size: 32px;
   padding: 10px;
 }
 
 .register__field {
+  line-height: 46px;
   font-size: 32px;
-  margin-bottom: 17px;
+  margin-bottom: 5px;
   margin-top: 12px;
 }
 
 .sign-in__submit {
   display: flex;
-  margin-top: 17px;
+  margin-top: 27px;
 }
 
 .sign-in__btn {

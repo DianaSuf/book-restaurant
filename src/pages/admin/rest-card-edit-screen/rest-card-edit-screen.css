@@ -6,38 +6,35 @@
 .main-edit {
   display: flex; 
   flex-direction: column;
-  padding-left: 60px;
-  padding-right: 60px;
+  padding: 20px 60px;
 }
 
 .edit__form {
   display: flex;
   flex-direction: column;
-  /* flex-wrap: wrap; */
-  /* justify-content: center;  */
+  max-width: 1800px;
+  /* display: inline-flex;
+  flex-direction: column;
+  max-width: fit-content;
+  width: auto; */
   align-items: center;
-  position: relative;
+  /* position: relative; */
   margin-top: 100px;
-  /* width: 1712px; */
   border-radius: 20px;
   background-color: #a25353;
-  padding: 20px 45px 20px 45px;
+  padding: 20px 45px;
   transform: translateY(-50px);
   transition: opacity 0.3s, transform 0.3s;
 }
 
-.edit__form-container {
+.edit__form-content {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  gap: 50px;
 }
 
-.edit__form-info {
-  display: flex;
-  flex-direction: column;
-  margin-right: 50px;
-}
-
-.edit__form-description {
+.edit__form-container {
   display: flex;
   flex-direction: column;
 }
@@ -60,7 +57,7 @@
   margin-bottom: 20px;
 }
 
-.edit-container{
+.edit-container {
   display: flex;
 }
 
@@ -209,6 +206,7 @@
 .images {
   height: 180px;
   display: flex;
+  align-items: center;
   margin-bottom: 20px;
 }
 
@@ -221,7 +219,7 @@
 .change__btns {
   margin-left: 200px;
   width: 360px;
-  margin-top: 55px;
+  height: 70px;
 }
 
 .addImages_input {

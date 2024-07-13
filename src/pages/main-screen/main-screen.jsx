@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import './main-screen.css'
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
-import { FaStar } from 'react-icons/fa';
+import { renderStars } from '../../components/modal-review/star';
 import { useAppSelector } from '../../hooks/hook';
 import { useNavigate } from 'react-router-dom';
 import { AppRoute } from '../../const';
@@ -15,22 +15,6 @@ export default function MainScreen() {
   const filteredRestaurants = restaurants.filter(restaurant => {
     return restaurant.name.toLowerCase().includes(value.toLowerCase())
   })
-
-  const renderStars = (grade) => {
-    const totalStars = 3;
-    const filledColor = "#A25353";
-    const emptyColor = "#B3B3B3";
-  
-    const stars = [];
-    for (let i = 0; i < totalStars; i++) {
-      const color = i < grade ? filledColor : emptyColor;
-      stars.push(
-        <FaStar key={i} size={50} style={{ color }} />
-      );
-    }
-  
-    return stars;
-  };
 
   return (
     <>
@@ -60,7 +44,7 @@ export default function MainScreen() {
               <img className="main-image" src={`data:image/jpeg;base64,${restaurant.photo}`}/>
               <div className="restaurant-small-card-container">
                 <h2 className="restaurant-small-card-name">{restaurant.name}</h2>
-                <div className="restaurant-small-card-container-star">{renderStars(restaurant.grade)}</div>
+                <div className="restaurant-small-card-container-star">{renderStars(restaurant.grade, 50)}</div>
                 <p className="restaurant-small-card-info">г. {restaurant.town}</p>
                 <p className="restaurant-small-card-info">ул. {restaurant.address}</p>
                 <p className="restaurant-small-card-info">{restaurant.phone}</p>

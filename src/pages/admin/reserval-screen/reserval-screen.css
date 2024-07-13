@@ -3,10 +3,15 @@
   padding: 0;
 }
 
+.main-reserval {
+  padding: 20px 66px;
+}
+
 .reserval__form {
-  margin-right: 400px;
-  /* width: 1230px; */
-  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
 }
 
 .reserval__field {
@@ -103,5 +108,5 @@
   background-image: url('/next.svg');
   background-size: cover;
   cursor: pointer;
-  margin: 40px;
+  margin-top: 20px;
 }
