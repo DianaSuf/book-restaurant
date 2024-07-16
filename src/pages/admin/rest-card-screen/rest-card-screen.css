@@ -4,29 +4,49 @@
 }
 
 .restaurant-card {
-  padding: 20px 66px;
+  padding: 1.04% 3.44%;
 }
 
 .restaurant-card-content{
   display: flex;
   flex-wrap: wrap;
-  gap: 61px;
+  gap: 3.18%;
   margin-bottom: 15px;
 }
 
 .description {
-  margin-left: 0;
+  flex-direction: column;
+  width: 44.64vw;
+  min-width: 550px;
+  max-width: 857px;
 }
 
 .restaurant-name {
-  font-size: 60px;
+  display: inline-flex;
+  align-items: center;
+  font-size: clamp(30px, 3.13vw, 60px);
   font-weight: 500;
   color: #a25353;
 }
 
-.gallery {
-  width: 857px;
+.restaurant-star-container {
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+  width: 7.81vw;
+  max-width: 160px;
 }
+
+.review-star {
+  display: flex;
+  flex-direction: row;
+  width: 5.21vw;
+  max-width: 100px;
+}
+
+/* .gallery {
+  width: 857px;
+} */
 
 .gallery-wrapper {
   display: flex;
@@ -37,20 +57,40 @@
 
 .active-img {
   display: block;
-  margin-right: 61px;
+  margin-right: 7%;
+  width: 33vw;
+  min-width: 400px;
+  max-width: 616px;
+  height: 19.79vw;
+  min-height: 246px;
+  max-height: 380px;
 }
 
-.gallery-preview  {
+.gallery-preview {
   margin: 0;
   padding: 0;
   list-style: none;
-  width: 180px;
+  /* width: 180px; */
 }
 
 .preview-item {
   margin: 0;
-  margin-bottom: 10px;
-  height: 120px;
+  margin-bottom: 5.56%;
+  width: 9.38vw;
+  min-width: 112px;
+  max-width: 180px;
+  height: 6.25vw;
+  min-height: 75px;
+  max-height: 120px;
+}
+
+.preview-img {
+  width: 9.38vw;
+  max-width: 180px;
+  min-width: 112px;
+  height: 6.25vw;
+  min-height: 75px;
+  max-height: 120px;
 }
 
 .preview-item img {
@@ -82,24 +122,27 @@
 
 .gallery__bth {
   margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 .review {
   max-width: 870px;
-  flex: 1 0 400px;
+  flex: 1 0 239px;
 }
 
 .restaurant-review {
   line-height: 40px;
   margin-bottom: 10px;
-  font-size: 48px;
+  font-size: clamp(25px, 2.5vw, 48px);
   font-weight: 400;
   color: #a25353;
 }
 
 .restaurant-description {
+  display: inline-flex;
+  flex-direction: column;
   max-width: 857px;
-  flex: 1 0 400px;
+  flex: 1 0 239px;
 }
 
 .restaurant-description-wrapper {
@@ -107,7 +150,7 @@
   border-radius: 20px;
   position: relative;
   padding: 10px 14px;
-  margin: 15px 0px;
+  margin-bottom: 15px;
 }
 
 .restaurant-card-container {
@@ -116,15 +159,15 @@
 }
 
 .review-card-name {
-  font-size: 32px;
+  font-size: clamp(14px, 1.67vw, 32px);
   font-weight: 500;
   color: black;
   margin-bottom: 10px;
 }
 
 .restaurant__text {
-  line-height: 40px;
-  font-size: 32px;
+  /* line-height: 40px; */
+  font-size: clamp(14px, 1.67vw, 32px);
   font-weight: 400;
   color: black;
 }
@@ -142,8 +185,11 @@
   outline: none; 
   background-color: transparent;
   border: none;
-  height: 70px;
-  width: 170px;
+  height: 3.65vw;
+  max-height: 70px;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 170 / 70;
   background-image: url('/menu.svg');
   background-size: cover;
   margin-right: 32px;
@@ -155,8 +201,11 @@
   outline: none; 
   background-color: transparent;
   border: none;
-  height: 70px;
-  width: 360px;
+  height: 3.65vw;
+  max-height: 70px;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 360 / 70;
   background-image: url('/plan.svg');
   background-size: cover;
   cursor: pointer;
@@ -167,8 +216,11 @@
   outline: none; 
   background-color: transparent;
   border: none;
-  height: 70px;
-  width: 343px;
+  height: 3.65vw;
+  max-height: 70px;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 343 / 70;
   margin-bottom: 20px;
   background-image: url('/edit.svg');
   background-size: cover;
@@ -180,10 +232,130 @@
   outline: none; 
   background-color: transparent;
   border: none;
-  height: 100px;
-  width: 330px;
+  height: 5.21vw;
+  max-height: 100px;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 330 / 100;
   margin-left: auto;
   background-image: url('/book.svg');
   background-size: cover;
   cursor: pointer;
+}
+
+
+@media (max-width: 1243px) {
+  .preview-item {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 875px) {
+  .description {
+    width: 100%;
+    min-width: 400px;
+  }
+  .active-img {
+    margin-right: 7%;
+    width: 70.4vw;
+    height: 43.43vw;
+  }
+  .preview-item {
+    margin-bottom: 5.56%;
+    width: 20.57vw;
+    height: 13.71vw;
+  }
+  .preview-img {
+    width: 20.57vw;
+    height: 13.71vw;
+  }
+  .restaurant-star-container {
+    width: 15vw;
+  }
+  .review-star {
+    width: 10vw;
+  }
+  .menu__btn {
+    height: 5.69vw;
+    max-height: 50px;
+    aspect-ratio: 121.43 / 50;
+    /* margin-right: 32px; */
+  }
+  .plan__btn {
+    height: 5.69vw;
+    max-height: 50px;
+    aspect-ratio: 257.14 / 50;
+  }
+  .edit__btn {
+    height: 5.69vw;
+    max-height: 50px;
+    aspect-ratio: 245 / 50;
+    /* margin-bottom: 20px; */
+  }
+  .book__btn {
+    height: 6.83vw;
+    max-height: 60px;
+    aspect-ratio: 198 / 60;
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 605px) {
+  .gallery-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  .gallery-preview {
+    display: flex;
+  }
+  .active-img {
+    margin-right: 0;
+    width: 93.89vw;
+    max-width: 562px;
+    height: 57.31vw;
+    max-height: 346.75px;
+  }
+  .preview-item {
+    margin-top: 15px;
+    margin-bottom: 0;
+    margin-right: 10px;
+    width: 29.75vw;
+    height: 19.83vw;
+  }
+  .preview-img {
+    width: 29.75vw;
+    height: 19.83vw;
+  }
+  .preview-item:last-child {
+    margin-right: 0;
+  }
+  .restaurant-star-container {
+    width: 17vw;
+  }
+  .review-star {
+    width: 12vw;
+  }
+  .menu__btn {
+    height: 6.61vw;
+    max-height: 40px;
+    aspect-ratio: 97,14 / 40;
+    /* margin-right: 32px; */
+  }
+  .plan__btn {
+    height: 6.61vw;
+    max-height: 40px;
+    aspect-ratio: 205,71 / 40;
+  }
+  .edit__btn {
+    height: 6.61vw;
+    max-height: 40px;
+    aspect-ratio: 196 / 40;
+    /* margin-bottom: 20px; */
+  }
+  .book__btn {
+    height: 8.26vw;
+    max-height: 50px;
+    aspect-ratio: 165 / 50;
+    margin-left: auto;
+  }
 }

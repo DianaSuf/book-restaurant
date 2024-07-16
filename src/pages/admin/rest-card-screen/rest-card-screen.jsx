@@ -38,17 +38,17 @@ export default function RestCardScreen () {
       </Helmet>
       <Header/>
       <section className="restaurant-card">
-        <h1 className="restaurant-name">{restaurant.name} {renderStars(restaurant.avgRating, 50)}</h1>
+        <h1 className="restaurant-name">{restaurant.name}<div className="restaurant-star-container"> {renderStars(restaurant.avgRating, 50)}</div></h1>
         <div className="restaurant-card-content">
           <section className="description">
             <div className="gallery">
               <div className="gallery-wrapper">
-                <img className="active-img" src={mainImage} alt="открытое фото галереи" width="616" height="380"/>
+                <img className="active-img" src={mainImage}/>
                 <ul className="gallery-preview">
                   {images.map((image, index) => (
                     <li className={`preview-item ${index === activeImage ? 'active' : ''}`} key={index}>
                       <a href="#" onClick={(e) => { e.preventDefault(); setMainImage(image); setActiveImage(index);}}>
-                        <img src={image} width="180" height="120" alt={`Thumbnail ${index + 1}`} />
+                        <img className="preview-img" src={image} alt={`Thumbnail ${index + 1}`} />
                       </a>
                     </li>
                   ))}

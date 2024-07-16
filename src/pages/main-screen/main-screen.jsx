@@ -44,7 +44,7 @@ export default function MainScreen() {
               <img className="main-image" src={`data:image/jpeg;base64,${restaurant.photo}`}/>
               <div className="restaurant-small-card-container">
                 <h2 className="restaurant-small-card-name">{restaurant.name}</h2>
-                <div className="restaurant-small-card-container-star">{renderStars(restaurant.grade, 50)}</div>
+                <div className="restaurant-small-card-container-star"><div className="star-container">{renderStars(restaurant.grade, 50)}</div></div>
                 <p className="restaurant-small-card-info">г. {restaurant.town}</p>
                 <p className="restaurant-small-card-info">ул. {restaurant.address}</p>
                 <p className="restaurant-small-card-info">{restaurant.phone}</p>

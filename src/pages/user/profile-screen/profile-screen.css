@@ -4,7 +4,10 @@
 }
 
 .profile {
-  display: flex; 
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 3.8%;
   flex-direction: row;
   padding: 20px 66px;
   min-height: 609px;
@@ -13,13 +16,13 @@
 .data-user {
   display: flex; 
   flex-direction: column;
-  width: 420px;
-  margin-right: 73px;
+  max-width: 420px;
+  width: 100%;
 }
 
 .reservations {
   max-width: 1295px;
-  width: 100%;
+  flex: 1 0 502px;
 }
 
 .book-header {
@@ -64,7 +67,7 @@
 }
 
 .reserval-small-card-container {
-  max-width: 1200px;
+  width: 100%;
 }
 
 .switch__bth {
@@ -135,7 +138,8 @@
   display: flex; 
   flex-direction: column;
   position: relative;
-  width: 366px;
+  width: 100%;
+  max-width: 366px;
   border-radius: 20px;
   background-color: #a25353;
   padding: 20px 27px 10px 27px;
@@ -152,7 +156,8 @@
   height: 40px;
   left: 0;
   top: 0;
-  width: 340px;
+  width: 100%;
+  max-width: 340px;
   font-size: 32px;
   padding: 10px;
   margin-bottom: 10px;

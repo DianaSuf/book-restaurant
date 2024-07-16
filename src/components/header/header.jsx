@@ -31,39 +31,31 @@ export default function Header() {
     <>
       {(authorizationStatus === 'UNKNOWN' || authorizationStatus === 'NO_AUTH') && (
         <section className="header">
-          <Link className="logo" to="/" onClick={handleLogoClick}><img className="logo_link" alt="logo" src={logo}/></Link>
-          <div className="login">
-            <button className="login__btn" onClick={() => setModalRegisterIsOpen(true)}></button>
-            <ModalRegister
-            isOpen={modalRegisterIsOpen}
-            onClose={() => setModalRegisterIsOpen(false)}/>
-          </div>
+          <Link className="logo" to="/" onClick={handleLogoClick}></Link>
+          <button className="login__btn" onClick={() => setModalRegisterIsOpen(true)}></button>
+          <ModalRegister
+          isOpen={modalRegisterIsOpen}
+          onClose={() => setModalRegisterIsOpen(false)}/>
         </section>
       )}
       {authorizationStatus === 'USER' && (
         <section className="header">
-          <Link className="logo" to="/" onClick={handleLogoClick}><img className="logo_link" alt="logo" src={logo}/></Link>
-          <div className="user_panel">
-            <button className="logout__btn" onClick={handleClose}></button>
-            <button className="profile__btn" onClick={() => navigate(AppRoute.Profile)}></button>
-          </div>
+          <Link className="logo" to="/" onClick={handleLogoClick}></Link>
+          <button className="logout__btn" onClick={handleClose}></button>
+          <button className="profile__btn" onClick={() => navigate(AppRoute.Profile)}></button>
         </section>
       )}
       {authorizationStatus === 'ADMIN_REST' && (
         <section className="header">
-          <Link className="logo" to="/restaurant"><img className="logo_link" alt="logo" src={logo}/></Link>
-          <div className="admin_panel">
-            <button className="logout__btn" onClick={handleClose}></button>
-            <button className="profile__btn" onClick={() => navigate(AppRoute.Profile)}></button>
-          </div>
+          <Link className="logo" to="/restaurant"></Link>
+          <button className="logout__btn" onClick={handleClose}></button>
+          <button className="profile__btn" onClick={() => navigate(AppRoute.Profile)}></button>
         </section>
       )}
       {authorizationStatus === 'ADMIN_APP' && (
         <section className="header">
           <img className="logo" alt="logo" src={logo}/>
-          <div className="super-admin_panel">
-            <button className="logout__btn" onClick={handleClose}></button>
-          </div>
+          <button className="logout__btn" onClick={handleClose}></button>
         </section>
       )}
     </>

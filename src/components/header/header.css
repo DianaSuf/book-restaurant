@@ -5,21 +5,28 @@
 
 .header {
   background-color: #a25353;
-  height: 150px;
+  height: 7.81vw;
   left: 0;
   top: 0;
   max-width: 1920px;
   /* width: 100%; */
   width: 100vw;
+  max-height: 150px;
   display: flex;
   align-items: center;
 }
 
 .logo {
-  height: 97px;
-  width: 438px;
+  height: 5.21vw;
+  max-height: 100px;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 450 / 100;
   margin-right: auto;
-  margin-left: 50px;
+  margin-left: 2.6%;
+  background-image: url('/logo.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
   cursor: pointer;
 }
 
@@ -28,8 +35,11 @@
   outline: none; 
   background-color: transparent;
   border: none;
-  height: 100px;
-  width: 330px;
+  height: 5.21vw;
+  max-height: 100px;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 330 / 100;
   background-image: url('/login.svg');
   background-size: cover;
   margin-left: auto;
@@ -42,12 +52,16 @@
   outline: none; 
   background-color: transparent;
   border: none;
-  height: 100px;
-  width: 180px;
-  background-image: url('/logout22.svg');
-  background-size: cover;
+  height: 5.21vw;
+  max-height: 100px;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 180 / 100;
+  background-image: url('/logout.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
   margin-left: auto;
-  margin-right: 40px;
+  margin-right: 2.08%;
   cursor: pointer;
 }
 
@@ -56,11 +70,40 @@
   outline: none; 
   background-color: transparent;
   border: none;
-  height: 100px;
-  width: 330px;
+  height: 5.21vw;
+  max-height: 100px;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 330 / 100;
   background-image: url('/profile.svg');
-  background-size: cover;
-  margin-left: auto;
-  margin-right: 40px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 2.08%;
   cursor: pointer;
+}
+
+
+@media (max-width: 875px) {
+  .login__btn {
+    width: 0;
+    height: 0;
+  }
+  .logout__btn {
+    width: 0;
+    height: 0;
+  }
+  .profile__btn {
+    width: 0;
+    height: 0;
+  }
+  .logo {
+    height: 7.77vw;
+    max-height: 66px;
+    width: auto;
+    max-width: 500px;
+  }
+  .header {
+    height: 11.43vw;
+    max-height: 100px;
+  }
 }
