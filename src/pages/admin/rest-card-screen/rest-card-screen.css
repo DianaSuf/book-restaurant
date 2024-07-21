@@ -251,6 +251,12 @@
 }
 
 @media (max-width: 875px) {
+  .restaurant-name {
+    font-size: clamp(30px, 5.49vw, 48px);
+  }
+  .restaurant-review {
+    font-size: clamp(25px, 3.66vw, 32px);
+  }
   .description {
     width: 100%;
     min-width: 400px;
@@ -339,7 +345,7 @@
     height: 6.61vw;
     max-height: 40px;
     aspect-ratio: 97,14 / 40;
-    /* margin-right: 32px; */
+    margin-right: 20px;
   }
   .plan__btn {
     height: 6.61vw;

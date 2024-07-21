@@ -28,6 +28,23 @@
 }
 
 .photo {
-  width: 1315px;
-  height: 750px;
+  width: 68.49vw;
+  max-width: 1315px;
+  height: 39.53vw;
+  max-height: 759px;
+}
+
+
+@media (max-width: 875px) {
+  .photo {
+    width: 80vw;
+    height: 46.04vw;
+  }
+}
+
+@media (max-width: 605px) {
+  .photo {
+    width: 90vw;
+    height: 52.03vw;
+  }
 }

@@ -130,7 +130,7 @@ export default function ReservalScreen () {
               required
             />
           </div>
-          <div className="reserval__field">
+          <div className="reserval__field-time">
             <div className="reserval__field">
               <label
                 className="reserval__label"
@@ -187,7 +187,7 @@ export default function ReservalScreen () {
               required
             />
           </div>
-          <div className="reserval__field">
+          <div className="reserval__field-textarea">
             <label
               className="reserval__label"
               htmlFor="reserval-wishes"

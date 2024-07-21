@@ -9,3 +9,21 @@
   justify-content: center; 
   align-items: center;
 }
+
+.error_img {
+  width: 33.7vw;
+  max-width: 647px;
+  /* min-width: 112px; */
+  height: 17.29vw;
+  /* min-height: 75px; */
+  max-height: 332px;
+}
+
+@media (max-width: 875px) {
+  .error_img {
+    width: 73.94vw;
+    max-width: 647px;
+    height: 37.94vw;
+    max-height: 332px;
+  }
+}

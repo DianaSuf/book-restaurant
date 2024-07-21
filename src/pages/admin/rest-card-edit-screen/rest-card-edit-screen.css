@@ -6,23 +6,25 @@
 .main-edit {
   display: flex; 
   flex-direction: column;
-  padding: 20px 60px;
+  padding: 1.0417% 3.125%;
+}
+
+.edit__form-restarant {
+  display: flex;
+  justify-content: center;
 }
 
 .edit__form {
   display: flex;
   flex-direction: column;
-  max-width: 1800px;
-  /* display: inline-flex;
-  flex-direction: column;
-  max-width: fit-content;
-  width: auto; */
+  width: 89.0625vw;
+  max-width: 1710px;
+  min-width: 400px;
   align-items: center;
-  /* position: relative; */
-  margin-top: 100px;
-  border-radius: 20px;
+  margin-top: 5.21vw;
+  border-radius: 1.0417vw;
   background-color: #a25353;
-  padding: 20px 45px;
+  padding: 1.0417vw 2.3438vw;
   transform: translateY(-50px);
   transition: opacity 0.3s, transform 0.3s;
 }
@@ -31,7 +33,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 50px;
+  gap: 2.6vw;
 }
 
 .edit__form-container {
@@ -39,25 +41,37 @@
   flex-direction: column;
 }
 
+.edit__form-container-description {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 454.9px;
+}
+
 .edit__label {
-  font-size: 32px;
+  font-size: clamp(14px, 1.67vw, 32px);
 }
 
 .edit__input {
   border: none;
   background-color: #FFFFFF;
-  border-radius: 15px;
-  height: 70px;
+  border-radius: 0.7813vw;
+  height: 3.6458vw;
+  max-height: 70px;
   left: 0;
   top: 0;
-  width: 640px;
-  font-size: 32px;
-  padding: 10px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  width: 33.334vw;
+  max-width: 640px;
+  font-size: clamp(14px, 1.67vw, 32px);
+  padding: 0.5208vw;
+  margin-top: 1.0417vw;
+  margin-bottom: 1.0417vw;
 }
 
 .edit-container {
+  display: flex;
+}
+
+.edit-container-time {
   display: flex;
 }
 
@@ -69,98 +83,112 @@
 .edit-town__input {
   border: none;
   background-color: #FFFFFF;
-  border-radius: 15px;
-  height: 70px;
+  border-radius: 0.7813vw;
+  height: 3.6458vw;
+  max-height: 70px;
   left: 0;
   top: 0;
-  width: 178px;
-  font-size: 32px;
-  padding: 10px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-right: 30px;
+  width: 9.2708vw;
+  max-width: 178px;
+  font-size: clamp(14px, 1.67vw, 32px);
+  padding: 0.5208vw;
+  margin-top: 1.0417vw;
+  margin-bottom: 1.0417vw;
+  margin-right: 1.5625vw;
 }
 
 .edit-address__input {
   border: none;
   background-color: #FFFFFF;
-  border-radius: 15px;
-  height: 70px;
+  border-radius: 0.7813vw;
+  height: 3.6458vw;
+  max-height: 70px;
   left: 0;
   top: 0;
-  width: 413px;
-  font-size: 32px;
-  padding: 10px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  width: 21.5104vw;
+  max-width: 413px;
+  font-size: clamp(14px, 1.67vw, 32px);
+  padding: 0.5208vw;
+  margin-top: 1.0417vw;
+  margin-bottom: 1.0417vw;
 }
 
 .edit-description__textarea {
   resize: none;
-  line-height: 40px;
-  font-size: 32px;
+  line-height: 2.0833vw;
+  font-size: clamp(14px, 1.67vw, 32px);
   border: none;
   background-color: #FFFFFF;
-  border-radius: 15px;
-  height: 242px;
+  border-radius: 0.7813vw;
+  height: 12.6042vw;
+  max-height: 242px;
   left: 0;
   top: 0;
-  width: 978px;
-  padding: 10px;
-  margin-top: 20px;
+  width: 50.9375vw;
+  max-width: 978px;
+  min-width: 352px;
+  padding: 0.5208vw;
+  margin-top: 1.0417vw;
 }
 
 .symbols {
   margin-left: auto;
+  font-size: clamp(10px, 0.8334vw, 16px);;
 }
 
 .edit-description-info__input {
   border: none;
   background-color: #FFFFFF;
-  border-radius: 15px;
-  height: 70px;
+  border-radius: 0.7813vw;
+  height: 3.6458vw;
+  max-height: 70px;
   left: 0;
   top: 0;
-  width: 460px;
-  font-size: 32px;
-  padding: 10px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-right: 35px;
+  width: 23.9583vw;
+  max-width: 460px;
+  font-size: clamp(14px, 1.67vw, 32px);
+  padding: 0.5208vw;
+  margin-top: 1.0417vw;
+  margin-bottom: 1.0417vw;
+  margin-right: 1.8229vw;
 }
 
 .edit-description-info-last__input {
   border: none;
   background-color: #FFFFFF;
-  border-radius: 15px;
-  height: 70px;
+  border-radius: 0.7813vw;
+  height: 3.6458vw;
+  max-height: 70px;
   left: 0;
   top: 0;
-  width: 460px;
-  font-size: 32px;
-  padding: 10px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  width: 23.9583vw;
+  max-width: 460px;
+  font-size: clamp(14px, 1.67vw, 32px);
+  padding: 0.5208vw;
+  margin-top: 1.0417vw;
+  margin-bottom: 1.0417vw;
 }
 
 .edit__label-tables {
-  font-size: 32px;
+  font-size: clamp(14px, 1.67vw, 32px);
   color: #a25353;
 }
 
 .edit-description-info__input-tables {
   border: none;
   background-color: #FFFFFF;
-  border-radius: 15px;
-  height: 70px;
+  border-radius: 0.7813vw;
+  height: 3.6458vw;
+  max-height: 70px;
   left: 0;
   top: 0;
-  width: 290px;
-  font-size: 32px;
-  padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  border: 5px solid #a25353;
+  width: 15.1042vw;
+  max-width: 290px;
+  font-size: clamp(14px, 1.67vw, 32px);
+  padding: 0.5208vw;
+  margin-top: 0.5208vw;
+  margin-bottom: 1.0417vw;
+  border: 0.2604vw solid #a25353;
 }
 
 .save-tables__btn {
@@ -169,8 +197,11 @@
   outline: none; 
   background-color: transparent;
   border: none;
-  height: 70px;
-  width: 290px;
+  height: 3.6458vw;
+  max-height: 70px;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 290 / 70;
   margin-top: 70px;
   margin-left: 67px;
   background-image: url('/save.svg');
@@ -179,10 +210,10 @@
 }
 
 .save-tables__text {
-  font-size: 32px;
+  font-size: clamp(14px, 1.67vw, 32px);
   color: #a25353;
-  margin-left: 54px;
-  margin-top: 80px;
+  margin-left: 2.8125vw;
+  margin-top: 4.1667vw;
 }
 
 .save__btn {
@@ -190,8 +221,11 @@
   outline: none; 
   background-color: transparent;
   border: none;
-  height: 70px;
-  width: 290px;
+  height: 3.6458vw;
+  max-height: 70px;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 290 / 70;
   background-image: url('/save.svg');
   background-size: cover;
   cursor: pointer;
@@ -204,22 +238,30 @@
 }
 
 .images {
-  height: 180px;
+  /* height: 9.375vw;
+  max-height: 180px; */
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 1.0417vw;
 }
 
 .image {
-  width: 280px;
-  height: 180px;
-  margin-right: 10px;
+  width: 14.5833vw;
+  height: 9.375vw;
+  margin-right: 0.5208vw;
+  max-width: 280px;
+  max-height: 180px;
+  min-width: 127.33px;
+  min-height: 83.41px;
 }
 
 .change__btns {
-  margin-left: 200px;
-  width: 360px;
-  height: 70px;
+  margin-left: 10.4167vw;
+  width: 18.75vw;
+  height: 3.6458vw;
+  max-width: 360px;
+  max-height: 70px;
 }
 
 .addImages_input {
@@ -232,8 +274,11 @@
   outline: none; 
   background-color: transparent;
   border: none;
-  height: 70px;
-  width: 360px;
+  height: 3.6458vw;
+  max-height: 70px;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 360 / 70;
   background-image: url('/changePhoto.svg');
   background-size: cover;
   cursor: pointer;
@@ -248,8 +293,11 @@
   outline: none; 
   background-color: transparent;
   border: none;
-  height: 70px;
-  width: 360px;
+  height: 3.6458vw;
+  max-height: 70px;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 360 / 70;
   background-image: url('/addMenu.svg');
   background-size: cover;
   cursor: pointer;
@@ -264,8 +312,11 @@
   outline: none; 
   background-color: transparent;
   border: none;
-  height: 70px;
-  width: 360px;
+  height: 3.6458vw;
+  max-height: 70px;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 360 / 70;
   background-image: url('/addPlan.svg');
   background-size: cover;
   cursor: pointer;
@@ -276,10 +327,45 @@
   outline: none; 
   background-color: transparent;
   border: none;
-  height: 70px;
-  width: 550px;
+  height: 3.6458vw;
+  max-height: 70px;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 550 / 70;
   background-image: url('/backCard.svg');
   background-size: cover;
   cursor: pointer;
   margin-bottom: 50px;
+}
+
+
+@media (max-width: 1200px) {
+  .edit__form {
+    margin-top: 7.21vw;
+  }
+}
+
+@media (max-width: 875px) {
+  .edit__form {
+    margin-top: 9.21vw;
+    width: 52.5714vw;
+  }
+  .edit__form-content {
+    gap: 0;
+  }
+  .edit-container {
+    flex-direction: column;
+  }
+  .edit__input {
+    width: 100%;
+    min-width: 352px;
+  }
+  .edit-town__input {
+    width: 50.9375vw;
+    min-width: 352px;
+  }
+  .edit-address__input {
+    width: 50.9375vw;
+    min-width: 352px;
+  }
 }

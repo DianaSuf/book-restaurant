@@ -25,6 +25,7 @@
     bottom: 0;
     background-image: url('/promo2.jpg');
     background-size: cover;
+    background-position: center;
     filter: brightness(60%);
     z-index: -1;
 }
@@ -125,9 +126,15 @@
     color: black;
 }
 
+
 @media (max-width: 1100px) {
     .restaurant-small-card-container-star {
         padding-bottom: 0;
+    }
+    .search__input {
+        padding-right: 6%;
+        background-position: right 12px center;
+        border-radius: 10px;
     }
 }
 
@@ -148,10 +155,7 @@
         padding-bottom: 4.8%;
     }
     .promo {
-        height: 60.47vw;
-    }
-    .search {
-        margin-right: 0;
+        height: 59vw;
     }
     .search__input {
         background-size: 5.71vw;
@@ -160,6 +164,7 @@
         padding: 1.36%;
         padding-right: 8%;
         border-radius: 10px;
+        padding-right: 10%;
     }
 }
 
@@ -169,9 +174,12 @@
     }
     .search__input {
         border-radius: 7px;
-        background-position: right 10px center;
+        background-position: right 8px center;
     }
     .restaurant-small-card-container-star {
         padding-bottom: 0;
+    }
+    .search {
+        margin-right: 40px;
     }
 }

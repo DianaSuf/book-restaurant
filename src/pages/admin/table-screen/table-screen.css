@@ -4,47 +4,56 @@
 }
 
 .main-table {
-  padding: 20px 66px;
+  padding: 1.04% 3.44%;
 }
 
 .table {
   display: flex;
   flex-wrap: wrap;
-  gap: 100px;
+  gap: 5.20833%;
   justify-content: space-around;
-  margin-top: 20px;
+  margin-top: 1.04167vw;
 }
 
 .plan__img {
-  width: 1024px;
-  height: 635px;
+  width: 45.03229vw;
+  max-width: 862.62px;
+  height: 27.86458vw;
+  max-height: 535px;
+  margin-bottom: 2.08333vw;
 }
 
 .table__field {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  flex: 1 0 378.45px;
 }
 
 .table__label {
   line-height: normal;
-  font-size: 48px;
+  font-size: clamp(25px, 2.5vw, 48px);
   color: #a25353;
-  margin-right: 60px;
-  justify-content: flex-start
+  /* margin-right: 60px; */
+  /* justify-content: flex-start */
 }
 
 .table__select {
   border: none;
   background-color: #ececec;
   border-radius: 15px;
-  height: 90px;
+  height: 4.6875vw;
+  max-height: 90px;
+  min-height: 40px;
   left: 0;
   top: 0;
-  width: 570px;
-  font-size: 32px;
-  padding: 10px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  width: 24.13802vw;
+  max-width: 463.45px;
+  min-width: 241.38px;
+  font-size: clamp(14px, 1.67vw, 32px);
+  padding: 0.52083vw;
+  margin-top: 1.04167vw;
+  margin-bottom: 1.04167vw;
 }
 
 .table-control {
@@ -58,12 +67,15 @@
   outline: none; 
   background-color: transparent;
   border: none;
-  height: 100px;
-  width: 330px;
+  height: 4.16667vw;
+  max-height: 80px;
+  min-height: 30px;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 264 / 80;
   background-image: url('/back.svg');
   background-size: cover;
   cursor: pointer;
-  margin-top: 40px;
 }
 
 .reserval__btn {
@@ -71,11 +83,36 @@
   outline: none; 
   background-color: transparent;
   border: none;
-  height: 100px;
-  width: 330px;
+  height: 4.16667vw;
+  max-height: 80px;
+  min-height: 30px;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 264 / 80;
   background-image: url('/reserval.svg');
   background-size: cover;
   cursor: pointer;
-  margin-top: 40px;
-  margin-left: 40px;
+  margin-left: 2.08333vw;
+}
+
+
+@media (max-width: 875px) {
+  .plan__img {
+    width: 93.02857vw;
+    max-width: 814px;
+    height: 57.94286vw;
+    max-height: 507px;
+  }
+  .table__field {
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 2.28571vw;
+  }
+  .table__label {
+    margin-right: 2.28571vw;
+  }
+  .table__select {
+    border-radius: 10px;
+    min-width: 140px;
+  }
 }

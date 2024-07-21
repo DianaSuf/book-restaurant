@@ -38,7 +38,7 @@ export default function RestCardScreen () {
       </Helmet>
       <Header/>
       <section className="restaurant-card">
-        <h1 className="restaurant-name">{restaurant.name}<div className="restaurant-star-container"> {renderStars(restaurant.avgRating, 50)}</div></h1>
+        <h1 className="restaurant-name">{restaurant.name}<div className="restaurant-star-container">{renderStars(restaurant.avgRating, 50)}</div></h1>
         <div className="restaurant-card-content">
           <section className="description">
             <div className="gallery">

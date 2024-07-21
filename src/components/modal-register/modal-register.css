@@ -30,44 +30,52 @@
 .modal-content {
   position: relative;
   margin-top: 136px;
-  width: 100%;
+  width: 33.33vw;
   max-width: 640px;
-  border-radius: 20px;
+  min-width: 300px;
+  border-radius: 1.0417vw;
   background-color: #a25353;
-  padding: 10px 45px 30px 45px;
+  padding: 0.521% 2.344% 1.563% 2.344%;
   transform: translateY(-50px);
   transition: opacity 0.3s, transform 0.3s;
 }
 
+.register__form {
+  display: inline;
+}
+
 .name__form {
   text-align: center;
-  font-size: 48px;
+  font-size: clamp(25px, 2.5vw, 48px);
   font-weight: 500;
 }
 
 .register__input {
   border: none;
   background-color: #FFFFFF;
-  border-radius: 15px;
-  height: 50px;
+  border-radius: 0.7813vw;
+  /* height: 50px; */
   left: 0;
   top: 0;
   max-width: 620px;
-  width: 100%;
-  font-size: 32px;
-  padding: 10px;
+  min-width: 289px;
+  width: 32.2917vw;
+  font-size: clamp(14px, 1.67vw, 32px);
+  padding: 1.563%;
 }
 
 .register__field {
-  line-height: 46px;
-  font-size: 32px;
-  margin-bottom: 5px;
-  margin-top: 12px;
+  /* line-height: 2.3958vw; */
+  font-size: clamp(14px, 1.67vw, 32px);
+  margin-bottom: 0.782%;
+  margin-top: 1.8755%;
 }
 
 .sign-in__submit {
   display: flex;
-  margin-top: 27px;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: 4.22%;
 }
 
 .sign-in__btn {
@@ -75,12 +83,16 @@
   outline: none; 
   background-color: transparent;
   border: none;
-  height: 80px;
-  width: 270px;
+  height: 4.17vw;
+  max-height: 80px;
+  min-height: 37px;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 270 / 80;
   background-image: url('/sign-in.svg');
+  background-size: cover;
   cursor: pointer;
-  margin-top: 19px;
-  margin-right: auto;
+  margin-right: 2%;
 }
 
 .register__btn {
@@ -88,17 +100,33 @@
   outline: none; 
   background-color: transparent;
   border: none;
-  height: 80px;
-  width: 270px;
+  height: 4.17vw;
+  max-height: 80px;
+  min-height: 37px;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 270 / 80;
   background-image: url('/register.svg');
+  background-size: cover;
   cursor: pointer;
-  margin-right: auto;
+  margin-right: 2%;
 }
 
 .text__btn {
   font-weight: 500;
-  font-size: 32px;
+  font-size: clamp(14px, 1.67vw, 32px);
   text-align: center;
-  width: 358px;
+  /* width: 358px; */
   cursor: pointer;
+  margin-left: auto;
+}
+
+
+@media (max-width: 875px) {
+  .modal-content {
+    border-radius: 2.2857vw;
+  }
+  .register__input {
+    border-radius: 1.7143vw;
+  }
 }

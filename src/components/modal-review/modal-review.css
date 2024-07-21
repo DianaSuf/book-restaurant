@@ -29,13 +29,12 @@
 
 .modal-review-content {
   position: relative;
-  /* margin-top: 136px; */
-  /* width: 100%;
-  max-width: 640px; */
-  /* width: 904px; */
+  margin-top: 136px;
+  width: 47.0833vw;
+  max-width: 904px;
   border-radius: 20px;
   background-color: #a25353;
-  padding: 32px 48px 29px 48px;
+  padding: 1.667% 2.5% 1.511% 2.5%;
   transform: translateY(-50px);
   transition: opacity 0.3s, transform 0.3s;
 }
@@ -55,9 +54,16 @@
 }
 
 .review-text {
-  font-size: 48px;
-  line-height: 70px;
+  font-size: clamp(25px, 2.5vw, 48px);
+  /* line-height: 70px; */
   margin-right: 20px;
+}
+
+.review-star-container {
+  display: flex;
+  flex-direction: row;
+  width: 8.33vw;
+  max-width: 160px;
 }
 
 input[type=radio] {
@@ -70,16 +76,17 @@ input[type=radio] {
 
 .review__textarea {
   resize: none;
-  line-height: 40px;
-  font-size: 32px;
+  /* line-height: 40px; */
+  font-size: clamp(14px, 1.67vw, 32px);
   border: none;
   background-color: #FFFFFF;
   border-radius: 20px;
-  height: 300px;
+  height: 17.625vw;
   left: 0;
   top: 0;
-  width: 864px;
-  padding: 20px;
+  width: 45vw;
+  max-width: 864px;
+  padding: 2.3148%;
   margin-top: 15px;
   margin-bottom: 15px;
 }
@@ -89,9 +96,13 @@ input[type=radio] {
   outline: none; 
   background-color: transparent;
   border: none;
-  height: 100px;
-  width: 330px;
+  height: 5.21vw;
+  max-height: 100px;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 330 / 100;
   background-image: url('/cancel-review.svg');
+  background-size: cover;
   cursor: pointer;
   /* margin-left: 68px; */
   /* margin-right: 107px; */
@@ -102,9 +113,13 @@ input[type=radio] {
   outline: none; 
   background-color: transparent;
   border: none;
-  height: 100px;
-  width: 330px;
+  height: 5.21vw;
+  max-height: 100px;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 330 / 100;
   background-image: url('/save-review.svg');
+  background-size: cover;
   cursor: pointer;
   /* margin-top: 19px;
   margin-right: auto; */

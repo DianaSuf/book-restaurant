@@ -5,23 +5,25 @@
 
 .main-modal {
   display: flex;
-  margin-top: 108px;
+  margin-top: 9.4792vw;
   justify-content: center; 
   align-items: center;
-
 }
 
 .modal__form {
   display: flex; 
   flex-direction: column;
   position: relative;
-  width: 640px;
-  border-radius: 20px;
+  /* max-width: 609.88px; */
+  width: 28.125vw;
+  max-width: 540px;
+  min-width: 300px;
+  border-radius: 1.0417vw;
   background-color: #a25353;
-  padding: 12px 45px 37px 45px;
+  padding: 0.625vw 2.34377vw 1.5625vw 2.34377vw;
   transform: translateY(-50px);
   transition: opacity 0.3s, transform 0.3s;
-  margin-right: 129px;
+  margin-right: 6.7188vw;
 }
 
 .modal__form-delete {
@@ -30,47 +32,52 @@
   position: relative;
   /* width: 100%;
   max-width: 640px; */
-  width: 640px;
-  border-radius: 20px;
+  /* max-width: 609.88px; */
+  width: 28.125vw;
+  max-width: 540px;
+  min-width: 300px;
+  border-radius: 1.0417vw;
   background-color: #a25353;
-  padding: 12px 45px 37px 45px;
+  padding: 0.625vw 2.34377vw 1.5625vw 2.34377vw;
   transform: translateY(-50px);
   transition: opacity 0.3s, transform 0.3s;
 }
 
 .appoint__text {
   text-align: center;
-  font-size: 48px;
-  margin-bottom: 7px;
+  font-size: clamp(25px, 2.5vw, 48px);
   font-weight: 500;
 }
 
 .appoint__field {
-  margin-bottom: 5px;
-  margin-top: 11px;
+  margin-bottom: 0.2604vw;
+  margin-top: 0.5729vw;
 }
 
 .appoint__label {
-  font-size: 32px;
+  font-size: clamp(14px, 1.67vw, 32px);
 }
 
 .appoint__input {
   border: none;
   background-color: #FFFFFF;
-  border-radius: 15px;
-  height: 70px;
+  border-radius: 0.7813vw;
+  /* height: 70px; */
+  min-height: 30px;
   left: 0;
   top: 0;
-  width: 640px;
-  font-size: 32px;
-  padding: 10px;
+  max-width: 520px;
+  min-width: 289px;
+  width: 27.0833vw;
+  font-size: clamp(14px, 1.67vw, 32px);
+  padding: 0.5208vw;
 }
 
 .appoint {
   display: flex; 
   justify-content: center; 
   align-items: center;
-  padding-top: 30px;
+  padding-top: 1.5625vw;
 }
 
 .appoint__btn {
@@ -78,9 +85,14 @@
   outline: none; 
   background-color: transparent;
   border: none;
-  height: 100px;
-  width: 259px;
+  height: 3.65vw;
+  max-height: 70px;
+  min-height: 35px;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 181.30 / 70;
   background-image: url('/appoint.svg');
+  background-size: cover;
 }
 
 .delete__btn {
@@ -88,7 +100,31 @@
   outline: none; 
   background-color: transparent;
   border: none;
-  height: 100px;
-  width: 259px;
+  height: 3.65vw;
+  max-height: 70px;
+  min-height: 35px;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 181.30 / 70;
   background-image: url('/delete.svg');
+  background-size: cover;
+}
+
+
+@media (max-width: 875px) {
+  .main-modal {
+    flex-direction: column;
+    margin-top: 15.4792vw;
+  }
+  .modal__form {
+    margin-right: 0;
+    margin-bottom: 4.57143vw;
+    border-radius: 2.2857vw;
+  }
+  .modal__form-delete {
+    border-radius: 2.2857vw;
+  }
+  .appoint__input {
+    border-radius: 1.7143vw;
+  }
 }

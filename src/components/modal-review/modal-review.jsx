@@ -44,26 +44,28 @@ export default function ModalReview ({ isOpen, onClose, idReserval }) {
               <form action="" className="review__form" onSubmit={handleSubmitReview}>
                 <div className="review__fields">
                   <p className="review-text">ВАША ОЦЕНКА:</p>
-                  {[...Array(3)].map((star, index) => {
-                    const currentRating = index + 1;
-                    return (
-                      <label key={currentRating}>
-                        <input
-                          type="radio"
-                          name="rating"
-                          value={currentRating}
-                          onClick={() => setRating(currentRating)}
-                        />
-                        <FaStar 
-                          className="star" 
-                          size={60}
-                          color={currentRating <= (hover || rating) ? "F5FA00" : "ECECEC"}
-                          onMouseEnter={() => setHover(currentRating)}
-                          onMouseLeave={() => setHover(null)}
-                        />
-                      </label>
-                    );
-                  })}
+                  <div className="review-star-container">
+                    {[...Array(3)].map((star, index) => {
+                      const currentRating = index + 1;
+                      return (
+                        <label key={currentRating}>
+                          <input
+                            type="radio"
+                            name="rating"
+                            value={currentRating}
+                            onClick={() => setRating(currentRating)}
+                          />
+                          <FaStar 
+                            className="star" 
+                            size={60}
+                            color={currentRating <= (hover || rating) ? "F5FA00" : "ECECEC"}
+                            onMouseEnter={() => setHover(currentRating)}
+                            onMouseLeave={() => setHover(null)}
+                          />
+                        </label>
+                      );
+                    })}
+                  </div>
                 </div>
                 <p className="review-text">ВАШ ОТЗЫВ:</p>
                 <textarea

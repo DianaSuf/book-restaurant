@@ -211,8 +211,8 @@ export default function ProfileScreen() {
                   <div className="reserval-small-card-container">
                     <div className="reserval-small-card-name-container">
                       <h2 className="reserval-small-card-name">{reserval.name}</h2>
-                      {reserval.state === "FALSE" && authorizationStatus === AuthorizationStatus.USER && renderStars(reserval.grade, 50) }
-                      {reserval.state === "RATED" && authorizationStatus === AuthorizationStatus.USER && renderStars(reserval.grade, 50) }
+                      {reserval.state === "FALSE" && authorizationStatus === AuthorizationStatus.USER && <div className="reserval-star-container">{renderStars(reserval.grade, 50)}</div> }
+                      {reserval.state === "RATED" && authorizationStatus === AuthorizationStatus.USER && <div className="reserval-star-container">{renderStars(reserval.grade, 50)}</div> }
                     </div>
                     <p className="reserval-small-card-info">{reserval.date}, {reserval.time}</p>
                     {reserval.isOpen && (
@@ -239,7 +239,7 @@ export default function ProfileScreen() {
                       </>
                     )}
                   </div>
-                  <button className="switch__bth" onClick={() => toggleCard(reserval.id)}></button>
+                  <div className="switch-container"><button className="switch__bth" onClick={() => toggleCard(reserval.id)}></button></div>
                 </div>
               ))
             }
