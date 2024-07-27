@@ -121,8 +121,8 @@
 }
 
 .gallery__bth {
-  margin-top: 20px;
-  margin-bottom: 10px;
+  margin-top: 1.5625vw;
+  margin-bottom: 0.5208vw;
 }
 
 .review {
@@ -139,7 +139,7 @@
 }
 
 .restaurant-description {
-  display: inline-flex;
+  /* display: inline-flex; */
   flex-direction: column;
   max-width: 857px;
   flex: 1 0 239px;
@@ -147,9 +147,9 @@
 
 .restaurant-description-wrapper {
   background-color: #ececec;
-  border-radius: 20px;
+  border-radius: 1.0417vw;
   position: relative;
-  padding: 10px 14px;
+  padding: 0.5208vw 0.7292vw;
   margin-bottom: 15px;
 }
 
@@ -192,7 +192,7 @@
   aspect-ratio: 170 / 70;
   background-image: url('/menu.svg');
   background-size: cover;
-  margin-right: 32px;
+  margin-right: 1.6667vw;
   cursor: pointer;
 }
 
@@ -208,6 +208,23 @@
   aspect-ratio: 360 / 70;
   background-image: url('/plan.svg');
   background-size: cover;
+  margin-right: 1.6667vw;
+  cursor: pointer;
+}
+
+.sale__btn {
+  border: 0; 
+  outline: none; 
+  background-color: transparent;
+  border: none;
+  height: 3.65vw;
+  max-height: 70px;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 170 / 70;
+  background-image: url('/sale.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
   cursor: pointer;
 }
 
@@ -247,6 +264,10 @@
 @media (max-width: 1243px) {
   .preview-item {
     margin-bottom: 10px;
+  }
+  .restaurant-description-wrapper {
+    border-radius: 1.8857vw;
+    padding: 1.0208vw 1.2292vw;
   }
 }
 
@@ -291,6 +312,11 @@
     height: 5.69vw;
     max-height: 50px;
     aspect-ratio: 257.14 / 50;
+  }
+  .sale__btn {
+    height: 5.69vw;
+    max-height: 50px;
+    aspect-ratio: 121.43 / 50;
   }
   .edit__btn {
     height: 5.69vw;
@@ -352,6 +378,12 @@
     max-height: 40px;
     aspect-ratio: 205,71 / 40;
   }
+  .sale__btn {
+    height: 6.61vw;
+    max-height: 40px;
+    aspect-ratio: 97,14 / 40;
+    margin-right: 20px;
+  }
   .edit__btn {
     height: 6.61vw;
     max-height: 40px;
@@ -363,5 +395,39 @@
     max-height: 50px;
     aspect-ratio: 165 / 50;
     margin-left: auto;
+  }
+}
+
+@media (max-width: 430px) {
+  .description {
+    width: 100%;
+    min-width: 100px;
+  }
+  .active-img {
+    min-height: 0;
+    min-width: 0;
+  }
+  .preview-item {
+    min-height: 0;
+    min-width: 0;
+  }
+  .preview-img {
+    min-height: 0;
+    min-width: 0;
+  }
+  .menu__btn {
+    min-height: 23px;
+  }
+  .plan__btn {
+    min-height: 23px;
+  }
+  .sale__btn {
+    min-height: 23px;
+  }
+  .edit__btn {
+    min-height: 23px;
+  }
+  .book__btn {
+    min-height: 28px;
   }
 }

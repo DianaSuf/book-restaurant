@@ -27,6 +27,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-wrap: wrap;
   flex: 1 0 378.45px;
 }
 
@@ -110,9 +111,23 @@
   }
   .table__label {
     margin-right: 2.28571vw;
+    font-size: clamp(20px, 2.8571vw, 48px);
   }
   .table__select {
     border-radius: 10px;
     min-width: 140px;
+    min-height: 35px;
+  }
+}
+
+@media (max-width: 450px) {
+  .table__field {
+    flex: 1 0 100px;
+  }
+  .back__btn {
+    min-height: 25px;
+  }
+  .reserval__btn {
+    min-height: 25px;
   }
 }

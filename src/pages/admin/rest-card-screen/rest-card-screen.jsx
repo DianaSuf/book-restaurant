@@ -5,11 +5,10 @@ import Footer from '../../../components/footer/footer';
 import { useState, useEffect } from 'react';
 import ModalPhoto from '../../../components/modal-photo/modal-photo';
 import { renderStars } from '../../../components/modal-review/star';
-import { AuthorizationStatus } from '../../../const';
+import { AuthorizationStatus, AppRoute } from '../../../const';
 import { useAppSelector } from '../../../hooks/hook';
 import { useNavigate } from "react-router-dom";
 import useRestById from '../../../hooks/rest-by-id';
-import { AppRoute } from '../../../const';
 import ModalRegister from '../../../components/modal-register/modal-register';
 import stub from '/stub.jpg'
 
@@ -26,10 +25,8 @@ export default function RestCardScreen () {
   const navigate = useNavigate();
   
   useEffect(() => {
-    if (mainImage === stub) {
-        setMainImage(images[0]);
-    }
-  }, [images, mainImage]);
+    setMainImage(images[0]);
+  }, [restaurant]);
 
   return (
     <>
@@ -57,6 +54,9 @@ export default function RestCardScreen () {
               <div className="gallery__bth">
                 <button className="menu__btn" onClick={() => {setModalPhoto(`data:image/jpeg;base64,${restaurant.menu}`); setModalPhotoIsOpen(true)}}></button>
                 <button className="plan__btn" onClick={() => {setModalPhoto(`data:image/jpeg;base64,${restaurant.plan}`); setModalPhotoIsOpen(true)}}></button>
+                {authorizationStatus === AuthorizationStatus.ADMIN_REST 
+                ? <button className="sale__btn" onClick={() => navigate(AppRoute.Sale)}></button> 
+                : <button className="sale__btn" onClick={() => navigate(`${AppRoute.Sale}/${restaurant.id}`)}></button>}
                 <ModalPhoto
                 isOpen={modalPhotoIsOpen}
                 onClose={() => setModalPhotoIsOpen(false)}
@@ -117,7 +117,8 @@ export default function RestCardScreen () {
             }
             <ModalRegister
             isOpen={modalRegisterIsOpen}
-            onClose={() => setModalRegisterIsOpen(false)}/>
+            onClose={() => setModalRegisterIsOpen(false)}
+            status={'singIn'}/>
         </div>
       </section>
       <Footer/>

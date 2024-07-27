@@ -45,7 +45,7 @@
 .search__input {
     border: none;
     background-color: #a25353;
-    border-radius: 15px;
+    border-radius: 0.7813vw;
     height: 2.6vw;
     max-height: 50px;
     width: 100%;
@@ -64,7 +64,7 @@
 .catalog__restaurants-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(399.5px, 1fr));
-    gap: 30px;
+    gap: 1.5625vw;
     margin: 0;
     padding: 2.6%;
 }
@@ -81,7 +81,7 @@
     max-width: 100%;
     aspect-ratio: 885 / 396;
     background-color: #ffe5e5;
-    border-radius: 20px;
+    border-radius: 1.0417vw;
 }
 
 .main-image {
@@ -89,8 +89,8 @@
     width: 47.9%;
     /* height: 396px; */
     object-fit: cover;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
+    border-top-left-radius: 1.0417vw;
+    border-bottom-left-radius: 1.0417vw;
 }
 
 .restaurant-small-card-container {
@@ -134,22 +134,31 @@
     .search__input {
         padding-right: 6%;
         background-position: right 12px center;
-        border-radius: 10px;
+        /* border-radius: 10px; */
     }
 }
 
 @media (max-width: 875px) {
+    .catalog__restaurants-list {
+        gap: 3.4286vw;
+    }
     .restaurant-small-card {
         max-height: 100%;
+        width: 94.7349vw;
+        border-radius: 2.2857vw;
+    }
+    .main-image {
+        border-radius: 2.2857vw;
     }
     .restaurant-small-card-name {
-        font-size: clamp(25px, 5.49vw, 48px);
+        font-size: clamp(20px, 5.49vw, 48px);
     }
     .restaurant-small-card-info {
-        font-size: clamp(14px,  3.66vw, 32px);
+        font-size: clamp(10px,  3.66vw, 32px);
     }
     .star-container {
         width: 14.55vw;
+        /* height: 50px; */
     }
     .restaurant-small-card-container-star {
         padding-bottom: 4.8%;
@@ -159,25 +168,33 @@
     }
     .search__input {
         background-size: 5.71vw;
-        font-size: clamp(14px,  3.66vw, 32px);
+        font-size: clamp(10px,  3.66vw, 32px);
         height: 5.71vw;
         padding: 1.36%;
         padding-right: 8%;
-        border-radius: 10px;
+        border-radius: 1.7143vw;
         padding-right: 10%;
     }
 }
 
 @media (max-width: 600px) {
+    .restaurant-small-card {
+        max-height: 100%;
+        width: 94.6667vw;
+    }
     .catalog__restaurants-list {
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     }
     .search__input {
-        border-radius: 7px;
+        /* border-radius: 7px; */
         background-position: right 8px center;
     }
     .restaurant-small-card-container-star {
+        display: flex;
+        align-content: center;
+        flex-wrap: wrap;
         padding-bottom: 0;
+        height: 8.3334vw;
     }
     .search {
         margin-right: 40px;

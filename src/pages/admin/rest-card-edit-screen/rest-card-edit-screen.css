@@ -15,11 +15,11 @@
 }
 
 .edit__form {
-  display: flex;
+  display: block;
   flex-direction: column;
   width: 89.0625vw;
   max-width: 1710px;
-  min-width: 400px;
+  min-width: 300px;
   align-items: center;
   margin-top: 5.21vw;
   border-radius: 1.0417vw;
@@ -44,6 +44,8 @@
 .edit__form-container-description {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
   flex: 1 0 454.9px;
 }
 
@@ -199,6 +201,8 @@
   border: none;
   height: 3.6458vw;
   max-height: 70px;
+  min-height: 20px;
+  min-width: 90px;
   width: auto;
   max-width: 100%;
   aspect-ratio: 290 / 70;
@@ -223,6 +227,8 @@
   border: none;
   height: 3.6458vw;
   max-height: 70px;
+  min-height: 20px;
+  min-width: 90px;
   width: auto;
   max-width: 100%;
   aspect-ratio: 290 / 70;
@@ -241,9 +247,19 @@
   /* height: 9.375vw;
   max-height: 180px; */
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   margin-bottom: 1.0417vw;
+}
+
+.imagesAdd {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.0417vw;
+}
+
+.images-content {
+  display: flex;
+  flex-direction: row;
 }
 
 .image {
@@ -264,18 +280,28 @@
   max-height: 70px;
 }
 
+.change__btns-addImages {
+  margin-left: 10.4167vw;
+  width: 18.75vw;
+  height: 3.6458vw;
+  max-width: 360px;
+  max-height: 70px;
+}
+
 .addImages_input {
   visibility: hidden;
 }
 
 .addImages__btn {
-  margin-left: auto;
+  /* margin-left: auto; */
   border: 0; 
   outline: none; 
   background-color: transparent;
   border: none;
   height: 3.6458vw;
   max-height: 70px;
+  min-height: 21px;
+  min-width: 110px;
   width: auto;
   max-width: 100%;
   aspect-ratio: 360 / 70;
@@ -295,6 +321,8 @@
   border: none;
   height: 3.6458vw;
   max-height: 70px;
+  min-height: 21px;
+  min-width: 110px;
   width: auto;
   max-width: 100%;
   aspect-ratio: 360 / 70;
@@ -314,6 +342,8 @@
   border: none;
   height: 3.6458vw;
   max-height: 70px;
+  min-height: 21px;
+  min-width: 110px;
   width: auto;
   max-width: 100%;
   aspect-ratio: 360 / 70;
@@ -331,11 +361,14 @@
   max-height: 70px;
   width: auto;
   max-width: 100%;
+  min-height: 21px;
+  min-width: 170px;
   aspect-ratio: 550 / 70;
   background-image: url('/backCard.svg');
   background-size: cover;
   cursor: pointer;
-  margin-bottom: 50px;
+  margin-bottom: 2.6042vw;
+  margin-top: 2.6042vw;
 }
 
 
@@ -349,6 +382,7 @@
   .edit__form {
     margin-top: 9.21vw;
     width: 52.5714vw;
+    border-radius: 2.2857vw;
   }
   .edit__form-content {
     gap: 0;
@@ -357,15 +391,108 @@
     flex-direction: column;
   }
   .edit__input {
-    width: 100%;
-    min-width: 352px;
+    width: 50.9375vw;
+    border-radius: 1.7143vw;
   }
   .edit-town__input {
     width: 50.9375vw;
-    min-width: 352px;
+    border-radius: 1.7143vw;
+    max-width: none;
   }
   .edit-address__input {
     width: 50.9375vw;
-    min-width: 352px;
+    border-radius: 1.7143vw;
+    max-width: none;
+  }
+  .edit-description__textarea {
+    border-radius: 1.7143vw;
+    min-width: 0;
+    height: 16vw;
+  }
+  .edit__form-container-description {
+    flex: 1 0 254.9px;
+  }
+  .edit__form-container {
+    width: 100%;
+  }
+  .change__btns {
+    min-height: 21px;
+  }
+  .change__btns-addImages {
+    min-height: 21px;
+  }
+  .edit-description-info-last__input {
+    border-radius: 1.7143vw;
+  }
+  .edit-description-info__input-tables {
+    border-radius: 1.7143vw;
+  }
+  .edit-description-info__input {
+    border-radius: 1.7143vw;
+  }
+}
+
+@media (max-width: 606px) {
+  .edit__form {
+    margin-top: 13.21vw;
+  }
+  .imagesAdd {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 2.3003vw;
+  }
+  .images-content {
+    margin-bottom: 3.3003vw;
+  }
+  .change__btns-addImages {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .image {
+    width: 30.5281vw;
+    height: 19.6254vw;
+  }
+  .imageAdd {
+    min-width: 0;
+    min-height: 0;
+  }
+  .edit-description__textarea {
+    line-height: 3.0833vw;
+    min-width: 0;
+    height: 28.802vw;
+  }
+}
+
+@media (max-width: 570px) {
+  .edit__input {
+    min-width: 290px;
+  }
+  .edit-town__input {
+    min-width: 290px;
+  }
+  .edit-address__input {
+    min-width: 290px;
+  }
+  .edit-description__textarea {
+    min-width: 290px;
+  }
+  .edit-description-info__input {
+    min-width: 136px;
+  }
+  .edit-description-info-last__input {
+    min-width: 136px;
+  }
+  .edit__label-tables {
+    font-size: clamp(10px, 2.3102vw, 32px);
+  }
+}
+
+@media (max-width: 450px) {
+  .edit__form {
+    margin-top: 18.21vw;
+  }
+  .edit-description__textarea {
+    line-height: 4.0833vw;
+    height: 35.802vw;
   }
 }

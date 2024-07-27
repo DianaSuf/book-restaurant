@@ -98,6 +98,29 @@ export const fetchRestaurantAdminAction = createAsyncThunk(
   }
 );
 
+export const saleCreateAction = createAsyncThunk(
+  'dataAdmin/saleCreateAction',
+  async ({ name, text, photo }, { extra: api }) => {
+    await api.post(APIRoute.AdminSale, { name, text, photo });
+    redirectToRoute(AppRoute.Sale);
+  },
+);
+
+export const saleUpdateAction = createAsyncThunk(
+  'dataAdmin/saleUpdateAction',
+  async ({ id, name, text, photo }, { extra: api }) => {
+    await api.post(`${APIRoute.AdminSaleUpdate}/${id}`, { name, text, photo });
+    redirectToRoute(AppRoute.Sale);
+  },
+);
+
+export const saleDeleteAction = createAsyncThunk(
+  'dataAdmin/saleDeleteAction',
+  async ({ id }, { extra: api }) => {
+    await api.delete(`${APIRoute.AdminSaleDelete}/${id}`);
+  },
+);
+
 export const fetchRestaurantAdminUpdateAction = createAsyncThunk(
   'dataAdmin/fetchRestaurantUpdate',
   async ({ name, town, address, opening, ending, phone, description }, {dispatch, extra: api }) => {

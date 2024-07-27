@@ -1,0 +1,227 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.sale-main {
+  padding: 1.04% 3.44%;
+}
+
+.sale {
+  font-size: clamp(30px, 3.13vw, 60px);
+  font-weight: 500;
+  color: #a25353;
+  margin-bottom: 1.0417vw;
+}
+
+.catalog__sales-list{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.2396vw;
+  margin: 0 5.6771vw;
+}
+
+.sale-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  width: 17.7083vw;
+  max-width: 340px;
+  height: 16.0938vw;
+  max-height: 309px;
+  overflow: visible;
+  padding: 0.5208vw;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.sale-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.sale-name {
+  position: relative;
+  padding: 0.5208vw;
+  z-index: 2;
+  font-size: clamp(14px, 1.3021vw, 25px);
+  transition: transform 0.4s;
+}
+
+.sale-description-wrapper {
+  position: relative;
+  overflow: hidden;
+  height: 0;
+  transition: height 0.4s;
+}
+
+.sale-description {
+  position: relative;
+  transition: opacity 0.3s, transform 0.4s;
+  opacity: 0;
+  z-index: 2;
+  font-size: clamp(8px, 1.0417vw, 20px);
+  transform: translateY(100%);
+  height: 0;
+  pointer-events: none;
+}
+
+.sale-card:hover {
+  justify-content: flex-start;
+}
+
+.sale-card:hover .sale-name {
+  transform: translateY(-100%);
+  height: 0;
+  width: 0;
+}
+
+.sale-card:hover .sale-description-wrapper {
+  height: auto;
+}
+
+.sale-card:hover .sale-description {
+  opacity: 1;
+  transform: translateY(0);
+  height: auto;
+  padding: 0.5208vw;
+  padding-bottom: 0;
+  pointer-events: auto;
+}
+
+.cancelSale__btn {
+  position: absolute;
+  top: -1.0417vw;
+  right: -1.0417vw;
+  width: 2.8646vw;
+  height: 2.3438vw;
+  background: url('/cancelSale.svg') no-repeat center center;
+  background-size: cover;
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.editSale__btn {
+  border: 0; 
+  outline: none; 
+  background-color: transparent;
+  border: none;
+  height: 1.875vw;
+  max-height: 36px;
+  width: 8.0729vw;
+  max-width: 155px;
+  aspect-ratio: 155 / 36;
+  background-image: url('/editSale.svg');
+  background-size: cover;
+  cursor: pointer;
+  z-index: 2;
+  margin-bottom: auto;
+}
+
+.sale-card:hover .editSale__btn {
+  margin-bottom: 0.5208vw;
+}
+
+.addSale__btn {
+  border: 0; 
+  outline: none; 
+  background-color: transparent;
+  border: none;
+  height: 17.1354vw;
+  max-height: 329px;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 360 / 329;
+  background-image: url('/addSale.svg');
+  background-size: cover;
+  cursor: pointer;
+}
+
+
+@media (max-width: 875px) {
+  .catalog__sales-list{
+    margin: 0 3.6771vw;
+  }
+  .sale-card {
+    width: 38.8571vw;
+    height: 35.3143vw;
+    padding: 1.1429vw;
+  }
+  .sale-name {
+    padding: 1.1429vw;
+    font-size: clamp(14px, 2.8571vw, 25px);
+  }
+  .sale-description {
+    font-size: clamp(8px, 2.2857vw, 20px);
+  }
+  .sale-card:hover .sale-description {
+    padding: 1.1429vw;
+  }
+  .cancelSale__btn {
+    top: -2.2857vw;
+    right: -2.2857vw;
+    width: 6.2857vw;
+    height: 5.1429vw;
+  }
+  .editSale__btn {
+    height: 4.1143vw;
+    width: 17.7143vw;
+  }
+  .sale-card:hover .editSale__btn {
+    margin-bottom: 1.1429vw;
+  }
+  .addSale__btn {
+    height: 37.6vw;
+    max-height: 329px;
+    width: auto;
+    max-width: 360px;
+    aspect-ratio: 360 / 329;
+  }
+}
+
+@media (max-width: 430px) {
+  .catalog__sales-list{
+    flex-direction: column;
+  }
+  .sale-card {
+    width: 79.0698vw;
+    height: 71.8605vw;
+    padding: 2.3256vw;
+  }
+  .sale-name {
+    padding: 2.3256vw;
+    font-size: clamp(14px, 5.814vw, 25px);
+  }
+  .sale-description {
+    font-size: clamp(8px, 4.6512vw, 20px);
+  }
+  .sale-card:hover .sale-description {
+    padding: 2.3256vw;
+  }
+  .cancelSale__btn {
+    top: -4.6512vw;
+    right: -4.6512vw;
+    width: 12.7907vw;
+    height: 10.4651vw;
+  }
+  .editSale__btn {
+    height: 8.3721vw;
+    width: 36.0465vw;
+  }
+  .sale-card:hover .editSale__btn {
+    margin-bottom: 2.3256vw;
+  }
+  .addSale__btn {
+    height: 76.5116vw;
+    max-height: 329px;
+  }
+}

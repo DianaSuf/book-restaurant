@@ -37,7 +37,7 @@
 .reserval__label {
   display: flex;
   line-height: normal;
-  font-size: clamp(25px, 2.5vw, 48px);
+  font-size: clamp(14px, 2.5vw, 48px);
   color: #a25353;
   margin-right: 3.13vw;
   justify-content: flex-start
@@ -46,13 +46,13 @@
 .reserval__input {
   border: none;
   background-color: #ececec;
-  border-radius: 15px;
+  border-radius: 0.7813vw;
   height: 3vw;
-  min-height: 30px;
+  min-height: 25px;
   left: 0;
   top: 0;
   width: 33.3334vw;
-  font-size: clamp(14px, 1.67vw, 32px);
+  font-size: clamp(10px, 1.67vw, 32px);
   padding: 0.52083vw;
   /* padding: 0.828%; */
   margin-top: 0.78125vw;
@@ -62,13 +62,13 @@
 .reserval-time-start__input {
   border: none;
   background-color: #ececec;
-  border-radius: 15px;
+  border-radius: 0.7813vw;
   height: 3vw;
-  min-height: 30px;
+  min-height: 25px;
   left: 0;
   top: 0;
   width: 11.45834vw;
-  font-size: clamp(14px, 1.67vw, 32px);
+  font-size: clamp(10px, 1.67vw, 32px);
   padding: 0.52083vw;
   margin-top: 0.78125vw;
   margin-bottom: 0.78125vw;
@@ -78,13 +78,13 @@
 .reserval-time-end__input {
   border: none;
   background-color: #ececec;
-  border-radius: 15px;
+  border-radius: 0.7813vw;
   height: 3vw;
   left: 0;
   top: 0;
   width: 11.45834vw;
-  min-height: 30px;
-  font-size: clamp(14px, 1.67vw, 32px);
+  min-height: 25px;
+  font-size: clamp(10px, 1.67vw, 32px);
   padding: 0.52083vw;
   margin-top: 0.78125vw;
   margin-bottom: 0.78125vw;
@@ -93,10 +93,10 @@
 .reserval__textarea {
   resize: none;
   line-height: 2.08333vw;
-  font-size: clamp(14px, 1.67vw, 32px);
+  font-size: clamp(10px, 1.67vw, 32px);
   border: none;
   background-color: #ececec;
-  border-radius: 15px;
+  border-radius: 0.7813vw;
   height: 12.5vw;
   left: 0;
   top: 0;
@@ -110,16 +110,16 @@
   outline: none; 
   background-color: transparent;
   border: none;
-  height: 5.21vw;
-  max-height: 100px;
-  min-height: 30px;
+  height: 4.1667vw;
+  max-height: 80px;
+  min-height: 25px;
   width: auto;
   max-width: 100%;
   aspect-ratio: 330 / 100;
   background-image: url('/next.svg');
   background-size: cover;
   cursor: pointer;
-  margin-top: 20px;
+  margin-top: 1.0417vw;
 }
 
 
@@ -131,19 +131,37 @@
   }
   .reserval__field-textarea {
     flex-direction: column;
+    padding: 1.1429vw;
   }
   .reserval__input {
-    border-radius: 10px;
+    border-radius: 1.7143vw;
+    padding: 1.1429vw;
   }
   .reserval-time-start__input {
     width: 33.334vw;
-    border-radius: 10px;
+    border-radius: 1.7143vw;
+    padding: 1.1429vw;
   }
   .reserval-time-end__input {
     width: 33.334vw;
-    border-radius: 10px;
+    border-radius: 1.7143vw;
+    padding: 1.1429vw;
   }
   .reserval__textarea {
     width: 100%;
+    border-radius: 1.7143vw;
+    line-height: normal;
+  }
+}
+
+@media (max-width: 470px) {
+  .reserval__textarea {
+    height: 15.6269vw;
+  }
+}
+
+@media (max-width: 370px) {
+  .reserval__textarea {
+    height: 25.6269vw;
   }
 }

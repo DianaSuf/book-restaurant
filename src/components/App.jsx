@@ -8,6 +8,8 @@ import RestCardScreen from '../pages/admin/rest-card-screen/rest-card-screen'
 import RestCardEditScreen from '../pages/admin/rest-card-edit-screen/rest-card-edit-screen'
 import ReservalScreen from '../pages/admin/reserval-screen/reserval-screen'
 import TableScreen from '../pages/admin/table-screen/table-screen'
+import SaleScreen from '../pages/sale-screen/sale-screen'
+import SaleEditScreen from '../pages/sale-screen/sale-edit-screen/sale-edit-screen'
 import PrivateRoute from './private-route'
 import { useAppSelector } from '../hooks/hook'
 import browserHistory from '../browser-history'
@@ -84,7 +86,51 @@ function App() {
                   <RestCardScreen />
                 </PrivateRoute>
               }
-            />
+          />
+          <Route
+              path={`${AppRoute.Sale}/:id`}
+              element={
+                <PrivateRoute
+                  authorizationStatus={authorizationStatus}
+                  requiredStatuses={[AuthorizationStatus.USER, AuthorizationStatus.NoAuth, AuthorizationStatus.Unknown]}
+                >
+                  <SaleScreen />
+                </PrivateRoute>
+              }
+          />
+          <Route
+              path={AppRoute.Sale}
+              element={
+                <PrivateRoute
+                  authorizationStatus={authorizationStatus}
+                  requiredStatuses={[AuthorizationStatus.ADMIN_REST]}
+                >
+                  <SaleScreen />
+                </PrivateRoute>
+              }
+          />
+          <Route
+              path={AppRoute.SaleCreate}
+              element={
+                <PrivateRoute
+                  authorizationStatus={authorizationStatus}
+                  requiredStatuses={[AuthorizationStatus.ADMIN_REST]}
+                >
+                  <SaleEditScreen />
+                </PrivateRoute>
+              }
+          />
+          <Route
+              path={`${AppRoute.SaleEdit}/:id`}
+              element={
+                <PrivateRoute
+                  authorizationStatus={authorizationStatus}
+                  requiredStatuses={[AuthorizationStatus.ADMIN_REST]}
+                >
+                  <SaleEditScreen />
+                </PrivateRoute>
+              }
+          />
           <Route
                 path={AppRoute.Edit}
                 element={

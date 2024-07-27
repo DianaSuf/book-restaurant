@@ -43,7 +43,7 @@
   background-image: url('/login.svg');
   background-size: cover;
   margin-left: auto;
-  margin-right: 40px;
+  /* margin-right: 40px; */
   cursor: pointer;
 }
 
@@ -78,12 +78,87 @@
   background-image: url('/profile.svg');
   background-size: contain;
   background-repeat: no-repeat;
-  margin-right: 2.08%;
+  /* margin-right: 2.08%; */
   cursor: pointer;
 }
 
+.header .input-bar {
+  display: none;
+}
+
+.header .label-bar {
+  display: inline-flex;
+  visibility: hidden;
+  opacity: 0;
+  margin-right: 2.08%;
+  width: 0;
+  height: 0;
+}
+
+.img-bar {
+  display: inline-block;
+  border: 0; 
+  outline: none; 
+  background-color: transparent;
+  border: none;
+  height: 3.78vw;
+  max-height: 33px;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 33 / 23;
+  background-image: url('/bar.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.nav-bar-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 11.6571vw;
+}
+
+.nav-bar {
+  position: absolute;
+  align-items: flex-start;
+  width: 28.5714vw;
+  max-width: 250px;
+  min-width: 150px;
+  padding: 1.1429vw 0.5714vw;
+  background-color: #ECECEC;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  transform: scale(0);
+  opacity: 0;
+}
+
+.bar-container {
+  display: flex;
+}
+
+.nav-bar__btn {
+  font-size: clamp(14px, 2.8571vw, 25px);
+  outline: none; 
+  background-color: transparent;
+  border: none;
+  color: #1E1E1E;
+  font-family: "Jost", sans-serif;
+  font-weight: 400;
+  margin-left: 1.1429vw;
+}
+
+/* .header .input-bar:not(:checked) + .label-bar + .nav-bar-container  .nav-bar {
+  transform: scale(1);
+  opacity: 1;
+} */
+
 
 @media (max-width: 875px) {
+  .header {
+    height: 11.43vw;
+    /* max-height: 100px; */
+  }
   .login__btn {
     width: 0;
     height: 0;
@@ -102,8 +177,21 @@
     width: auto;
     max-width: 500px;
   }
-  .header {
-    height: 11.43vw;
-    /* max-height: 100px; */
+  .header .label-bar {
+    visibility: visible;
+    opacity: 1;
+    height: 3.78vw;
+    max-height: 33px;
+    width: auto;
+    max-width: 100%;
+    aspect-ratio: 33 / 23;
+  }
+  .header .input-bar:checked + .label-bar + .nav-bar-container  .nav-bar {
+    transform: scale(1);
+    opacity: 1;
+  }
+  .header .input-bar:not(:checked) + .label-bar + .nav-bar-container  .nav-bar {
+    transform: scale(0);
+    opacity: 0;
   }
 }

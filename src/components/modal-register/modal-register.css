@@ -75,6 +75,7 @@
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
+  align-items: center;
   margin-top: 4.22%;
 }
 
@@ -112,13 +113,18 @@
   margin-right: 2%;
 }
 
+.register-text {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+}
+
 .text__btn {
   font-weight: 500;
   font-size: clamp(14px, 1.67vw, 32px);
   text-align: center;
   /* width: 358px; */
   cursor: pointer;
-  margin-left: auto;
 }
 
 

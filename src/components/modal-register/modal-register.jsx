@@ -2,15 +2,16 @@ import { useState } from 'react';
 import './modal-register.css';
 import PropTypes from 'prop-types';
 import { registerAction, loginAction } from '../../store/api-actions';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { useAppDispatch } from '../../hooks/hook';
 
 ModalRegister.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
+  status: PropTypes.string.isRequired,
 };
 
-export default function ModalRegister ({ isOpen, onClose }) {
+export default function ModalRegister ({ isOpen, onClose, status }) {
     const usernameRef = useRef(null);
     const realnameRef = useRef(null);
     const emailRef = useRef(null);
@@ -18,11 +19,17 @@ export default function ModalRegister ({ isOpen, onClose }) {
     const passwordRef = useRef(null);
     const dispatch = useAppDispatch();
 
+    const [userStatus, setStatus] = useState(status);
+
+    useEffect(() => {
+        setStatus(status);
+    }, [status]);
+
     const handleSubmit = (evt) => {
         evt.preventDefault();
     
         if (usernameRef.current !== null && realnameRef.current !== null && emailRef.current !== null 
-            && phoneRef.current !== null && passwordRef.current !== null && status === 'register') {
+            && phoneRef.current !== null && passwordRef.current !== null && userStatus === 'register') {
           dispatch(registerAction({
             username: usernameRef.current.value,
             realname: realnameRef.current.value,
@@ -33,7 +40,7 @@ export default function ModalRegister ({ isOpen, onClose }) {
           onClose();
         }
 
-        if (usernameRef.current !== null && passwordRef.current !== null && status === 'singIn') {
+        if (usernameRef.current !== null && passwordRef.current !== null && userStatus === 'singIn') {
             dispatch(loginAction({
               username: usernameRef.current.value,
               password: passwordRef.current.value
@@ -46,7 +53,7 @@ export default function ModalRegister ({ isOpen, onClose }) {
         if (event.target.classList.contains("modal-wrapper")) onClose();
     };
 
-    const [status, setStatus] = useState('singIn');
+    // const [userStatus, setStatus] = useState(status);
 
     return (
         <>
@@ -55,7 +62,7 @@ export default function ModalRegister ({ isOpen, onClose }) {
                     <div className="modal-wrapper" onClick={onWrapperClick}>
                         <div className="modal-content">
                             <form action="" className="register__form" onSubmit={handleSubmit}>
-                                <h1 className="name__form">{status === 'register' ? 'РЕГИСТРАЦИЯ' : 'ВХОД'}</h1>
+                                <h1 className="name__form">{userStatus === 'register' ? 'РЕГИСТРАЦИЯ' : 'ВХОД'}</h1>
                                 <div className="register__fields">
                                     <div className="register__field">
                                         <label
@@ -73,7 +80,7 @@ export default function ModalRegister ({ isOpen, onClose }) {
                                         id="user-login"
                                         required 
                                     />
-                                    {status === 'register' && (
+                                    {userStatus === 'register' && (
                                         <>
                                             <div className="register__field">
                                                 <label
@@ -93,7 +100,7 @@ export default function ModalRegister ({ isOpen, onClose }) {
                                             />
                                         </>
                                     )}
-                                    {status === 'register' && (    
+                                    {userStatus === 'register' && (    
                                         <>
                                             <div className="register__field">
                                                 <label
@@ -113,7 +120,7 @@ export default function ModalRegister ({ isOpen, onClose }) {
                                             />
                                         </>
                                     )}
-                                    {status === 'register' && (
+                                    {userStatus === 'register' && (
                                         <>
                                             <div className="register__field">
                                                 <label
@@ -152,13 +159,16 @@ export default function ModalRegister ({ isOpen, onClose }) {
                                         required
                                     />
                                 </div>
-                                {status === 'register' &&
+                                {userStatus === 'register' &&
                                     <div className="sign-in__submit">
                                         <button className="register__btn" type="submit"></button>
-                                        <h2 className="text__btn" onClick={() => setStatus('singIn')}>Уже есть аккаунт? ВОЙТИ</h2>
+                                        <div className="register-text">
+                                            <h2 className="text__btn">Уже есть аккаунт?</h2>
+                                            <h2 className="text__btn" onClick={() => setStatus('singIn')}>ВОЙТИ</h2>
+                                        </div>
                                     </div>
                                 }
-                                {status === 'singIn' &&
+                                {userStatus === 'singIn' &&
                                     <div className="sign-in__submit">
                                         <button className="sign-in__btn" type="submit"></button>
                                         <h2 className="text__btn" onClick={() => setStatus('register')}>Еще нет аккаунта? ЗАРЕГИСТРИРОВАТЬСЯ</h2>

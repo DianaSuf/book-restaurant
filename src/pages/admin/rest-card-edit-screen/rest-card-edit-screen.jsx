@@ -245,14 +245,16 @@ export default function RestCardEditScreen () {
                 </div>
               </div>
             </div>
-            <button className="save__btn"></button>
+            <div className="center-content"><button className="save__btn"></button></div>
           </form>
         </div>
-        <div className="images">
-          <img className="image" src={images[0]}/>
-          <img className="image" src={images[1]}/>
-          <img className="image" src={images[2]}/>
-          <div className="change__btns">
+        <div className="images imagesAdd">
+          <div className="images-content">
+            <img className="image imageAdd" src={images[0]}/>
+            <img className="image imageAdd" src={images[1]}/>
+            <img className="image imageAdd" src={images[2]}/>
+          </div>
+          <div className="change__btns-addImages">
             <button className="addImages__btn" onClick={() => addImagesRef.current.click()}></button>
             <input ref={addImagesRef} className="addImages_input" type="file" accept='image/*,.png,.jpg,.gif,.web' multiple onChange={handleChangeImages}/>
           </div>
@@ -271,7 +273,7 @@ export default function RestCardEditScreen () {
             <input ref={addPlanRef} className="addPlan_input" type="file" accept='image/*,.png,.jpg,.gif,.web' onChange={handleChangePlan}/>
           </div>
         </div>
-        <div className="edit-container">
+        <div className="edit-container-time">
           <div className="edit-container-field">
             <label
               className="edit__label-tables"

@@ -29,6 +29,7 @@
 .book-header {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   /* width: 1280px; */
 }
 
@@ -44,10 +45,12 @@
   background-color: #a25353;
   border-radius: 0.7813vw;
   height: 2.34vw;
+  min-height: 20px;
   left: 0;
   top: 0;
   width: 21.35vw;
   max-width: 410px;
+  min-width: 100px;
   font-size: clamp(14px, 1.67vw, 32px);
   padding: 0.773%;
   color: white;
@@ -84,7 +87,7 @@
   border: none;
   height: 1.04vw;
   max-height: 20px;
-  min-height: 11px;
+  min-height: 8px;
   width: auto;
   max-width: 100%;
   aspect-ratio: 40 / 20;
@@ -136,7 +139,7 @@
   border: none;
   height: 3.65vw;
   max-height: 70px;
-  min-height: 33px;
+  min-height: 23px;
   width: auto;
   max-width: 100%;
   aspect-ratio: 300 / 70;
@@ -153,7 +156,7 @@
   border: none;
   height: 3.65vw;
   max-height: 70px;
-  min-height: 33px;
+  min-height: 23px;
   width: auto;
   max-width: 100%;
   aspect-ratio: 170 / 70;
@@ -197,7 +200,7 @@
   border: none;
   height: 3.65vw;
   max-height: 70px;
-  min-height: 35px;
+  min-height: 25px;
   width: auto;
   max-width: 100%;
   aspect-ratio: 290 / 70;
@@ -249,5 +252,20 @@
 @media (max-width: 866px) {
   .reservations {
     flex: 1 0 360px;
+  }
+}
+
+@media (max-width: 500px) {
+  .reserval-small-card {
+    padding: 2.545% 2.777%;
+  }
+}
+
+@media (max-width: 400px) {
+  .reservations {
+    flex: 1 0 200px;
+  }
+  .reserval-small-card {
+    padding: 3.545% 3.777%;
   }
 }
