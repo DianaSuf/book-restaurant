@@ -98,26 +98,42 @@ export const fetchRestaurantAdminAction = createAsyncThunk(
   }
 );
 
+export const fetchSaleAction = createAsyncThunk(
+  'dataAdmin/fetchSaleAction',
+  async ({ id }, {extra: api}) => {
+    try {
+      const {data} = await api.get(`${APIRoute.AdminSale}/${id}`);
+      return data;
+    }
+    catch {
+      return undefined;
+    }
+  },
+);
+
 export const saleCreateAction = createAsyncThunk(
   'dataAdmin/saleCreateAction',
-  async ({ name, text, photo }, { extra: api }) => {
+  async ({ name, text, photo }, { dispatch, extra: api }) => {
     await api.post(APIRoute.AdminSale, { name, text, photo });
-    redirectToRoute(AppRoute.Sale);
+    await dispatch(fetchRestaurantAdminAction());
+    dispatch(redirectToRoute(AppRoute.Sale))
   },
 );
 
 export const saleUpdateAction = createAsyncThunk(
   'dataAdmin/saleUpdateAction',
-  async ({ id, name, text, photo }, { extra: api }) => {
+  async ({ id, name, text, photo }, { dispatch, extra: api }) => {
     await api.post(`${APIRoute.AdminSaleUpdate}/${id}`, { name, text, photo });
-    redirectToRoute(AppRoute.Sale);
+    await dispatch(fetchRestaurantAdminAction());
+    dispatch(redirectToRoute(AppRoute.Sale))
   },
 );
 
 export const saleDeleteAction = createAsyncThunk(
   'dataAdmin/saleDeleteAction',
-  async ({ id }, { extra: api }) => {
+  async ({ id }, { dispatch, extra: api }) => {
     await api.delete(`${APIRoute.AdminSaleDelete}/${id}`);
+    dispatch(fetchRestaurantAdminAction());
   },
 );
 
@@ -264,8 +280,8 @@ export const reviewAction = createAsyncThunk(
   async ({ idReserval, text, grade }, { extra: api }) => {
     await api.post(APIRoute.Review, { idReserval, text, grade });
     window.location.reload();
-    // redirectToRoute(AppRoute.Profile)
-    // dispatch(fetchUserProfileAction());
+    // await dispatch(fetchUserProfileAction());
+    // dispatch(redirectToRoute(AppRoute.Profile))
   },
 );
 

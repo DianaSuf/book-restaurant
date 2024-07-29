@@ -24,7 +24,7 @@ export default function SaleScreen () {
 
   const handleCancelSale = async (id) => {
     dispatch(saleDeleteAction({id}));
-    setPromotions(promotions.filter((promotion) => promotion.id !== id));
+    // setPromotions(promotions.filter((promotion) => promotion.id !== id));
   };
 
   return (

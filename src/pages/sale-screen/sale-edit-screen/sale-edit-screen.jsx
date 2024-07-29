@@ -4,22 +4,43 @@ import Header from '../../../components/header/header';
 import Footer from '../../../components/footer/footer';
 import { useAppDispatch } from '../../../hooks/hook';
 import { useParams } from "react-router-dom";
-import { saleCreateAction, saleUpdateAction } from '../../../store/api-actions';
-import { useState, useRef } from 'react';
+import { saleCreateAction, saleUpdateAction, fetchSaleAction } from '../../../store/api-actions';
+import { useState, useRef, useEffect } from 'react';
 import stub from '/stub.jpg'
 
 export default function SaleEditScreen () {
   const dispatch = useAppDispatch();
   const {id} = useParams();
-  // const restaurant = useAppSelector((state) => state.dataRest);
-  // const promotion = restaurant.promotions.id;
   const [nameSale, setNameSale] = useState('');
   const [textSale, setTextSale] = useState('');
   const [photoSale, setPhotoSale] = useState(null);
   const [photoURL, setPhotoURL] = useState(stub);
   const [isImageSelected, setIsImageSelected] = useState(false);
   const addSaleRef = useRef(null);
-  const handleChangeSale = (evt) => {
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (id) {
+        const saleData = await dispatch(fetchSaleAction({id: id}));
+        setNameSale(saleData.payload.name ?? "");
+        setTextSale(saleData.payload.text ?? "");
+        // setPhotoSale(saleData.payload.photo);
+        // setPhotoURL(`data:image/jpeg;base64,${saleData.payload.photo}`);
+        let photoData = saleData.payload.photo;
+        if (photoData.startsWith("data:image/jpeg;base64,")) {
+          photoData = photoData.replace("data:image/jpeg;base64,", "");
+        }
+        setPhotoSale(photoData);
+        setPhotoURL(`data:image/jpeg;base64,${photoData}`);
+        setIsImageSelected(true);
+      }
+    }
+
+    fetchData();
+
+  }, [id, dispatch]);
+
+  const handleChangePhotoSale = (evt) => {
     evt.preventDefault();
     const file = evt.target.files[0];
     const reader = new FileReader();
@@ -84,11 +105,10 @@ export default function SaleEditScreen () {
                 onChange={(e) => setNameSale(e.target.value)}
                 required
               />
-              {/* <img className="sale-image" src={promotion.photo !== null ? `data:image/jpeg;base64,${promotion.photo}` : stub}/> */}
               <div className="sale-edit-images">
                 <img className="sale-edit-image" src={photoURL}/>
                 <button className="changeSale__btn" onClick={() => addSaleRef.current.click()}></button>
-                <input ref={addSaleRef} className="addSale_input" type="file" accept='image/*,.png,.jpg,.gif,.web' onChange={handleChangeSale}/>
+                <input ref={addSaleRef} className="addSale_input" type="file" accept='image/*,.png,.jpg,.gif,.web' onChange={handleChangePhotoSale}/>
               </div>
             </div>
             <div className="sale-edit-container c2">

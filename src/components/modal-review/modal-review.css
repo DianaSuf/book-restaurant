@@ -32,6 +32,7 @@
   margin-top: 136px;
   width: 47.0833vw;
   max-width: 904px;
+  min-width: 300px;
   border-radius: 20px;
   background-color: #a25353;
   padding: 1.667% 2.5% 1.511% 2.5%;
@@ -54,16 +55,27 @@
 }
 
 .review-text {
-  font-size: clamp(25px, 2.5vw, 48px);
+  font-size: clamp(20px, 2.5vw, 48px);
   /* line-height: 70px; */
   margin-right: 20px;
+}
+
+.review-stars-container {
+  display: flex;
+  flex-direction: row;
+  width: 8.33vw;
+  max-width: 160px;
+  height: 3.125vw;
+  max-height: 60px;
 }
 
 .review-star-container {
   display: flex;
   flex-direction: row;
-  width: 8.33vw;
-  max-width: 160px;
+  width: 2.6042vw;
+  max-width: 50px;
+  height: 3.125vw;
+  max-height: 60px;
 }
 
 input[type=radio] {
@@ -86,6 +98,7 @@ input[type=radio] {
   top: 0;
   width: 45vw;
   max-width: 864px;
+  min-width: 286.2px;
   padding: 2.3148%;
   margin-top: 15px;
   margin-bottom: 15px;
@@ -96,11 +109,12 @@ input[type=radio] {
   outline: none; 
   background-color: transparent;
   border: none;
-  height: 5.21vw;
-  max-height: 100px;
+  height: 4.17vw;
+  max-height: 80px;
+  min-height: 37px;
   width: auto;
   max-width: 100%;
-  aspect-ratio: 330 / 100;
+  aspect-ratio: 270 / 80;
   background-image: url('/cancel-review.svg');
   background-size: cover;
   cursor: pointer;
@@ -113,14 +127,24 @@ input[type=radio] {
   outline: none; 
   background-color: transparent;
   border: none;
-  height: 5.21vw;
-  max-height: 100px;
+  height: 4.17vw;
+  max-height: 80px;
+  min-height: 37px;
   width: auto;
   max-width: 100%;
-  aspect-ratio: 330 / 100;
+  aspect-ratio: 270 / 80;
   background-image: url('/save-review.svg');
   background-size: cover;
   cursor: pointer;
   /* margin-top: 19px;
   margin-right: auto; */
+}
+
+@media (max-width: 875px) {
+  .modal-review-content {
+    border-radius: 2.2857vw;
+  }
+  .review__textarea {
+    height: 190px;
+  }
 }

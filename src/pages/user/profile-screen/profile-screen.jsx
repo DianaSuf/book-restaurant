@@ -30,7 +30,6 @@ export default function ProfileScreen() {
 
     if (result?.payload) {
       setUserData(result.payload);
-      // Добавляем свойство isOpen для каждого элемента reserval
       const reservalsWithState = result.payload.reservals.map((reserval) => ({
         ...reserval,
         isOpen: false
@@ -43,7 +42,6 @@ export default function ProfileScreen() {
   }, [dispatch, date, authorizationStatus]);
   
   const toggleCard = (id) => {
-    // Переключаем состояние isOpen для конкретной карточки
     const updatedReservals = reservals.map((reserval) => {
       if (reserval.id === id) {
         return { ...reserval, isOpen: !reserval.isOpen };
