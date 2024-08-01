@@ -273,7 +273,7 @@ export default function RestCardEditScreen () {
             <input ref={addPlanRef} className="addPlan_input" type="file" accept='image/*,.png,.jpg,.gif,.web' onChange={handleChangePlan}/>
           </div>
         </div>
-        <div className="edit-container-time">
+        <div className="edit-container-tables-save">
           <div className="edit-container-field">
             <label
               className="edit__label-tables"
@@ -288,13 +288,11 @@ export default function RestCardEditScreen () {
               id="restarant-tables"
               value={textTableValues.table}
               onChange={handleTextTableChange}
-              disabled={restaurant.tables != 0}
               required
             />
           </div>
-          {restaurant.tables == 0 &&
-            <button className="save-tables__btn" disabled={restaurant.tables != 0} onClick={handleSubmitSaveTables}></button>}
-          <p className="save-tables__text">После сохранения это поле станет не редактируемым!</p>
+          <button className="save-tables__btn" onClick={handleSubmitSaveTables}></button>
+          <p className="save-tables__text">Будьте внимательны! При уменьшении количества столиков будут удалены активные брони с ними.</p>
         </div>
         <div className="center-content">
           <button className="back-card__btn" onClick={() => navigate(AppRoute.Restaurant)}></button>

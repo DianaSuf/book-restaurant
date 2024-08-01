@@ -23,10 +23,16 @@ export default function RestCardScreen () {
   const [modalPhotoIsOpen, setModalPhotoIsOpen] = useState(false);
   const [modalPhoto, setModalPhoto] = useState('');
   const navigate = useNavigate();
+  const DEFAULT_REVIEWS_COUNT = 3;
+  const [countShownReviews, setCountShownReview] = useState(DEFAULT_REVIEWS_COUNT);
   
   useEffect(() => {
     setMainImage(images[0]);
   }, [restaurant]);
+
+  const handleShownMoreClick = () => {
+    setCountShownReview((prev) => prev + DEFAULT_REVIEWS_COUNT);
+  };
 
   return (
     <>
@@ -80,7 +86,7 @@ export default function RestCardScreen () {
           {restaurant.length !== 0 && restaurant.reviewData.length !== 0 &&
             <section className="review">
               <h2 className="restaurant-review">Отзывы посетителей</h2>
-              {restaurant.reviewData.map((review) => (
+              {restaurant.reviewData.slice(0, countShownReviews).map((review) => (
                 <div className="review-card"  key={review.id}>
                   <div className="restaurant-description-wrapper">
                     <div className="restaurant-card-container">
@@ -91,6 +97,9 @@ export default function RestCardScreen () {
                   </div>
                 </div>
               ))}
+              {countShownReviews >= restaurant.reviewData.length 
+              ? '' 
+              : <div className="catalog__more" onClick={() => handleShownMoreClick()}>Показать ещё..</div>}
             </section>
           }
           {restaurant.length !== 0 && restaurant.reviewData.length === 0 &&

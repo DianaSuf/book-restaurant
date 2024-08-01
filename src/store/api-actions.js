@@ -4,10 +4,17 @@ import { AuthorizationStatus, APIRoute, AppRoute } from '../const.js';
 
 export const registerAction = createAsyncThunk(
   'user/register',
-  async ({ username, realname, email, phone, password }, { dispatch, extra: api }) => {
-    const { data: { token, role } } = await api.post(APIRoute.Register, { username, realname, email, phone, password });
-    localStorage.setItem("token", token);
-    dispatch(requireAuthorization(AuthorizationStatus[role]));
+  async ({ username, realname, email, phone, password }, { dispatch, extra: api, rejectWithValue }) => {
+    try {
+      const { data: { token, role } } = await api.post(APIRoute.Register, { username, realname, email, phone, password });
+      localStorage.setItem("token", token);
+      dispatch(requireAuthorization(AuthorizationStatus[role]));
+    } catch(error) {
+      if (error.response.status === 400) {
+        return rejectWithValue(error.response.data)
+      }
+      throw error;
+    }
   },
 );
 
@@ -32,16 +39,23 @@ export const checkAuthAction = createAsyncThunk(
 
 export const loginAction = createAsyncThunk(
   'user/login',
-  async ({ username, password }, { dispatch, extra: api }) => {
-    const { data: { token, role } } = await api.post(APIRoute.Login, { username, password });
-    localStorage.setItem("token", token);
-    dispatch(requireAuthorization(AuthorizationStatus[role]));
-    if (AuthorizationStatus[role] === AuthorizationStatus.ADMIN_APP) {
-      dispatch(redirectToRoute(AppRoute.SuperAdmin))
-    }
-    if (AuthorizationStatus[role] === AuthorizationStatus.ADMIN_REST) {
-      dispatch(fetchRestaurantAdminAction());
-      dispatch(redirectToRoute(AppRoute.Restaurant))
+  async ({ username, password }, { dispatch, extra: api, rejectWithValue }) => {
+    try {
+      const { data: { token, role } } = await api.post(APIRoute.Login, { username, password });
+      localStorage.setItem("token", token);
+      dispatch(requireAuthorization(AuthorizationStatus[role]));
+      if (AuthorizationStatus[role] === AuthorizationStatus.ADMIN_APP) {
+        dispatch(redirectToRoute(AppRoute.SuperAdmin))
+      }
+      if (AuthorizationStatus[role] === AuthorizationStatus.ADMIN_REST) {
+        dispatch(fetchRestaurantAdminAction());
+        dispatch(redirectToRoute(AppRoute.Restaurant))
+      }
+    } catch(error) {
+      if (error.response.status === 400) {
+        return rejectWithValue(error.response.data)
+      }
+      throw error;
     }
   },
 );
@@ -54,10 +68,31 @@ export const logoutAction = createAsyncThunk(
   },
 );
 
-export const AddAdmin = createAsyncThunk(
+export const addAdmin = createAsyncThunk(
   'superAdmin/addAdmin',
-  async ({ username, email }, { extra: api }) => {
-    await api.post(APIRoute.SuperAdmin, { username, email });
+  async ({ username, email }, { extra: api, rejectWithValue }) => {
+    try {
+      await api.post(APIRoute.SuperAdmin, { username, email });
+    } catch(error) {
+      if (error.response.status === 400) {
+        return rejectWithValue(error.response.data)
+      }
+      throw error;
+    }
+  },
+);
+
+export const deleteAdmin = createAsyncThunk(
+  'superAdmin/addAdmin',
+  async ({ username, email }, { extra: api, rejectWithValue }) => {
+    try {
+      await api.post(APIRoute.SuperAdminDelete, { username, email });
+    } catch(error) {
+      if (error.response.status === 400) {
+        return rejectWithValue(error.response.data)
+      }
+      throw error;
+    }
   },
 );
 
@@ -248,9 +283,18 @@ export const fetchUserProfileAction = createAsyncThunk(
 
 export const fetchUserProfileUpdateAction = createAsyncThunk(
   'dataProfile/fetchUserProfileUpdate',
-  async ({ username, realname, email, phone }, { dispatch, extra: api }) => {
-    await api.post(APIRoute.ProfileUserUpdate, { username, realname, email, phone });
-    dispatch(fetchUserProfileAction());
+  async ({ username, realname, email, phone }, { dispatch, extra: api, rejectWithValue }) => {
+    try {
+      const { data: { token } } = await api.post(APIRoute.ProfileUserUpdate, { username, realname, email, phone });
+      localStorage.removeItem("token");
+      localStorage.setItem("token", token);
+      dispatch(fetchUserProfileAction());
+    } catch(error) {
+      if (error.response.status === 400) {
+        return rejectWithValue(error.response.data)
+      }
+      throw error;
+    }
   },
 );
 
@@ -269,9 +313,18 @@ export const fetchAdminProfileAction = createAsyncThunk(
 
 export const fetchAdminProfileUpdateAction = createAsyncThunk(
   'dataAdminProfile/fetchAdminProfileUpdate',
-  async ({ username, email, phone }, { dispatch, extra: api }) => {
-    await api.post(APIRoute.ProfileAdminUpdate, { username, email, phone });
-    dispatch(fetchAdminProfileAction());
+  async ({ username, email, phone }, { dispatch, extra: api, rejectWithValue }) => {
+    try {
+      const { data: { token } } = await api.post(APIRoute.ProfileAdminUpdate, { username, email, phone });
+      localStorage.removeItem("token");
+      localStorage.setItem("token", token);
+      dispatch(fetchAdminProfileAction());
+    } catch(error) {
+      if (error.response.status === 400) {
+        return rejectWithValue(error.response.data)
+      }
+      throw error;
+    }
   },
 );
 

@@ -211,6 +211,28 @@
   margin-right: auto;
 };
 
+.error-message {
+  color: #ff0000;
+  background-color: #ffe6e6;
+  border: 1px solid #ff0000;
+  padding: 0.5208vw;
+  text-align: center;
+  border-radius: 0.7813vw;
+  font-size: clamp(14px, 21.04vw, 20px);
+  margin-top: 0.5208vw;
+}
+
+.success-message {
+  color: #008000;
+  background-color: #90EE90;
+  border: 1px solid #008000;
+  padding: 0.5208vw;
+  text-align: center;
+  border-radius: 0.7813vw;
+  font-size: clamp(14px, 21.04vw, 20px);
+  margin-top: 0.5208vw;
+}
+
 
 @media (max-width: 1200px) {
 }

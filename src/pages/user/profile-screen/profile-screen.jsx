@@ -17,6 +17,8 @@ export default function ProfileScreen() {
   const [userData, setUserData] = useState(null); 
   const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
   const [reservals, setReservals] = useState([]);
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -80,8 +82,10 @@ export default function ProfileScreen() {
     setDate(event.target.value);
   };
 
-  const handleSubmitSaveData = (evt) => {
+  const handleSubmitSaveData = async (evt) => {
     evt.preventDefault();
+    setError(null);
+    setSuccess(null);
     let roleValues;
     authorizationStatus === AuthorizationStatus.ADMIN_REST ? roleValues = {
       username: dataValues.username,
@@ -93,9 +97,20 @@ export default function ProfileScreen() {
       email: dataValues.email,
       phone: dataValues.phone,
     };
-    authorizationStatus === AuthorizationStatus.ADMIN_REST 
-    ? dispatch(fetchAdminProfileUpdateAction(roleValues)) 
-    : dispatch(fetchUserProfileUpdateAction(roleValues))
+    try {
+      authorizationStatus === AuthorizationStatus.ADMIN_REST 
+      ? await dispatch(fetchAdminProfileUpdateAction(roleValues)).unwrap() 
+      : await dispatch(fetchUserProfileUpdateAction(roleValues)).unwrap()
+      setSuccess("Успешно!");
+      setError(null);
+
+      setTimeout(() => {
+        setSuccess(null);
+      }, 5000);
+
+    } catch (err) {
+      setError(err.message || "Произошла ошибка")
+    }
   }
 
   const handleCancelReserval = async (id) => {
@@ -185,6 +200,8 @@ export default function ProfileScreen() {
                 </>
               )}
               <button className="save-edit__btn" type="submit"></button>
+              {success && <div className="success-message">{success}</div>}
+              {error && <div className="error-message">{error}</div>}
             </form>
           </div>
           <div className="reservations">

@@ -138,8 +138,15 @@
   color: #a25353;
 }
 
+.catalog__more {
+  display: flex;
+  justify-content: flex-end;
+  color: #a25353;
+  font-size: clamp(14px, 1.3vw, 25px);
+  cursor: pointer;
+}
+
 .restaurant-description {
-  /* display: inline-flex; */
   flex-direction: column;
   max-width: 857px;
   flex: 1 0 239px;

@@ -1,10 +1,11 @@
 import axios from 'axios';
-import { checkAuthAction } from '../store/api-actions';
-import { useAppDispatch } from '../hooks/hook';
+// import { checkAuthAction } from '../store/api-actions';
+// import { useAppDispatch } from '../hooks/hook';
 // import { APIRoute } from '../const';
 
-const BACKEND_URL = 'https://generous-rejoicing-production.up.railway.app/';
+const BACKEND_URL = 'https://tabletime.railway.internal/';
 // const BACKEND_URL = 'http://localhost:8080/';
+// const dispatch = useAppDispatch();
 // const REQUEST_TIMEOUT = 5000;
 
 export const createAPI = () => {
@@ -26,10 +27,9 @@ export const createAPI = () => {
         return config;
       },
       async (error) => {
-        const dispatch = useAppDispatch();
         if (error.response && error.response.status === 401) {
           localStorage.removeItem("token");
-          dispatch(checkAuthAction());
+          // dispatch(checkAuthAction());
           // window.location.reload();
         // const originalRequest = {...error.config};
         // originalRequest._isRetry = true; 

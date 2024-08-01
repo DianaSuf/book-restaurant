@@ -20,37 +20,47 @@ export default function ModalRegister ({ isOpen, onClose, status }) {
     const dispatch = useAppDispatch();
 
     const [userStatus, setStatus] = useState(status);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         setStatus(status);
     }, [status]);
 
-    const handleSubmit = (evt) => {
+    const handleSubmit = async (evt) => {
         evt.preventDefault();
+        setError(null);
+        try {
+            if (usernameRef.current !== null && realnameRef.current !== null && emailRef.current !== null 
+                && phoneRef.current !== null && passwordRef.current !== null && userStatus === 'register') {
+                await dispatch(registerAction({
+                    username: usernameRef.current.value,
+                    realname: realnameRef.current.value,
+                    email: emailRef.current.value,
+                    phone: phoneRef.current.value,
+                    password: passwordRef.current.value
+              })).unwrap();
+              setError(null);
+              onClose();
+            }
     
-        if (usernameRef.current !== null && realnameRef.current !== null && emailRef.current !== null 
-            && phoneRef.current !== null && passwordRef.current !== null && userStatus === 'register') {
-          dispatch(registerAction({
-            username: usernameRef.current.value,
-            realname: realnameRef.current.value,
-            email: emailRef.current.value,
-            phone: phoneRef.current.value,
-            password: passwordRef.current.value
-          }));
-          onClose();
-        }
-
-        if (usernameRef.current !== null && passwordRef.current !== null && userStatus === 'singIn') {
-            dispatch(loginAction({
-              username: usernameRef.current.value,
-              password: passwordRef.current.value
-            }));
-            onClose();
+            if (usernameRef.current !== null && passwordRef.current !== null && userStatus === 'singIn') {
+                await dispatch(loginAction({
+                  username: usernameRef.current.value,
+                  password: passwordRef.current.value
+                })).unwrap();
+                setError(null);
+                onClose();
+            }
+        } catch (err) {
+            setError(err.message || "Произошла ошибка")
         }
     };
 
     const onWrapperClick = (event) => {
-        if (event.target.classList.contains("modal-wrapper")) onClose();
+        if (event.target.classList.contains("modal-wrapper")) {
+            setError(null);
+            onClose();
+        }
     };
 
     // const [userStatus, setStatus] = useState(status);
@@ -174,6 +184,7 @@ export default function ModalRegister ({ isOpen, onClose, status }) {
                                         <h2 className="text__btn" onClick={() => setStatus('register')}>Еще нет аккаунта? ЗАРЕГИСТРИРОВАТЬСЯ</h2>
                                     </div>
                                 }
+                                {error && <div className="error-message">{error}</div>}
                             </form>
                         </div>
                     </div>

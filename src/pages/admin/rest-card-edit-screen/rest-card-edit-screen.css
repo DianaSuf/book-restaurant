@@ -59,6 +59,7 @@
   border-radius: 0.7813vw;
   height: 3.6458vw;
   max-height: 70px;
+  min-height: 18px;
   left: 0;
   top: 0;
   width: 33.334vw;
@@ -77,6 +78,11 @@
   display: flex;
 }
 
+.edit-container-tables-save {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .edit-container-field {
   display: flex;
   flex-direction: column;
@@ -88,6 +94,7 @@
   border-radius: 0.7813vw;
   height: 3.6458vw;
   max-height: 70px;
+  min-height: 18px;
   left: 0;
   top: 0;
   width: 9.2708vw;
@@ -105,6 +112,7 @@
   border-radius: 0.7813vw;
   height: 3.6458vw;
   max-height: 70px;
+  min-height: 18px;
   left: 0;
   top: 0;
   width: 21.5104vw;
@@ -144,6 +152,7 @@
   border-radius: 0.7813vw;
   height: 3.6458vw;
   max-height: 70px;
+  min-height: 18px;
   left: 0;
   top: 0;
   width: 23.9583vw;
@@ -161,6 +170,7 @@
   border-radius: 0.7813vw;
   height: 3.6458vw;
   max-height: 70px;
+  min-height: 18px;
   left: 0;
   top: 0;
   width: 23.9583vw;
@@ -182,6 +192,7 @@
   border-radius: 0.7813vw;
   height: 3.6458vw;
   max-height: 70px;
+  min-height: 18px;
   left: 0;
   top: 0;
   width: 15.1042vw;
@@ -206,18 +217,20 @@
   width: auto;
   max-width: 100%;
   aspect-ratio: 290 / 70;
-  margin-top: 70px;
-  margin-left: 67px;
+  margin-top: 3.6458vw;
+  margin-left: 3.6458vw;
   background-image: url('/save.svg');
   background-size: cover;
   cursor: pointer;
 }
 
 .save-tables__text {
-  font-size: clamp(14px, 1.67vw, 32px);
+  font-size: clamp(10px, 1.3vw, 25px);
   color: #a25353;
   margin-left: 2.8125vw;
-  margin-top: 4.1667vw;
+  margin-top: 3.1667vw;
+  width: 31.25vw;
+  flex: 1 0 311px;
 }
 
 .save__btn {
