@@ -3,7 +3,7 @@ import axios from 'axios';
 // import { useAppDispatch } from '../hooks/hook';
 // import { APIRoute } from '../const';
 
-const BACKEND_URL = 'https://tabletime-production.up.railway.app/';
+const BACKEND_URL = 'http://tabletime-production.up.railway.app:5/';
 // const BACKEND_URL = 'http://localhost:8080/';
 // const dispatch = useAppDispatch();
 // const REQUEST_TIMEOUT = 5000;
