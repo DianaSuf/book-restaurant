@@ -102,6 +102,7 @@ export default function SaleEditScreen () {
                 name="name"
                 id="sale-edit-name"
                 value={nameSale}
+                maxLength={21}
                 onChange={(e) => setNameSale(e.target.value)}
                 required
               />
