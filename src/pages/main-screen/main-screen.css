@@ -63,7 +63,7 @@
 
 .catalog__restaurants-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(399.5px, 1fr));
+    grid-template-columns: repeat(2, minmax(399.5px, 1fr));
     gap: 1.5625vw;
     margin: 0;
     padding: 2.6%;
@@ -140,6 +140,7 @@
 
 @media (max-width: 875px) {
     .catalog__restaurants-list {
+        grid-template-columns: repeat(1, minmax(399.5px, 1fr));
         gap: 3.4286vw;
     }
     .restaurant-small-card {
@@ -183,7 +184,7 @@
         width: 94.6667vw;
     }
     .catalog__restaurants-list {
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-template-columns: repeat(1, minmax(320px, 1fr));
     }
     .search__input {
         /* border-radius: 7px; */
