@@ -60,9 +60,9 @@ export default function RestCardScreen () {
               <div className="gallery__bth">
                 <button className="menu__btn" onClick={() => {setModalPhoto(`data:image/jpeg;base64,${restaurant.menu}`); setModalPhotoIsOpen(true)}}></button>
                 <button className="plan__btn" onClick={() => {setModalPhoto(`data:image/jpeg;base64,${restaurant.plan}`); setModalPhotoIsOpen(true)}}></button>
-                {restaurant.length === 0 ? '' : restaurant.promotions.length === 0 ? '' : authorizationStatus === AuthorizationStatus.ADMIN_REST
-                ? <button className="sale__btn" onClick={() => navigate(AppRoute.Sale)}></button> 
-                : <button className="sale__btn" onClick={() => navigate(`${AppRoute.Sale}/${restaurant.id}`)}></button>}
+                {restaurant.length === 0 ? '' : authorizationStatus === AuthorizationStatus.ADMIN_REST
+                ? <button className="sale__btn" onClick={() => navigate(AppRoute.Sale)}></button> : restaurant.promotions.length === 0 
+                ? '' : <button className="sale__btn" onClick={() => navigate(`${AppRoute.Sale}/${restaurant.id}`)}></button>}
                 <ModalPhoto
                 isOpen={modalPhotoIsOpen}
                 onClose={() => setModalPhotoIsOpen(false)}
