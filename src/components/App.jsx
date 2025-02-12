@@ -16,17 +16,17 @@ import browserHistory from '../browser-history'
 import HistoryRouter from './history-route'
 import { AppRoute } from '../const'
 import { AuthorizationStatus } from '../const'
-import LoadingScreen from '../pages/loading-screen/loading-screen'
+// import LoadingScreen from '../pages/loading-screen/loading-screen'
 
 function App() {
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
-  const isDataLoading = useAppSelector((state) => state.isDataLoading);
+  // const isDataLoading = useAppSelector((state) => state.isDataLoading);
 
-  if (isDataLoading) {
-    return (
-      <LoadingScreen />
-    );
-  }
+  // if (isDataLoading) {
+  //   return (
+  //     <LoadingScreen />
+  //   );
+  // }
 
   return (
     <HelmetProvider>
